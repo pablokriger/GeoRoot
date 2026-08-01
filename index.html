@@ -229,7 +229,8 @@
             justify-content: center;
             cursor: pointer;
             transition: all var(--transition);
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+            padding: 0;
         }
         .lang-btn:hover {
             background: rgba(255, 255, 255, 0.15);
@@ -257,35 +258,51 @@
             font-size: 1.3rem;
         }
 
-        /* ---- HERO ---- */
+        /* ---- HERO (con imagen de fondo completa y degradado) ---- */
         .hero-section {
-            background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 40%, #3a7cb8 100%);
+            position: relative;
             color: #fff;
             padding: 5rem 0 4rem;
-            position: relative;
             overflow: hidden;
+            background-color: #1b3a5c;
+            /* fallback */
+            background-image: url('https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8245_6.png');
+            background-size: cover;
+            background-position: center right;
+            background-repeat: no-repeat;
         }
+        /* Capa de degradado: izquierda azul sólido, derecha transparente para ver la imagen */
         .hero-section::before {
             content: '';
             position: absolute;
-            top: -80px;
-            right: -120px;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    rgba(27, 58, 92, 0.97) 0%,
+                    rgba(27, 58, 92, 0.92) 25%,
+                    rgba(27, 58, 92, 0.75) 50%,
+                    rgba(27, 58, 92, 0.35) 75%,
+                    rgba(27, 58, 92, 0.05) 100%);
+            z-index: 1;
             pointer-events: none;
         }
+        /* Capa adicional sutil para garantizar legibilidad en móviles */
         .hero-section::after {
             content: '';
             position: absolute;
-            bottom: -100px;
-            left: -60px;
-            width: 350px;
-            height: 350px;
-            background: rgba(255, 255, 255, 0.025);
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 50%, rgba(27, 58, 92, 0.5) 0%, transparent 70%);
+            z-index: 2;
             pointer-events: none;
+        }
+        .hero-section .container {
+            position: relative;
+            z-index: 3;
         }
         .hero-section h1 {
             color: #fff;
@@ -293,16 +310,14 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
         .hero-section .lead {
             font-size: 1.2rem;
             font-weight: 300;
-            opacity: 0.92;
+            opacity: 0.95;
             max-width: 650px;
-            position: relative;
-            z-index: 1;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
         .hero-section .btn-hero {
             background: var(--accent-gold);
@@ -313,8 +328,6 @@
             border-radius: 30px;
             letter-spacing: 0.03em;
             transition: all var(--transition);
-            position: relative;
-            z-index: 1;
         }
         .hero-section .btn-hero:hover {
             background: #d4aa45;
@@ -323,13 +336,9 @@
             text-decoration: none;
             color: #1b3a5c;
         }
+        /* Ocultamos la imagen anterior (ya no se usa como img) */
         .hero-image {
-            border-radius: 12px;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: none;
         }
 
         /* ---- SECTION TITLES ---- */
@@ -352,6 +361,22 @@
             color: var(--text-medium);
             font-size: 1.05rem;
             max-width: 600px;
+        }
+
+        /* ---- LOGO CENTRADO ---- */
+        .logo-centered {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .logo-centered img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+            transition: transform var(--transition);
+        }
+        .logo-centered img:hover {
+            transform: scale(1.03);
         }
 
         /* ---- CARDS ---- */
@@ -549,6 +574,9 @@
             .dropdown-submenu.show>.dropdown-menu {
                 display: block;
             }
+            .hero-section {
+                background-position: 70% center;
+            }
         }
 
         /* ---- FOOTER ---- */
@@ -596,6 +624,10 @@
 
         /* ---- RESPONSIVE ---- */
         @media (max-width: 768px) {
+            .hero-section {
+                background-position: 65% center;
+                padding: 3.5rem 0 3rem;
+            }
             .hero-section h1 {
                 font-size: 2rem;
             }
@@ -618,6 +650,10 @@
             .cookie-banner .cookie-actions {
                 width: 100%;
                 justify-content: center;
+            }
+            .logo-centered img {
+                width: 80px;
+                height: 80px;
             }
         }
 
@@ -673,7 +709,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Geografía e Historia
+                            Historia
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item"
@@ -714,8 +750,9 @@
                     </li>
                     <li class="nav-item dropdown ms-lg-2">
                         <button class="lang-btn dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown"
-                            aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma">
-                            <i class="fa-solid fa-globe"></i>
+                            aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma"
+                            style="font-size:1.3rem;">
+                            🇪🇸
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end lang-menu" aria-labelledby="langDropdown">
                             <li><a class="dropdown-item" href="#" data-lang="es"><span
@@ -733,10 +770,10 @@
         </div>
     </nav>
 
-    <!-- ========== HERO ========== -->
+    <!-- ========== HERO (imagen de fondo completa con degradado) ========== -->
     <header class="hero-section" id="main-content">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-lg-7">
                     <h1>Alemanes del Volga en Argentina y el mundo</h1>
                     <p class="lead">
@@ -746,11 +783,6 @@
                     <a href="https://pablokriger.github.io/GeoRoot/volga" class="btn btn-hero mt-3">
                         <i class="fa-solid fa-magnifying-glass me-2"></i>Consulta por apellido
                     </a>
-                </div>
-                <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8245_6.png"
-                        alt="Collage editorial: mapas antiguos, documentos de archivo, brújula y libros sobre migración transatlántica"
-                        class="hero-image" width="1672" height="941" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -767,7 +799,6 @@
                 </p>
             </div>
             <div class="row g-4">
-                <!-- Card 1: Apellidos y variantes -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
                         <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/5489_4.png"
@@ -781,7 +812,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 2: Demografía -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
                         <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/1672_3.png"
@@ -795,7 +825,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 3: Fuentes e indicadores -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
                         <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/4963_1.png"
@@ -809,7 +838,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Card 4: Recursos -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
                         <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8137_2.png"
@@ -862,6 +890,11 @@
     <!-- ========== SECCIÓN DESTACADA ========== -->
     <section class="py-5">
         <div class="container">
+            <!-- Logo centrado antes de "EN FOCO" -->
+            <div class="logo-centered">
+                <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/Ic_GeoRoot.png"
+                    alt="GeoRoot | Volga Logo" width="1254" height="1254" loading="lazy" />
+            </div>
             <div class="row align-items-start g-5">
                 <div class="col-lg-6">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2"
@@ -1105,20 +1138,21 @@
                 });
             });
 
+            // Selector de idioma mejorado
+            const langBtn = document.getElementById('langDropdown');
             document.querySelectorAll('.lang-menu .dropdown-item').forEach(function (item) {
                 item.addEventListener('click', function (e) {
                     e.preventDefault();
                     const lang = this.getAttribute('data-lang');
+                    const flagSpan = this.querySelector('.lang-flag');
+                    if (flagSpan && langBtn) {
+                        // Actualizar el botón con la bandera seleccionada
+                        langBtn.innerHTML = flagSpan.outerHTML;
+                    }
                     try {
                         localStorage.setItem('geoRoot_preferred_lang', lang);
                     } catch (ex) { }
-                    const langBtn = document.getElementById('langDropdown');
-                    if (langBtn) {
-                        const flagSpan = this.querySelector('.lang-flag');
-                        if (flagSpan) {
-                            langBtn.innerHTML = flagSpan.outerHTML;
-                        }
-                    }
+                    // Cerrar dropdown
                     const dropdown = bootstrap.Dropdown.getInstance(langBtn);
                     if (dropdown) {
                         dropdown.hide();
@@ -1126,15 +1160,15 @@
                 });
             });
 
+            // Restaurar idioma guardado al cargar
             try {
                 const savedLang = localStorage.getItem('geoRoot_preferred_lang');
-                if (savedLang) {
+                if (savedLang && langBtn) {
                     const langItem = document.querySelector('.lang-menu .dropdown-item[data-lang="' + savedLang +
                         '"]');
                     if (langItem) {
                         const flagSpan = langItem.querySelector('.lang-flag');
-                        const langBtn = document.getElementById('langDropdown');
-                        if (flagSpan && langBtn) {
+                        if (flagSpan) {
                             langBtn.innerHTML = flagSpan.outerHTML;
                         }
                     }
