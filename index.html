@@ -7,18 +7,17 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Spanish, English, German, Portuguese" />
     <meta name="revisit-after" content="7 days" />
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌐</text></svg>" />
+    <link rel="icon" href="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/favicon.png" type="image/png" />
 
     <!-- SEO - International Research Project -->
-    <title>Volga Germans Worldwide | History, Genealogy, Surnames and Cultural Heritage</title>
+    <title>GeoRoot | Volga</title>
     <meta name="description"
         content="International research project about Volga Germans (Alemanes del Volga, Wolgadeutsche, Alemães do Volga), their genealogy, surnames, migration history, geographic distribution and cultural heritage. A global initiative connecting family roots, communities and historical memory." />
     <meta name="keywords"
         content="Alemanes del Volga, Volga Germans, Wolgadeutsche, Alemães do Volga, Volga German genealogy, Volga German ancestors, Volga German surnames, German surnames, German ancestry, German heritage, German immigrants, German diaspora, genealogy, family history, ancestry research, migration history, cultural heritage, historical communities, ethnic communities, European migration, Argentina German communities, Entre Ríos Germans, Alemania Argentina, deutsche Auswanderer, deutsche Ahnenforschung, deutsche Familiengeschichte, Wolgadeutsche in Argentinien, alemães na Argentina, genealogia alemã, história familiar, raízes alemãs, comunidades migrantes" />
 
     <!-- Open Graph - Social Networks -->
-    <meta property="og:title" content="Volga Germans Worldwide | History, Genealogy and Cultural Heritage" />
+    <meta property="og:title" content="GeoRoot | Volga" />
     <meta property="og:description"
         content="Research project dedicated to preserving the history, surnames, genealogy and cultural heritage of Volga Germans and migrant communities around the world." />
     <meta property="og:type" content="website" />
@@ -29,7 +28,7 @@
         {
             "@context": "https://schema.org",
             "@type": "ResearchProject",
-            "name": "Volga Germans Worldwide Research Project",
+            "name": "GeoRoot | Volga",
             "alternateName": [
                 "Proyecto Alemanes del Volga",
                 "Proyecto Wolgadeutsche",
@@ -173,16 +172,13 @@
             align-items: center;
             gap: 10px;
         }
-        .navbar-brand .brand-icon {
-            width: 42px;
-            height: 42px;
-            background: rgba(255, 255, 255, 0.12);
+        .navbar-brand .brand-logo {
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--accent-gold);
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px;
         }
         .navbar-nav .nav-link {
             color: rgba(255, 255, 255, 0.88) !important;
@@ -206,7 +202,6 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
-        /* Colabora resaltado */
         .nav-link.collab-highlight {
             border: 2px solid var(--collab-border) !important;
             border-radius: 22px !important;
@@ -328,6 +323,14 @@
             text-decoration: none;
             color: #1b3a5c;
         }
+        .hero-image {
+            border-radius: 12px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
 
         /* ---- SECTION TITLES ---- */
         .section-title {
@@ -369,7 +372,8 @@
         .card-custom .card-img-top {
             height: 180px;
             object-fit: cover;
-            background: var(--light-blue);
+            width: 100%;
+            display: block;
         }
         .card-custom .card-body {
             padding: 1.4rem 1.4rem 1.6rem;
@@ -626,9 +630,6 @@
         .fw-600 {
             font-weight: 600;
         }
-        .mt-neg-2 {
-            margin-top: -0.5rem;
-        }
     </style>
 </head>
 
@@ -639,8 +640,9 @@
     <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
         <div class="container">
             <a class="navbar-brand" href="https://pablokriger.github.io/GeoRoot/">
-                <span class="brand-icon"><i class="fa-solid fa-globe"></i></span>
-                GeoRoot
+                <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/Icono_GeoRoot.png"
+                    alt="GeoRoot Logo" class="brand-logo" width="44" height="44" loading="eager" />
+                GeoRoot | Volga
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                 aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
@@ -652,7 +654,6 @@
                         <a class="nav-link active" aria-current="page"
                             href="https://pablokriger.github.io/GeoRoot/">Inicio</a>
                     </li>
-                    <!-- Datos Migratorios -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -669,7 +670,6 @@
                                     href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
                         </ul>
                     </li>
-                    <!-- Geografía e Historia -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -682,7 +682,6 @@
                                     href="https://pablokriger.github.io/GeoRoot/migration">Flujos migratorios</a></li>
                         </ul>
                     </li>
-                    <!-- ¡Colabora! -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle collab-highlight" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -710,11 +709,9 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- Acerca de -->
                     <li class="nav-item">
                         <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/about">Acerca de</a>
                     </li>
-                    <!-- Selector de idioma -->
                     <li class="nav-item dropdown ms-lg-2">
                         <button class="lang-btn dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown"
                             aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma">
@@ -741,7 +738,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7">
-                    <h1>Identifica apellidos de Alemanes del Volga</h1>
+                    <h1>Alemanes del Volga en Argentina y el mundo</h1>
                     <p class="lead">
                         Estamos recopilando apellidos de descendientes de alemanes del Volga en Argentina y el mundo.
                         ¡Ingresa para buscar el tuyo!
@@ -751,22 +748,9 @@
                     </a>
                 </div>
                 <div class="col-lg-5 text-center mt-4 mt-lg-0">
-                    <svg viewBox="0 0 300 240" width="280" height="220" aria-hidden="true" style="opacity:0.9;">
-                        <circle cx="150" cy="120" r="90" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
-                        <circle cx="150" cy="120" r="70" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
-                        <ellipse cx="150" cy="120" rx="90" ry="35" fill="none" stroke="rgba(255,255,255,0.3)"
-                            stroke-width="1.2" />
-                        <line x1="60" y1="120" x2="240" y2="120" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
-                        <circle cx="90" cy="80" r="5" fill="#c49b3f" opacity="0.9" />
-                        <circle cx="200" cy="70" r="5" fill="#c49b3f" opacity="0.9" />
-                        <circle cx="70" cy="150" r="5" fill="#c49b3f" opacity="0.9" />
-                        <circle cx="210" cy="155" r="5" fill="#c49b3f" opacity="0.9" />
-                        <circle cx="145" cy="60" r="5" fill="#c49b3f" opacity="0.9" />
-                        <path d="M90,80 Q140,50 200,70" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
-                        <path d="M70,150 Q130,130 210,155" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
-                        <path d="M90,80 Q100,120 70,150" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
-                        <path d="M200,70 Q190,110 210,155" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
-                    </svg>
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8245_6.png"
+                        alt="Collage editorial: mapas antiguos, documentos de archivo, brújula y libros sobre migración transatlántica"
+                        class="hero-image" width="1672" height="941" loading="lazy" />
                 </div>
             </div>
         </div>
@@ -778,17 +762,16 @@
             <div class="text-center mb-5">
                 <h2 class="section-title">Áreas de investigación</h2>
                 <p class="section-subtitle mx-auto mt-2">
-                    Datos curados, análisis geográfico y recursos para comprender la movilidad humana y el territorio.
+                    Datos, análisis geográfico y recursos para comprender la historia y las comunidades migratorias
+                    germánicas en la región.
                 </p>
             </div>
             <div class="row g-4">
                 <!-- Card 1: Apellidos y variantes -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
-                        <div class="card-img-top d-flex align-items-center justify-content-center"
-                            style="background: linear-gradient(135deg, #e8f0f8 0%, #d4e4f5 100%);">
-                            <i class="fa-solid fa-sitemap" style="font-size:3rem; color:#2c5f8a;"></i>
-                        </div>
+                        <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/5489_4.png"
+                            alt="Apellidos y variantes" class="card-img-top" width="710" height="530" loading="lazy" />
                         <div class="card-body">
                             <h3 class="card-title">Apellidos y variantes</h3>
                             <p class="card-text">Ayúdanos a identificar apellidos y variantes descendientes de Alemanes
@@ -801,10 +784,8 @@
                 <!-- Card 2: Demografía -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
-                        <div class="card-img-top d-flex align-items-center justify-content-center"
-                            style="background: linear-gradient(135deg, #f5efe0 0%, #efe4cc 100%);">
-                            <i class="fa-solid fa-chart-pie" style="font-size:3rem; color:#c49b3f;"></i>
-                        </div>
+                        <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/1672_3.png"
+                            alt="Demografía" class="card-img-top" width="710" height="530" loading="lazy" />
                         <div class="card-body">
                             <h3 class="card-title">Demografía</h3>
                             <p class="card-text">Los estudios demográficos constituyen un pilar fundamental para
@@ -817,13 +798,12 @@
                 <!-- Card 3: Fuentes e indicadores -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
-                        <div class="card-img-top d-flex align-items-center justify-content-center"
-                            style="background: linear-gradient(135deg, #dce8e8 0%, #c8dcdc 100%);">
-                            <i class="fa-solid fa-magnifying-glass-chart" style="font-size:3rem; color:#2c5f8a;"></i>
-                        </div>
+                        <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/4963_1.png"
+                            alt="Fuentes e indicadores" class="card-img-top" width="710" height="530" loading="lazy" />
                         <div class="card-body">
                             <h3 class="card-title">Fuentes e indicadores</h3>
-                            <p class="card-text">Fuentes, indicadores y metodologías empleadas en los estudios.</p>
+                            <p class="card-text">Fuentes, indicadores y metodologías empleadas en los estudios
+                                demográficos de Alemanes del Volga.</p>
                             <a href="https://pablokriger.github.io/GeoRoot/methods" class="btn btn-outline mt-2">Ver
                                 más</a>
                         </div>
@@ -832,10 +812,8 @@
                 <!-- Card 4: Recursos -->
                 <div class="col-md-6 col-lg-3">
                     <div class="card-custom">
-                        <div class="card-img-top d-flex align-items-center justify-content-center"
-                            style="background: linear-gradient(135deg, #f0eef5 0%, #e0dcec 100%);">
-                            <i class="fa-solid fa-book-open" style="font-size:3rem; color:#5c4f8a;"></i>
-                        </div>
+                        <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8137_2.png"
+                            alt="Recursos" class="card-img-top" width="710" height="530" loading="lazy" />
                         <div class="card-body">
                             <h3 class="card-title">Recursos</h3>
                             <p class="card-text">Publicaciones, bases de datos, informes y enlaces a fuentes oficiales
@@ -875,7 +853,7 @@
                 </div>
             </div>
             <p class="text-center mt-3 mb-0" style="font-size:0.85rem; color: var(--text-medium);">
-                Fuentes: Censo del Imperio ruso (1897), archivos históricos de colonias del Volga, estudios
+                Fuentes: Censos argentinos, alemanes y rusos, archivos históricos de colonias del Volga, estudios
                 demográficos regionales.
             </p>
         </div>
@@ -884,22 +862,33 @@
     <!-- ========== SECCIÓN DESTACADA ========== -->
     <section class="py-5">
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-start g-5">
                 <div class="col-lg-6">
                     <span class="badge bg-light text-dark mb-3 px-3 py-2"
                         style="font-weight:600; letter-spacing:0.04em; border:1px solid var(--border-light);">EN
                         FOCO</span>
-                    <h2 class="mb-3" style="font-size:1.9rem;">El rostro cambiante de la migración global</h2>
+                    <h2 class="mb-3" style="font-size:1.9rem;">Un pueblo marcado por la migración y la resiliencia</h2>
                     <p style="color: var(--text-medium); font-size:1.02rem;">
-                        La movilidad humana es uno de los fenómenos más relevantes del siglo XXI.
-                        En <strong>GeoRoot</strong> recopilamos, organizamos y presentamos información
-                        verificada sobre corrientes migratorias, distribución geográfica y
-                        factores territoriales que inciden en los desplazamientos poblacionales.
+                        Los Alemanes del Volga constituyen una de las comunidades migrantes más significativas de la
+                        historia moderna. Su origen se remonta al siglo XVIII, cuando miles de familias fueron invitadas
+                        a establecerse a orillas del río Volga, en el entonces Imperio Ruso. Allí desarrollaron prósperas
+                        colonias agrícolas, preservando durante generaciones su idioma, sus tradiciones y sus
+                        instituciones.
                     </p>
                     <p style="color: var(--text-medium); font-size:1.02rem;">
-                        Nuestro enfoque institucional garantiza datos objetivos, fuentes
-                        reconocidas y una presentación accesible para el público general,
-                        educadores, periodistas y tomadores de decisiones.
+                        Sin embargo, los cambios políticos, la pérdida de derechos, las guerras, las persecuciones y las
+                        profundas transformaciones sociales impulsaron nuevas corrientes migratorias hacia distintos
+                        países de América, entre ellos Argentina, Brasil, Estados Unidos, Canadá y otros destinos donde
+                        continuaron construyendo comunidades que aún hoy conservan parte de su identidad cultural.
+                    </p>
+                    <p style="color: var(--text-medium); font-size:1.02rem;">
+                        Este proyecto busca contribuir al conocimiento de esa historia mediante el estudio de fuentes
+                        documentales, datos demográficos, cartografía, genealogía y análisis estadísticos, con el
+                        propósito de comprender la evolución territorial y social de estas comunidades. Preservar el
+                        patrimonio histórico, proteger la memoria documental y generar nuevo conocimiento científico son
+                        objetivos fundamentales de esta iniciativa, convencidos de que la investigación rigurosa permite
+                        no solo conservar nuestro pasado, sino también aportar herramientas de valor para las
+                        generaciones presentes y futuras.
                     </p>
                     <a href="https://pablokriger.github.io/GeoRoot/about"
                         class="btn btn-outline mt-2"
@@ -910,10 +899,10 @@
                 <div class="col-lg-6">
                     <div class="cta-section text-center">
                         <i class="fa-solid fa-database mb-3" style="font-size:2.5rem; color: var(--deep-blue);"></i>
-                        <h3>Base de datos abierta</h3>
+                        <h3>Base de datos ampliable</h3>
                         <p style="color: var(--text-medium);">
-                            Acceda a nuestras tablas dinámicas, informes descargables
-                            y visualizaciones interactivas.
+                            Acceda y consulte por las fuentes de datos, informes, artículos y materiales, así como
+                            visualizaciones interactivas.
                         </p>
                         <a href="https://pablokriger.github.io/GeoRoot/resources" class="btn btn-hero mt-2"
                             style="background: var(--deep-blue); color: #fff;">
@@ -938,10 +927,10 @@
                 <div class="col-md-4">
                     <div class="card-custom">
                         <div class="card-body">
-                            <span class="badge mb-2" style="background:var(--accent-gold); color:#1b3a5c;">Nuevo</span>
-                            <h4 class="card-title" style="font-size:1.1rem;">Informe: Migración en América Latina</h4>
-                            <p class="card-text" style="font-size:0.9rem;">Análisis actualizado de los flujos
-                                intrarregionales, con datos de 2023-2024.</p>
+                            <span class="badge mb-2" style="background:var(--accent-gold); color:#1b3a5c;">Artículo</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">Del Volga al Paraná</h4>
+                            <p class="card-text" style="font-size:0.9rem;">Artículo publicado en 2026 sobre los
+                                descendientes de alemanes del Volga en Argentina desde una mirada joven.</p>
                             <a href="https://pablokriger.github.io/GeoRoot/migration"
                                 class="btn btn-outline btn-sm">Leer</a>
                         </div>
@@ -950,10 +939,11 @@
                 <div class="col-md-4">
                     <div class="card-custom">
                         <div class="card-body">
-                            <span class="badge mb-2" style="background:#5c4f8a; color:#fff;">Mapa</span>
-                            <h4 class="card-title" style="font-size:1.1rem;">Cartografía de corredores migratorios</h4>
-                            <p class="card-text" style="font-size:0.9rem;">Visualización interactiva de los 20 principales
-                                corredores del mundo.</p>
+                            <span class="badge mb-2" style="background:#5c4f8a; color:#fff;">Cartografía</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">Migración del Volga al Paraná y al mundo
+                            </h4>
+                            <p class="card-text" style="font-size:0.9rem;">Información cartográfica de asentamientos y
+                                ubicación de descendientes de Alemanes del Volga.</p>
                             <a href="https://pablokriger.github.io/GeoRoot/migration"
                                 class="btn btn-outline btn-sm">Explorar</a>
                         </div>
@@ -962,10 +952,10 @@
                 <div class="col-md-4">
                     <div class="card-custom">
                         <div class="card-body">
-                            <span class="badge mb-2" style="background:#2c5f8a; color:#fff;">Datos</span>
-                            <h4 class="card-title" style="font-size:1.1rem;">Indicadores actualizados OIM 2025</h4>
-                            <p class="card-text" style="font-size:0.9rem;">Incorporamos las últimas cifras de la
-                                Organización Internacional para las Migraciones.</p>
+                            <span class="badge mb-2" style="background:#2c5f8a; color:#fff;">BigData</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">BigData para estudios WolgaDeutsch</h4>
+                            <p class="card-text" style="font-size:0.9rem;">Incorporamos cifras y estadísticas de los
+                                asentamientos y flujos migratorios.</p>
                             <a href="https://pablokriger.github.io/GeoRoot/resources"
                                 class="btn btn-outline btn-sm">Consultar</a>
                         </div>
@@ -980,7 +970,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <h5>GeoRoot</h5>
+                    <h5>GeoRoot | Volga</h5>
                     <p style="font-size:0.9rem; color: rgba(255,255,255,0.7);">
                         Datos de migración y geografía para un público general. Un proyecto institucional de análisis
                         territorial sobre Alemanes del Volga y otras corrientes migratorias.
@@ -1052,10 +1042,8 @@
         crossorigin="anonymous">
     </script>
 
-    <!-- Script para banner de cookies (localStorage) y dropdown submenu en móviles -->
     <script>
         (function () {
-            // ---- COOKIE BANNER ----
             const banner = document.getElementById('cookieBanner');
             const acceptBtn = document.getElementById('acceptCookies');
             const closeBtn = document.getElementById('closeCookieBanner');
@@ -1063,7 +1051,6 @@
             function hideBanner() {
                 if (banner) {
                     banner.classList.add('hidden-banner');
-                    // Después de la transición, remover del DOM para evitar interferencias
                     setTimeout(function () {
                         if (banner.parentNode) {
                             banner.parentNode.removeChild(banner);
@@ -1076,9 +1063,7 @@
                 try {
                     localStorage.setItem('geoRoot_cookie_consent', 'accepted');
                     localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
-                } catch (e) {
-                    // localStorage no disponible
-                }
+                } catch (e) { }
             }
 
             function hasConsent() {
@@ -1089,7 +1074,6 @@
                 }
             }
 
-            // Si ya aceptó, ocultar inmediatamente
             if (hasConsent() && banner) {
                 banner.style.display = 'none';
             }
@@ -1108,13 +1092,8 @@
                 });
             }
 
-            // ---- DROPDOWN SUBMENU EN MÓVILES ----
-            // Bootstrap 5 no soporta submenús anidados nativamente en móviles.
-            // Agregamos un comportamiento para que al hacer clic en "Otros Proyectos"
-            // se muestre el submenú en lugar de navegar.
             document.querySelectorAll('.dropdown-submenu > a').forEach(function (submenuLink) {
                 submenuLink.addEventListener('click', function (e) {
-                    // Solo en pantallas pequeñas donde el hover no funciona
                     if (window.innerWidth < 992) {
                         e.preventDefault();
                         e.stopPropagation();
@@ -1126,17 +1105,13 @@
                 });
             });
 
-            // ---- SELECTOR DE IDIOMA (placeholder funcional) ----
             document.querySelectorAll('.lang-menu .dropdown-item').forEach(function (item) {
                 item.addEventListener('click', function (e) {
                     e.preventDefault();
                     const lang = this.getAttribute('data-lang');
-                    // Aquí se podría implementar cambio real de idioma.
-                    // Por ahora, mostramos un indicador visual y guardamos preferencia.
                     try {
                         localStorage.setItem('geoRoot_preferred_lang', lang);
                     } catch (ex) { }
-                    // Feedback visual sutil
                     const langBtn = document.getElementById('langDropdown');
                     if (langBtn) {
                         const flagSpan = this.querySelector('.lang-flag');
@@ -1144,7 +1119,6 @@
                             langBtn.innerHTML = flagSpan.outerHTML;
                         }
                     }
-                    // Cerrar el dropdown
                     const dropdown = bootstrap.Dropdown.getInstance(langBtn);
                     if (dropdown) {
                         dropdown.hide();
@@ -1152,7 +1126,6 @@
                 });
             });
 
-            // Al cargar, restaurar idioma guardado
             try {
                 const savedLang = localStorage.getItem('geoRoot_preferred_lang');
                 if (savedLang) {
