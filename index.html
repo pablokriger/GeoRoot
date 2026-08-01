@@ -1325,23 +1325,18 @@
 
             // Aplicar traducciones al DOM
             function applyTranslations() {
-                document.querySelectorAll('[data-i18n]').forEach(function (el) {
-                    const key = el.getAttribute('data-i18n');
-                    if (translations[key]) {
-                        // Si el elemento contiene otros elementos (como strong, i), solo actualizar el texto del nodo directo
-                        if (el.children.length > 0) {
-                            // Para simplificar, reemplazar todo el contenido por texto (se pierde formato HTML)
-                            // Si necesitas mantener HTML, deberías usar innerHTML, pero eso puede ser inseguro.
-                            // Aquí asumimos que las traducciones son solo texto.
-                            el.textContent = translations[key];
-                        } else {
-                            el.textContent = translations[key];
-                        }
-                    }
-                });
-                // Actualizar atributos como aria-label, title, etc. (si se desea)
-                // Por simplicidad no se implementa aquí, pero se puede extender.
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n');
+        if (translations[key]) {
+            // Si la traducción contiene HTML, usar innerHTML para renderizarlo
+            if (translations[key].includes('<')) {
+                el.innerHTML = translations[key];
+            } else {
+                el.textContent = translations[key];
             }
+        }
+    });
+}
 
             // Cargar archivo de idioma
             function loadLanguage(lang) {
