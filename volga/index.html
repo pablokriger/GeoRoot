@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Pablo Kriger" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish, English, German, Portuguese" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="icon" href="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/favicon.png" type="image/png" />
+
+    <title>Apellidos | GeoRoot | Volga</title>
+    <meta name="description"
+        content="Consultá nuestra base de datos de apellidos de Alemanes del Volga. Buscá tu apellido, explorá variantes y contribuí con nuevos datos genealógicos." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --deep-blue: #1b3a5c;
+            --mid-blue: #2c5f8a;
+            --light-blue: #e8f0f8;
+            --accent-gold: #c49b3f;
+            --soft-gray: #f5f6f8;
+            --text-dark: #2d2d2d;
+            --text-medium: #4a4a4a;
+            --white: #ffffff;
+            --border-light: #e0e4e8;
+            --footer-bg: #0f2a40;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --collab-accent: #e8f0e8;
+            --collab-border: #8ab88a;
+            --error-red: #d9534f;
+            --success-green: #5cb85c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 0;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', 'Times New Roman', serif;
+            font-weight: 700;
+            color: var(--deep-blue);
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: var(--mid-blue);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: #1a4a6e;
+            text-decoration: underline;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--deep-blue);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 0 0 6px 6px;
+            z-index: 1050;
+            transition: top 0.2s;
+            font-weight: 600;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ---- NAVBAR ---- */
+        .navbar {
+            background: var(--deep-blue);
+            padding: 0.55rem 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            width: 100%;
+        }
+        .navbar .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .navbar-brand {
+            font-family: 'Merriweather', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--white) !important;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+        .navbar-brand .brand-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px;
+            flex-shrink: 0;
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.88) !important;
+            font-weight: 500;
+            padding: 0.5rem 1.1rem !important;
+            border-radius: 6px;
+            transition: background var(--transition), color var(--transition);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff !important;
+            text-decoration: none;
+        }
+        .navbar-toggler { border-color: rgba(255, 255, 255, 0.4); }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        .nav-link.collab-highlight {
+            border: 2px solid var(--collab-border) !important;
+            border-radius: 22px !important;
+            padding: 0.4rem 1.3rem !important;
+            margin: 0 0.2rem;
+            background: rgba(138, 184, 138, 0.1);
+            transition: all var(--transition);
+        }
+        .nav-link.collab-highlight:hover {
+            background: rgba(138, 184, 138, 0.22) !important;
+            border-color: #9cc99c !important;
+            color: #fff !important;
+        }
+
+        /* ---- IDIOMA DROPDOWN ---- */
+        .lang-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 1.2rem;
+            padding: 0;
+            flex-shrink: 0;
+            line-height: 1;
+            text-align: center;
+        }
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+        .dropdown-menu.lang-menu {
+            min-width: 160px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            padding: 6px 0;
+        }
+        .dropdown-menu.lang-menu .dropdown-item {
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background var(--transition);
+        }
+        .dropdown-menu.lang-menu .dropdown-item:hover { background: var(--light-blue); }
+        .lang-flag { font-size: 1.3rem; }
+
+        /* ---- HERO ---- */
+        .surnames-hero {
+            background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .surnames-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .surnames-hero h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .surnames-hero .lead {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---- SECCIONES ---- */
+        .section-page {
+            padding: 4rem 0;
+        }
+        .section-page h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-page h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+        .section-page p {
+            color: var(--text-medium);
+            font-size: 1.02rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ---- CARDS Y FORMULARIOS ---- */
+        .tool-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            margin-top: 2rem;
+        }
+        .nav-tabs .nav-link {
+            color: var(--text-medium);
+            font-weight: 600;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            transition: all var(--transition);
+        }
+        .nav-tabs .nav-link.active {
+            color: var(--deep-blue);
+            background: var(--light-blue);
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .form-label {
+            font-weight: 600;
+            color: var(--deep-blue);
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        .form-control, .form-select {
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+            background: var(--soft-gray);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--mid-blue);
+            box-shadow: 0 0 0 0.2rem rgba(44, 95, 138, 0.15);
+            background: #fff;
+        }
+        .btn-search {
+            background: var(--accent-gold);
+            color: #1b3a5c;
+            font-weight: 700;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 30px;
+            letter-spacing: 0.03em;
+            transition: all var(--transition);
+            font-size: 1rem;
+        }
+        .btn-search:hover {
+            background: #d4aa45;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn-search:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .required-asterisk {
+            color: var(--error-red);
+            font-weight: 700;
+        }
+        .result-box {
+            background: var(--soft-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--mid-blue);
+        }
+        .result-box.success {
+            border-left-color: var(--success-green);
+            background: #e8f5e9;
+        }
+        .result-box.warning {
+            border-left-color: var(--accent-gold);
+            background: #fef9e7;
+        }
+        .result-box.error {
+            border-left-color: var(--error-red);
+            background: #fdecea;
+        }
+
+        /* Captcha */
+        .captcha-box {
+            background: var(--soft-gray);
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .captcha-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--deep-blue);
+            white-space: nowrap;
+        }
+        .captcha-input {
+            width: 100px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .form-error-msg {
+            color: var(--error-red);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+        .form-error-msg.show { display: block; }
+
+        /* ---- FOOTER ---- */
+        .site-footer {
+            background: var(--footer-bg);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 2rem;
+            font-size: 0.93rem;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        .site-footer h5 {
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .site-footer a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+        .site-footer a:hover { color: #fff; text-decoration: underline; }
+        .site-footer .footer-links { list-style: none; padding: 0; }
+        .site-footer .footer-links li { margin-bottom: 0.4rem; }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin: 2rem 0 1.5rem;
+        }
+        .footer-bottom {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.85rem;
+            word-wrap: break-word;
+        }
+        .footer-bottom strong { color: rgba(255, 255, 255, 0.8); }
+
+        /* ---- COOKIE BANNER ---- */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 2px solid var(--deep-blue);
+            box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.12);
+            z-index: 9999;
+            padding: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: translateY(0);
+            opacity: 1;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .cookie-banner.hidden-banner {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .cookie-banner .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .cookie-banner .cookie-text {
+            flex: 1 1 60%;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            min-width: 240px;
+            word-wrap: break-word;
+        }
+        .cookie-banner .cookie-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .cookie-banner .btn-accept {
+            background: var(--deep-blue);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .cookie-banner .btn-accept:hover { background: #1e4668; }
+        .cookie-banner .btn-close-cookie {
+            background: transparent;
+            border: none;
+            font-size: 1.3rem;
+            color: #888;
+            cursor: pointer;
+            padding: 0 6px;
+            transition: color var(--transition);
+        }
+        .cookie-banner .btn-close-cookie:hover { color: #333; }
+
+        /* ---- DROPDOWN SUBMENU ---- */
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            display: none;
+            position: absolute;
+        }
+        .dropdown-submenu:hover>.dropdown-menu,
+        .dropdown-submenu:focus-within>.dropdown-menu { display: block; }
+        .dropdown-submenu>a::after {
+            display: inline-block;
+            margin-left: 0.5em;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f054";
+            font-size: 0.6rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 992px) {
+            .dropdown-submenu>.dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 1.5rem;
+                display: none;
+            }
+            .dropdown-submenu.show>.dropdown-menu { display: block; }
+            .surnames-hero h1 { font-size: 2rem; }
+            .tool-card { padding: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .container,
+            .navbar .container,
+            .cookie-banner .container {
+                padding-left: 15px;
+                padding-right: 15px;
+                max-width: 100%;
+            }
+            .row { margin-left: 0; margin-right: 0; }
+            .navbar-brand { font-size: 1.1rem; }
+            .navbar-brand .brand-logo { width: 30px; height: 30px; }
+            .captcha-box { flex-direction: column; align-items: flex-start; }
+        }
+
+        img { max-width: 100%; height: auto; }
+        .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .row { margin-left: 0; margin-right: 0; }
+
+        /* Honeypot */
+        .honeypot { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+        <div class="container">
+            <a class="navbar-brand" href="https://pablokriger.github.io/GeoRoot/">
+                <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/Icono_GeoRoot.png"
+                    alt="GeoRoot Logo" class="brand-logo" width="44" height="44" loading="eager" />
+                GeoRoot | Volga
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Datos Migratorios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
+                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
+                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
+                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Historia</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/history">Historia</a></li>
+                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/migration">Flujos migratorios</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle collab-highlight" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora!
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item fw-bold" href="https://pablokriger.github.io/GeoRoot/colab"><strong>Colabora con GeoRoots</strong></a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="#">Otros Proyectos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/PMP/" target="_blank" rel="noopener noreferrer">PMP Management</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/testvial/" target="_blank" rel="noopener noreferrer">Test Vial</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/climate/" target="_blank" rel="noopener noreferrer">ClimateData</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/lider/" target="_blank" rel="noopener noreferrer">LidER</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de</a>
+                    </li>
+                    <!-- Ícono de contacto con notificación -->
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link position-relative" href="https://pablokriger.github.io/GeoRoot/contact/" title="Contacto" style="padding: 0.5rem 0.8rem !important;">
+                            <i class="fa-solid fa-envelope" style="font-size: 1.2rem;"></i>
+                            <span style="
+                                position: absolute;
+                                top: 6px;
+                                right: 6px;
+                                width: 12px;
+                                height: 12px;
+                                background: #e74c3c;
+                                border-radius: 50%;
+                                border: 2px solid var(--deep-blue);
+                                display: inline-block;
+                            "></span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown ms-lg-2">
+                        <button class="lang-btn dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma"
+                            style="font-size:1.3rem;">🇪🇸</button>
+                        <ul class="dropdown-menu dropdown-menu-end lang-menu" aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item" href="#" data-lang="es"><span class="lang-flag">🇪🇸</span>Español</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="en"><span class="lang-flag">🇺🇸</span>English</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="de"><span class="lang-flag">🇩🇪</span>Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="pt"><span class="lang-flag">🇧🇷</span>Português</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="surnames-hero" id="main-content">
+        <div class="container">
+            <h1>Base de datos de apellidos</h1>
+            <p class="lead">Consultá, explorá y contribuí al estudio de los apellidos de Alemanes del Volga</p>
+        </div>
+    </header>
+
+    <section class="section-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <p>Esta sección pone a disposición una <strong>herramienta de consulta</strong> dedicada al estudio de los apellidos vinculados con la migración de los <strong>Alemanes del Volga</strong> y otras comunidades de origen alemán. Los usuarios podrán consultar si un apellido integra la base de datos y explorar posibles <strong>variantes ortográficas o fonéticas</strong> originadas por diferencias de idioma, transcripción o procesos migratorios.</p>
+                    <p>La base de datos es el resultado de una fuerte investigación en <strong>estadística aplicada y análisis demográfico</strong>, construida a partir de censos históricos, registros migratorios, padrones y otras fuentes nacionales e internacionales, públicas y privadas. Además, los usuarios podrán <strong>aportar nuevos apellidos o variantes</strong>, que serán verificados y contrastados antes de su incorporación para garantizar la calidad de la información.</p>
+                    <p>El objetivo es desarrollar una <strong>base de datos colaborativa de referencia</strong> para el estudio de la genealogía, la historia migratoria, la distribución geográfica y la evolución de los apellidos en Argentina y otros países. Quienes lo deseen podrán incluir su nombre y un medio de contacto para facilitar futuras consultas relacionadas con la investigación. Cada aporte contribuirá al crecimiento de este proyecto y al desarrollo de nuevas publicaciones.</p>
+
+                    <div class="alert alert-info mt-4" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        <strong>Importante:</strong> Esta base de datos incluye exclusivamente <strong>apellidos de Alemanes del Volga</strong>. Se actualiza periódicamente a medida que se incorporan y verifican nuevos registros. Si tu apellido no aparece hoy, ¡volvé a consultar pronto!
+                    </div>
+
+                    <!-- HERRAMIENTA DE CONSULTA -->
+                    <div class="tool-card">
+                        <ul class="nav nav-tabs" id="surnameTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="search-tab" data-bs-toggle="tab" data-bs-target="#searchPanel" type="button" role="tab" aria-controls="searchPanel" aria-selected="true">
+                                    <i class="fa-solid fa-magnifying-glass me-1"></i> Consultar apellido
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contribute-tab" data-bs-toggle="tab" data-bs-target="#contributePanel" type="button" role="tab" aria-controls="contributePanel" aria-selected="false">
+                                    <i class="fa-solid fa-pen-to-square me-1"></i> Aportar apellido
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content pt-4" id="surnameTabContent">
+                            <!-- PANEL DE CONSULTA -->
+                            <div class="tab-pane fade show active" id="searchPanel" role="tabpanel" aria-labelledby="search-tab">
+                                <form id="searchForm" novalidate>
+                                    <div class="row g-3 align-items-end">
+                                        <div class="col-md-6">
+                                            <label for="searchSurname" class="form-label">Apellido a consultar <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="searchSurname" name="searchSurname" required
+                                                placeholder="Ej.: Schmidt, Müller, Schneider..." maxlength="100" />
+                                            <div class="form-error-msg" id="error-searchSurname">Por favor, ingresá un apellido.</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn-search w-100" id="searchBtn">
+                                                <i class="fa-solid fa-search me-2"></i>Buscar
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-outline w-100" id="clearSearchBtn"
+                                                style="border: 2px solid var(--deep-blue); color: var(--deep-blue); font-weight: 600; padding: 0.8rem 1.5rem; border-radius: 30px;">
+                                                <i class="fa-solid fa-eraser me-2"></i>Limpiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <!-- Área de resultados -->
+                                <div id="searchResult" class="mt-4" style="display: none;"></div>
+                            </div>
+
+                            <!-- PANEL DE APORTE -->
+                            <div class="tab-pane fade" id="contributePanel" role="tabpanel" aria-labelledby="contribute-tab">
+                                <form id="contributeForm" action="https://formspree.io/f/xjgghfhf" method="POST" novalidate>
+                                    <div class="honeypot">
+                                        <label for="website2">Website</label>
+                                        <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off" />
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="contribSurname" class="form-label">Apellido <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="contribSurname" name="contribSurname" required
+                                                placeholder="Apellido principal" maxlength="100" />
+                                            <div class="form-error-msg" id="error-contribSurname">Por favor, ingresá el apellido.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribVariant" class="form-label">Variante (si existe)</label>
+                                            <input type="text" class="form-control" id="contribVariant" name="contribVariant"
+                                                placeholder="Otra forma de escribirlo" maxlength="100" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribOrigin" class="form-label">Origen / Localidad</label>
+                                            <input type="text" class="form-control" id="contribOrigin" name="contribOrigin"
+                                                placeholder="Ej.: Colonia General Alvear, Entre Ríos" maxlength="150" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribName" class="form-label">Tu nombre (opcional)</label>
+                                            <input type="text" class="form-control" id="contribName" name="contribName"
+                                                placeholder="Para acreditar tu aporte" maxlength="120" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribEmail" class="form-label">Correo electrónico (opcional)</label>
+                                            <input type="email" class="form-control" id="contribEmail" name="contribEmail"
+                                                placeholder="Para contactarte si es necesario" maxlength="120" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribReason" class="form-label">Tipo de aporte</label>
+                                            <select class="form-select" id="contribReason" name="contribReason">
+                                                <option value="Nuevo apellido">Nuevo apellido</option>
+                                                <option value="Variante ortográfica">Variante ortográfica</option>
+                                                <option value="Corrección de datos">Corrección de datos</option>
+                                                <option value="Información adicional">Información adicional</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="contribComment" class="form-label">Comentario o información adicional</label>
+                                            <textarea class="form-control" id="contribComment" name="contribComment" rows="4"
+                                                placeholder="Contanos todo lo que sepas sobre este apellido, su historia familiar, migraciones, etc." maxlength="2000"></textarea>
+                                        </div>
+                                        <!-- Captcha -->
+                                        <div class="col-12">
+                                            <label class="form-label">Verificación de seguridad <span class="required-asterisk">*</span></label>
+                                            <div class="captcha-box">
+                                                <span class="captcha-question" id="captchaQuestion"></span>
+                                                <span>=</span>
+                                                <input type="number" class="form-control captcha-input" id="captchaAnswer"
+                                                    placeholder="?" required min="0" max="20" />
+                                                <input type="hidden" id="captchaExpected" />
+                                            </div>
+                                            <div class="form-error-msg" id="error-captcha">La respuesta no es correcta. Intentá de nuevo.</div>
+                                        </div>
+                                        <div class="col-12 text-center mt-3">
+                                            <button type="submit" class="btn-search" id="contribSubmitBtn">
+                                                <i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="contribSuccess" style="display: none;" class="mt-4 result-box success">
+                                    <i class="fa-solid fa-circle-check me-2"></i>
+                                    <strong>¡Aporte enviado con éxito!</strong> Gracias por contribuir. Tu información será revisada y, si corresponde, incorporada a la base de datos.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>GeoRoot | Volga</h5>
+                    <p style="font-size:0.9rem; color: rgba(255,255,255,0.7);">
+                        Datos de migración y geografía para un público general. Un proyecto institucional de análisis
+                        territorial sobre Alemanes del Volga y otras corrientes migratorias.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/">Inicio</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto y más</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de GeoRoot</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/legal/es.html">Política de Privacidad</a></li>
+                        <li>
+                            <a href="https://pablokriger.github.io/GeoRoot/contact">
+                                <i class="fa-solid fa-envelope me-1"></i>Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-bottom text-center">
+                <small>
+                    Copyright © <strong>Pablo Kriger</strong> 2020-2026.
+                    Se emplean fuentes de datos de organismos nacionales e internacionales reconocidos.
+                    <br />
+                    <a href="https://pablokriger.github.io/GeoRoot/colab"
+                        style="color: var(--accent-gold); font-weight: 600;">
+                        <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora con nuestro Proyecto!
+                    </a>
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookieBanner" class="cookie-banner" role="alert" aria-live="polite">
+        <div class="container">
+            <div class="cookie-text">
+                <strong>🍪 Política de privacidad y cookies</strong><br />
+                Este sitio web utiliza cookies para mejorar la experiencia de navegación y recopilar datos estadísticos
+                anónimos. Al continuar navegando, acepta nuestra
+                <a href="https://pablokriger.github.io/GeoRoot/legal/es.html"
+                    style="color:var(--deep-blue);text-decoration:underline;">política de privacidad</a>.
+            </div>
+            <div class="cookie-actions">
+                <button class="btn-accept" id="acceptCookies" aria-label="Aceptar política de privacidad">Aceptar</button>
+                <button class="btn-close-cookie" id="closeCookieBanner" aria-label="Cerrar aviso de cookies" title="Cerrar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        (function () {
+            // === COOKIE BANNER ===
+            const banner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const closeBtn = document.getElementById('closeCookieBanner');
+            function hideBanner() {
+                if (banner) {
+                    banner.classList.add('hidden-banner');
+                    setTimeout(() => { if (banner.parentNode) banner.parentNode.removeChild(banner); }, 500);
+                }
+            }
+            function setCookieConsent() {
+                try {
+                    localStorage.setItem('geoRoot_cookie_consent', 'accepted');
+                    localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
+                } catch (e) {}
+            }
+            function hasConsent() {
+                try { return localStorage.getItem('geoRoot_cookie_consent') === 'accepted'; } catch (e) { return false; }
+            }
+            if (hasConsent() && banner) banner.style.display = 'none';
+            if (acceptBtn) acceptBtn.addEventListener('click', () => { setCookieConsent(); hideBanner(); });
+            if (closeBtn) closeBtn.addEventListener('click', () => { setCookieConsent(); hideBanner(); });
+
+            // === SUBMENÚS MÓVILES ===
+            document.querySelectorAll('.dropdown-submenu > a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const li = this.closest('.dropdown-submenu');
+                        if (li) li.classList.toggle('show');
+                    }
+                });
+            });
+
+            // === SELECTOR DE IDIOMA ===
+            const langBtn = document.getElementById('langDropdown');
+            document.querySelectorAll('.lang-menu .dropdown-item').forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    try { localStorage.setItem('geoRoot_preferred_lang', lang); } catch (ex) {}
+                    window.location.href = 'https://pablokriger.github.io/GeoRoot/volga?lang=' + lang;
+                });
+            });
+            try {
+                const savedLang = localStorage.getItem('geoRoot_preferred_lang');
+                if (savedLang && langBtn) {
+                    const langItem = document.querySelector(`.lang-menu .dropdown-item[data-lang="${savedLang}"]`);
+                    if (langItem) {
+                        const flag = langItem.querySelector('.lang-flag');
+                        if (flag) langBtn.innerHTML = flag.outerHTML;
+                    }
+                }
+            } catch (ex) {}
+
+            // === SIMULACIÓN DE BASE DE DATOS (a reemplazar por backend) ===
+            const simulatedDB = [
+                'Schmidt', 'Müller', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Hoffmann', 'Schäfer',
+                'Koch', 'Bauer', 'Richter', 'Klein', 'Wolf', 'Schröder', 'Neumann', 'Schwarz', 'Zimmermann', 'Braun',
+                'Krüger', 'Hofmann', 'Hartmann', 'Lange', 'Schmitt', 'Werner', 'Krause', 'Meier', 'Lehmann', 'Schmid',
+                'Schulze', 'Maier', 'Köhler', 'Herrmann', 'König', 'Walter', 'Mayer', 'Huber', 'Kaiser', 'Fuchs',
+                'Peters', 'Lang', 'Scholz', 'Möller', 'Weiß', 'Jung', 'Hahn', 'Schubert', 'Vogel', 'Friedrich'
+            ]; // Lista de ejemplo, solo apellidos comunes alemanes del Volga
+
+            // === BÚSQUEDA DE APELLIDO ===
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchSurname');
+            const searchResult = document.getElementById('searchResult');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const errorSearch = document.getElementById('error-searchSurname');
+
+            function performSearch(surname) {
+                const query = surname.trim().toLowerCase();
+                const found = simulatedDB.some(item => item.toLowerCase() === query);
+                const variants = simulatedDB.filter(item => item.toLowerCase().startsWith(query) && item.toLowerCase() !== query);
+
+                let html = '';
+                if (found) {
+                    html = `<div class="result-box success">
+                        <i class="fa-solid fa-circle-check me-2"></i>
+                        <strong>¡Apellido encontrado!</strong> "<strong>${surname.trim()}</strong>" forma parte de nuestra base de datos de Alemanes del Volga.
+                    </div>`;
+                } else {
+                    html = `<div class="result-box warning">
+                        <i class="fa-solid fa-circle-exclamation me-2"></i>
+                        <strong>Apellido no encontrado</strong> en esta consulta. Puede deberse a que aún no fue incorporado o a que existe una variante ortográfica diferente.
+                    </div>`;
+                    if (variants.length > 0) {
+                        html += `<div class="result-box mt-2">
+                            <strong>Variantes similares encontradas:</strong>
+                            <ul class="mb-0 mt-2">${variants.map(v => `<li>${v}</li>`).join('')}</ul>
+                        </div>`;
+                    }
+                }
+                html += `<p class="mt-3" style="font-size:0.9rem; color: var(--text-medium);">
+                    <i class="fa-solid fa-sync-alt me-1"></i> La base de datos se actualiza periódicamente. Si tu apellido no aparece, podés <a href="#" onclick="document.getElementById('contribute-tab').click();">aportarlo aquí</a>.
+                </p>`;
+                searchResult.innerHTML = html;
+                searchResult.style.display = 'block';
+            }
+
+            searchForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                errorSearch.classList.remove('show');
+                const surname = searchInput.value.trim();
+                if (!surname) {
+                    errorSearch.classList.add('show');
+                    return;
+                }
+                // Simular posible error de conexión (probabilidad baja)
+                if (Math.random() < 0.05) {
+                    searchResult.innerHTML = `<div class="result-box error">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                        <strong>Error de conexión.</strong> No se pudo completar la búsqueda. Verificá tu conexión a internet e intentá nuevamente.
+                    </div>`;
+                    searchResult.style.display = 'block';
+                    return;
+                }
+                performSearch(surname);
+            });
+
+            clearBtn.addEventListener('click', function () {
+                searchInput.value = '';
+                searchResult.style.display = 'none';
+                searchResult.innerHTML = '';
+                errorSearch.classList.remove('show');
+            });
+
+            // === FORMULARIO DE APORTE ===
+            const contribForm = document.getElementById('contributeForm');
+            const contribSuccess = document.getElementById('contribSuccess');
+            const contribSubmitBtn = document.getElementById('contribSubmitBtn');
+
+            function generateCaptcha() {
+                const num1 = Math.floor(Math.random() * 8) + 2;
+                const num2 = Math.floor(Math.random() * 8) + 1;
+                document.getElementById('captchaQuestion').textContent = num1 + ' + ' + num2;
+                document.getElementById('captchaExpected').value = num1 + num2;
+                document.getElementById('captchaAnswer').value = '';
+                document.getElementById('error-captcha').classList.remove('show');
+            }
+            generateCaptcha();
+
+            contribForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                document.getElementById('error-contribSurname').classList.remove('show');
+                document.getElementById('error-captcha').classList.remove('show');
+
+                const surname = document.getElementById('contribSurname').value.trim();
+                const captchaAnswer = parseInt(document.getElementById('captchaAnswer').value, 10);
+                const captchaExpected = parseInt(document.getElementById('captchaExpected').value, 10);
+
+                let valid = true;
+                if (!surname) {
+                    document.getElementById('error-contribSurname').classList.add('show');
+                    valid = false;
+                }
+                if (isNaN(captchaAnswer) || captchaAnswer !== captchaExpected) {
+                    document.getElementById('error-captcha').classList.add('show');
+                    generateCaptcha();
+                    valid = false;
+                }
+                if (!valid) return;
+
+                contribSubmitBtn.disabled = true;
+                contribSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
+
+                const formData = new FormData(contribForm);
+                fetch(contribForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        contribForm.style.display = 'none';
+                        contribSuccess.style.display = 'block';
+                    } else {
+                        alert('Hubo un error al enviar el aporte. Por favor, intentá nuevamente más tarde.');
+                        contribSubmitBtn.disabled = false;
+                        contribSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte';
+                    }
+                })
+                .catch(() => {
+                    alert('Error de conexión. Verificá tu internet e intentá nuevamente.');
+                    contribSubmitBtn.disabled = false;
+                    contribSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte';
+                });
+            });
+
+            // Limpiar errores al escribir
+            document.getElementById('contribSurname').addEventListener('input', () => document.getElementById('error-contribSurname').classList.remove('show'));
+            document.getElementById('captchaAnswer').addEventListener('input', () => document.getElementById('error-captcha').classList.remove('show'));
+        })();
+    </script>
+</body>
+</html>
