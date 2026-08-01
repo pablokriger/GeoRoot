@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Pablo Kriger" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish, English, German, Portuguese" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="icon" href="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/favicon.png" type="image/png" />
+
+    <title>Acerca de | GeoRoot | Volga</title>
+    <meta name="description"
+        content="Conoce más sobre GeoRoot, el proyecto de investigación sobre Alemanes del Volga, migración, demografía y geografía. Información sobre el autor Pablo Kriger y cómo colaborar." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --deep-blue: #1b3a5c;
+            --mid-blue: #2c5f8a;
+            --light-blue: #e8f0f8;
+            --accent-gold: #c49b3f;
+            --soft-gray: #f5f6f8;
+            --text-dark: #2d2d2d;
+            --text-medium: #4a4a4a;
+            --white: #ffffff;
+            --border-light: #e0e4e8;
+            --footer-bg: #0f2a40;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --collab-accent: #e8f0e8;
+            --collab-border: #8ab88a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 0;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Merriweather', 'Times New Roman', serif;
+            font-weight: 700;
+            color: var(--deep-blue);
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: var(--mid-blue);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: #1a4a6e;
+            text-decoration: underline;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--deep-blue);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 0 0 6px 6px;
+            z-index: 1050;
+            transition: top 0.2s;
+            font-weight: 600;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ---- NAVBAR ---- */
+        .navbar {
+            background: var(--deep-blue);
+            padding: 0.55rem 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+            width: 100%;
+        }
+
+        .navbar .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .navbar-brand {
+            font-family: 'Merriweather', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--white) !important;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .navbar-brand .brand-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px;
+            flex-shrink: 0;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.88) !important;
+            font-weight: 500;
+            padding: 0.5rem 1.1rem !important;
+            border-radius: 6px;
+            transition: background var(--transition), color var(--transition);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff !important;
+            text-decoration: none;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .nav-link.collab-highlight {
+            border: 2px solid var(--collab-border) !important;
+            border-radius: 22px !important;
+            padding: 0.4rem 1.3rem !important;
+            margin: 0 0.2rem;
+            background: rgba(138, 184, 138, 0.1);
+            transition: all var(--transition);
+        }
+
+        .nav-link.collab-highlight:hover {
+            background: rgba(138, 184, 138, 0.22) !important;
+            border-color: #9cc99c !important;
+            color: #fff !important;
+        }
+
+        /* ---- IDIOMA DROPDOWN ---- */
+        .lang-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 1.2rem;
+            padding: 0;
+            flex-shrink: 0;
+            line-height: 1;
+            text-align: center;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+
+        .dropdown-menu.lang-menu {
+            min-width: 160px;
+            border-radius: 10px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            padding: 6px 0;
+        }
+
+        .dropdown-menu.lang-menu .dropdown-item {
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background var(--transition);
+        }
+
+        .dropdown-menu.lang-menu .dropdown-item:hover {
+            background: var(--light-blue);
+        }
+
+        .lang-flag {
+            font-size: 1.3rem;
+        }
+
+        /* ---- ABOUT PAGE ---- */
+        .about-hero {
+            background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%);
+            color: #fff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-hero .lead {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            padding: 4rem 0;
+        }
+
+        .about-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+
+        .about-section p {
+            color: var(--text-medium);
+            font-size: 1.02rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .author-card {
+            background: var(--soft-gray);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+            padding: 2.5rem;
+            margin: 2rem 0;
+        }
+
+        .author-img {
+            width: 220px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 4px solid #fff;
+        }
+
+        .funding-card {
+            background: linear-gradient(135deg, #f5f6f8 0%, #e8f0f8 100%);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            border: 1px solid var(--border-light);
+            margin: 2rem 0;
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+        }
+
+        /* ---- FOOTER ---- */
+        .site-footer {
+            background: var(--footer-bg);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 2rem;
+            font-size: 0.93rem;
+            width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
+        }
+
+        .site-footer h5 {
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .site-footer a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .site-footer .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .site-footer .footer-links li {
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin: 2rem 0 1.5rem;
+        }
+
+        .footer-bottom {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.85rem;
+            word-wrap: break-word;
+        }
+
+        .footer-bottom strong {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ---- COOKIE BANNER ---- */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 2px solid var(--deep-blue);
+            box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.12);
+            z-index: 9999;
+            padding: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: translateY(0);
+            opacity: 1;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        .cookie-banner.hidden-banner {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cookie-banner .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .cookie-banner .cookie-text {
+            flex: 1 1 60%;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            min-width: 240px;
+            word-wrap: break-word;
+        }
+
+        .cookie-banner .cookie-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .cookie-banner .btn-accept {
+            background: var(--deep-blue);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .cookie-banner .btn-accept:hover {
+            background: #1e4668;
+        }
+
+        .cookie-banner .btn-close-cookie {
+            background: transparent;
+            border: none;
+            font-size: 1.3rem;
+            color: #888;
+            cursor: pointer;
+            padding: 0 6px;
+            transition: color var(--transition);
+        }
+
+        .cookie-banner .btn-close-cookie:hover {
+            color: #333;
+        }
+
+        /* ---- DROPDOWN SUBMENU ---- */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            display: none;
+            position: absolute;
+        }
+
+        .dropdown-submenu:hover>.dropdown-menu,
+        .dropdown-submenu:focus-within>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu>a::after {
+            display: inline-block;
+            margin-left: 0.5em;
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            content: "\f054";
+            font-size: 0.6rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 992px) {
+            .dropdown-submenu>.dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                padding-left: 1.5rem;
+                display: none;
+            }
+            .dropdown-submenu.show>.dropdown-menu {
+                display: block;
+            }
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            .author-img {
+                width: 180px;
+                height: 230px;
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container,
+            .navbar .container,
+            .cookie-banner .container {
+                padding-left: 15px;
+                padding-right: 15px;
+                max-width: 100%;
+            }
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .author-card {
+                padding: 1.5rem;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+        <div class="container">
+            <a class="navbar-brand" href="https://pablokriger.github.io/GeoRoot/">
+                <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/Icono_GeoRoot.png"
+                    alt="GeoRoot Logo" class="brand-logo" width="44" height="44" loading="eager" />
+                GeoRoot | Volga
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Datos Migratorios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Historia</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/history">Historia</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/migration">Flujos migratorios</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle collab-highlight" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora!
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item fw-bold"
+                                    href="https://pablokriger.github.io/GeoRoot/colab"><strong>Colabora con
+                                        GeoRoots</strong></a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="#">Otros Proyectos</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/PMP/"
+                                            target="_blank" rel="noopener noreferrer">PMP Management</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/testvial/"
+                                            target="_blank" rel="noopener noreferrer">Test Vial</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/climate/"
+                                            target="_blank" rel="noopener noreferrer">ClimateData</a></li>
+                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/lider/"
+                                            target="_blank" rel="noopener noreferrer">LidER</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de</a>
+                    </li>
+                    <li class="nav-item dropdown ms-lg-2">
+                        <button class="lang-btn dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown"
+                            aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma"
+                            style="font-size:1.3rem;">🇪🇸</button>
+                        <ul class="dropdown-menu dropdown-menu-end lang-menu" aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item" href="#" data-lang="es"><span
+                                        class="lang-flag">🇪🇸</span>Español</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="en"><span
+                                        class="lang-flag">🇺🇸</span>English</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="de"><span
+                                        class="lang-flag">🇩🇪</span>Deutsch</a></li>
+                            <li><a class="dropdown-item" href="#" data-lang="pt"><span
+                                        class="lang-flag">🇧🇷</span>Português</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="about-hero" id="main-content">
+        <div class="container">
+            <h1>Acerca del proyecto</h1>
+            <p class="lead">Conocé la historia, los objetivos y las personas detrás de GeoRoot</p>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="text-center mb-5">
+                        <div class="icon-circle mx-auto">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                    </div>
+
+                    <p><strong>GeoRoot</strong> nació en 2020 como una iniciativa personal orientada a comprender —a
+                        través de datos, investigación y herramientas científicas— la composición demográfica, cultural y
+                        territorial de la provincia de Entre Ríos.</p>
+
+                    <p>Desde sus primeros pasos, el objetivo fue construir una mirada basada en información verificable
+                        sobre la integración de las comunidades, sus trayectorias históricas, sus vínculos sociales y
+                        económicos, y la manera en que los distintos grupos humanos fueron formando la identidad de la
+                        región.</p>
+
+                    <p>Con el tiempo, esta búsqueda se vinculó especialmente con el estudio de los <strong>migrantes
+                            alemanes del Volga en Argentina</strong>: sus orígenes, sus recorridos migratorios, la
+                        distribución geográfica de sus descendientes, sus apellidos, sus comunidades y su aporte a la
+                        historia argentina. A partir de allí comenzó un trabajo de recopilación, digitalización de
+                        grandes bases de datos, organización y análisis de datos históricos, estadísticos y geográficos
+                        con el propósito de preservar la memoria colectiva y generar nuevas herramientas para comprender
+                        nuestras raíces.</p>
+
+                    <div class="funding-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 text-center mb-3 mb-md-0">
+                                <i class="fa-solid fa-hand-holding-heart" style="font-size:3rem; color: var(--deep-blue);"></i>
+                            </div>
+                            <div class="col-md-10">
+                                <p class="mb-0"><em>"El proyecto se inspira en un ideal de unión y solidaridad entre los
+                                        pueblos. Su horizonte es promover el reconocimiento de los vínculos que unen a
+                                        las diferentes comunidades, comprendiendo que la historia de cada familia, cada
+                                        localidad y cada nación forma parte de una historia humana compartida."</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Más allá del estudio académico, esta iniciativa busca contribuir a una forma de <strong>diplomacia
+                            ciudadana</strong>: fortalecer la amistad entre los pueblos, acercar culturas, valorar los
+                        orígenes y construir puentes entre pasado, presente y futuro. Conocer nuestras raíces no
+                        significa mirar únicamente hacia atrás, sino comprender mejor quiénes somos y qué futuro podemos
+                        construir juntos.</p>
+
+                    <p>Actualmente, el proyecto tiene como eje principal el estudio de los alemanes del Volga y de las
+                        comunidades de origen alemán en Argentina, aunque su visión es ampliar progresivamente esta
+                        metodología hacia otras colectividades y comunidades del país y del mundo. La intención es
+                        desarrollar una plataforma de investigación abierta y escalable que permita estudiar la
+                        diversidad cultural, migratoria y territorial de diferentes pueblos.</p>
+
+                    <p>El trabajo busca generar conocimiento mediante el uso responsable de datos, herramientas digitales,
+                        análisis territorial y metodologías científicas, con la posibilidad de incorporar futuras
+                        colaboraciones, aportes y alianzas que compartan los mismos objetivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" style="background: var(--soft-gray);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>Sobre el autor</h2>
+                    <div class="author-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center">
+                                <!-- Imagen de perfil placeholder: reemplazar con la imagen real -->
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
+                                    alt="Pablo Kriger" class="author-img" loading="lazy"
+                                    onerror="this.src='https://via.placeholder.com/400x500/e8f0f8/1b3a5c?text=Pablo+Kriger';" />
+                            </div>
+                            <div class="col-md-8">
+                                <p><strong>Pablo Kriger</strong> es investigador y doctorando en Ciencias Sociales en
+                                    Argentina, investigador doctoral CONICET, Licenciado en Ciencia Política y diplomado
+                                    en Gestión de Riesgos. Realizó formación semestral de grado y posgrado en la
+                                    Universidad Federal de Río de Janeiro (Brasil), Universidad de Guadalajara (México),
+                                    Universidad Abierta Nacional (Colombia), entre otras.</p>
+                                <p>Su trayectoria combina las ciencias sociales con herramientas de análisis de datos,
+                                    BigData, estadística, georreferenciamiento, informática, gestión de proyectos y
+                                    estudios socioambientales.</p>
+                                <p>Su trabajo integra metodologías provenientes de distintas áreas del conocimiento para
+                                    estudiar fenómenos sociales y territoriales complejos, utilizando bases de datos,
+                                    sistemas de información geográfica (SIG), análisis estadístico y tecnologías
+                                    digitales aplicadas a la investigación.</p>
+                                <p>A través de este proyecto, busca unir investigación, memoria histórica y tecnología
+                                    para aportar una nueva mirada sobre las comunidades, sus raíces y los vínculos que
+                                    conectan a los pueblos a lo largo del tiempo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>Financiamiento y colaboración</h2>
+                    <p>Este proyecto comenzó como una iniciativa independiente financiada por su propio autor, Pablo
+                        Kriger. El crecimiento de este trabajo requiere recursos para la recopilación y procesamiento de
+                        datos, desarrollo de herramientas digitales, acceso a materiales nuevos, investigación, difusión
+                        y ampliación de nuevos estudios.</p>
+
+                    <div class="funding-card">
+                        <div class="row g-4">
+                            <div class="col-md-4 text-center">
+                                <i class="fa-solid fa-hand-holding-dollar mb-3" style="font-size:2.5rem; color: var(--deep-blue);"></i>
+                                <h4 style="font-size:1.1rem;">Aportes económicos</h4>
+                                <p style="font-size:0.9rem;">De particulares, instituciones académicas u organizaciones
+                                    culturales.</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <i class="fa-solid fa-users mb-3" style="font-size:2.5rem; color: var(--deep-blue);"></i>
+                                <h4 style="font-size:1.1rem;">Colaboración institucional</h4>
+                                <p style="font-size:0.9rem;">Alianzas con personas u organizaciones que compartan los
+                                    objetivos del proyecto.</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <i class="fa-solid fa-lock mb-3" style="font-size:2.5rem; color: var(--deep-blue);"></i>
+                                <h4 style="font-size:1.1rem;">Transparencia y privacidad</h4>
+                                <p style="font-size:0.9rem;">Respetamos la voluntad y privacidad de quienes decidan
+                                    acompañar esta iniciativa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Los aportes permiten fortalecer una iniciativa dedicada a preservar la memoria histórica, promover
+                        el conocimiento sobre nuestras raíces y generar nuevos espacios de encuentro entre comunidades y
+                        pueblos.</p>
+
+                    <p>El proyecto mantiene un compromiso con la transparencia, la independencia y el uso responsable de
+                        los recursos. Las fuentes de financiamiento pueden provenir de particulares, instituciones
+                        académicas, organizaciones culturales u otros colaboradores, respetando siempre la voluntad y
+                        privacidad de quienes decidan acompañar esta iniciativa.</p>
+
+                    <p class="fw-600">Cada apoyo contribuye a que este trabajo pueda continuar creciendo, ampliando sus
+                        investigaciones y llegando a nuevas comunidades en Argentina y el mundo.</p>
+
+                    <div class="text-center mt-4">
+                        <a href="https://pablokriger.github.io/GeoRoot/colab" class="btn btn-hero"
+                            style="background: var(--accent-gold); color: #1b3a5c; font-weight: 700; padding: 0.7rem 2rem; border-radius: 30px; text-decoration: none; display: inline-block;">
+                            <i class="fa-solid fa-handshake-angle me-2"></i>Colaborá con el proyecto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>GeoRoot | Volga</h5>
+                    <p style="font-size:0.9rem; color: rgba(255,255,255,0.7);">
+                        Datos de migración y geografía para un público general. Un proyecto institucional de análisis
+                        territorial sobre Alemanes del Volga y otras corrientes migratorias.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/">Inicio</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto y más</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de GeoRoot</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/legal/es.html">Política de Privacidad</a></li>
+                        <li>
+                            <a href="https://pablokriger.github.io/GeoRoot/contact">
+                                <i class="fa-solid fa-envelope me-1"></i>Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-bottom text-center">
+                <small>
+                    Copyright © <strong>Pablo Kriger</strong> 2020-2026.
+                    Se emplean fuentes de datos de organismos nacionales e internacionales reconocidos.
+                    <br />
+                    <a href="https://pablokriger.github.io/GeoRoot/colab"
+                        style="color: var(--accent-gold); font-weight: 600;">
+                        <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora con nuestro Proyecto!
+                    </a>
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookieBanner" class="cookie-banner" role="alert" aria-live="polite">
+        <div class="container">
+            <div class="cookie-text">
+                <strong>🍪 Política de privacidad y cookies</strong><br />
+                Este sitio web utiliza cookies para mejorar la experiencia de navegación y recopilar datos estadísticos
+                anónimos. Al continuar navegando, acepta nuestra
+                <a href="https://pablokriger.github.io/GeoRoot/legal/es.html"
+                    style="color:var(--deep-blue);text-decoration:underline;">política de privacidad</a>.
+            </div>
+            <div class="cookie-actions">
+                <button class="btn-accept" id="acceptCookies" aria-label="Aceptar política de privacidad">
+                    Aceptar
+                </button>
+                <button class="btn-close-cookie" id="closeCookieBanner" aria-label="Cerrar aviso de cookies"
+                    title="Cerrar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous">
+    </script>
+
+    <script>
+        (function () {
+            // === COOKIE BANNER ===
+            const banner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const closeBtn = document.getElementById('closeCookieBanner');
+
+            function hideBanner() {
+                if (banner) {
+                    banner.classList.add('hidden-banner');
+                    setTimeout(function () {
+                        if (banner.parentNode) {
+                            banner.parentNode.removeChild(banner);
+                        }
+                    }, 500);
+                }
+            }
+
+            function setCookieConsent() {
+                try {
+                    localStorage.setItem('geoRoot_cookie_consent', 'accepted');
+                    localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
+                } catch (e) { }
+            }
+
+            function hasConsent() {
+                try {
+                    return localStorage.getItem('geoRoot_cookie_consent') === 'accepted';
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            if (hasConsent() && banner) {
+                banner.style.display = 'none';
+            }
+
+            if (acceptBtn) {
+                acceptBtn.addEventListener('click', function () {
+                    setCookieConsent();
+                    hideBanner();
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    setCookieConsent();
+                    hideBanner();
+                });
+            }
+
+            // === SUBMENÚS MÓVILES ===
+            document.querySelectorAll('.dropdown-submenu > a').forEach(function (submenuLink) {
+                submenuLink.addEventListener('click', function (e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const parentLi = this.closest('.dropdown-submenu');
+                        if (parentLi) {
+                            parentLi.classList.toggle('show');
+                        }
+                    }
+                });
+            });
+
+            // === SELECTOR DE IDIOMA (redirige según corresponda) ===
+            const langBtn = document.getElementById('langDropdown');
+            document.querySelectorAll('.lang-menu .dropdown-item').forEach(function (item) {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    try {
+                        localStorage.setItem('geoRoot_preferred_lang', lang);
+                    } catch (ex) { }
+                    // Recargar con parámetro de idioma o redirigir a página específica
+                    window.location.href = 'https://pablokriger.github.io/GeoRoot/about/index?lang=' + lang;
+                });
+            });
+
+            // Actualizar bandera según preferencia guardada
+            try {
+                const savedLang = localStorage.getItem('geoRoot_preferred_lang');
+                if (savedLang && langBtn) {
+                    const langItem = document.querySelector('.lang-menu .dropdown-item[data-lang="' + savedLang + '"]');
+                    if (langItem) {
+                        const flagSpan = langItem.querySelector('.lang-flag');
+                        if (flagSpan) {
+                            langBtn.innerHTML = flagSpan.outerHTML;
+                        }
+                    }
+                }
+            } catch (ex) { }
+        })();
+    </script>
+</body>
+</html>
