@@ -1,11 +1,754 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <title>GeoRoots</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Pablo Kriger" />
+    <meta name="description" content="GeoRoot - Datos de migración, geografía y análisis territorial. Un proyecto de Pablo Kriger." />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌐</text></svg>" />
+    <title>GeoRoot | Datos de Migración y Geografía</title>
+
+    <!-- Bootstrap 5 CDN (base práctica y responsive) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts: combinación institucional y legible -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --deep-blue: #1b3a5c;
+            --mid-blue: #2c5f8a;
+            --light-blue: #e8f0f8;
+            --accent-gold: #c49b3f;
+            --soft-gray: #f5f6f8;
+            --text-dark: #2d2d2d;
+            --text-medium: #4a4a4a;
+            --white: #ffffff;
+            --border-light: #e0e4e8;
+            --footer-bg: #0f2a40;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+            --transition: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Merriweather', 'Times New Roman', serif;
+            font-weight: 700;
+            color: var(--deep-blue);
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: var(--mid-blue);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        a:hover {
+            color: #1a4a6e;
+            text-decoration: underline;
+        }
+
+        /* ---- SKIP LINK ---- */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--deep-blue);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 0 0 6px 6px;
+            z-index: 1050;
+            transition: top 0.2s;
+            font-weight: 600;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* ---- NAVBAR ---- */
+        .navbar {
+            background: var(--deep-blue);
+            padding: 0.6rem 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+        .navbar-brand {
+            font-family: 'Merriweather', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--white) !important;
+            letter-spacing: 0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .navbar-brand .brand-icon {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.88) !important;
+            font-weight: 500;
+            padding: 0.5rem 1.1rem !important;
+            border-radius: 6px;
+            transition: background var(--transition), color var(--transition);
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff !important;
+            text-decoration: none;
+        }
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ---- HERO ---- */
+        .hero-section {
+            background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 40%, #3a7cb8 100%);
+            color: #fff;
+            padding: 5rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -60px;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.025);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-section h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section .lead {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.92;
+            max-width: 650px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section .btn-hero {
+            background: var(--accent-gold);
+            color: #1b3a5c;
+            font-weight: 700;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            letter-spacing: 0.03em;
+            transition: all var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section .btn-hero:hover {
+            background: #d4aa45;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            color: #1b3a5c;
+        }
+
+        /* ---- SECTION TITLES ---- */
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+        .section-subtitle {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            max-width: 600px;
+        }
+
+        /* ---- CARDS ---- */
+        .card-custom {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            height: 100%;
+            overflow: hidden;
+        }
+        .card-custom:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            border-color: #cdd5dc;
+        }
+        .card-custom .card-img-top {
+            height: 180px;
+            object-fit: cover;
+            background: var(--light-blue);
+        }
+        .card-custom .card-body {
+            padding: 1.4rem 1.4rem 1.6rem;
+        }
+        .card-custom .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-custom .card-text {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+        .card-custom .btn-outline {
+            border: 2px solid var(--deep-blue);
+            color: var(--deep-blue);
+            border-radius: 25px;
+            font-weight: 600;
+            padding: 0.4rem 1.5rem;
+            transition: all var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .card-custom .btn-outline:hover {
+            background: var(--deep-blue);
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* ---- STATS BAND ---- */
+        .stats-band {
+            background: var(--soft-gray);
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        .stat-number {
+            font-family: 'Merriweather', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            line-height: 1;
+        }
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.4rem;
+        }
+
+        /* ---- CTA SECTION ---- */
+        .cta-section {
+            background: linear-gradient(135deg, #f5f6f8 0%, #e8f0f8 100%);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            margin: 3rem 0;
+            border: 1px solid var(--border-light);
+        }
+        .cta-section h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        /* ---- FOOTER ---- */
+        .site-footer {
+            background: var(--footer-bg);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0 2rem;
+            font-size: 0.93rem;
+        }
+        .site-footer h5 {
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .site-footer a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+        }
+        .site-footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .site-footer .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .site-footer .footer-links li {
+            margin-bottom: 0.4rem;
+        }
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            margin: 2rem 0 1.5rem;
+        }
+        .footer-bottom {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.85rem;
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            .hero-section .lead {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Utility */
+        .bg-soft {
+            background: var(--soft-gray);
+        }
+        .text-gold {
+            color: var(--accent-gold);
+        }
+        .fw-600 {
+            font-weight: 600;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>GeoRoots</h1>
-  <p>Website under construction.</p>
+    <!-- Skip link -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+        <div class="container">
+            <a class="navbar-brand" href="https://pablokriger.github.io/GeoRoot/">
+                <span class="brand-icon"><i class="fa-solid fa-globe"></i></span>
+                GeoRoot
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                            href="https://pablokriger.github.io/GeoRoot/">Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Datos Migratorios
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/flujos-migratorios">Flujos
+                                    Migratorios</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/demografia">Demografía</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/remesas">Remesas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Geografía
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/mapas">Mapas</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/regiones">Regiones</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://pablokriger.github.io/GeoRoot/territorio">Territorio y
+                                    Fronteras</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/recursos">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/acerca">Acerca de</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero-section" id="main-content">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1>Datos de migración,<br />geografía y territorio</h1>
+                    <p class="lead">
+                        Un espacio institucional para explorar, comprender y visualizar
+                        los patrones migratorios y la configuración geográfica del mundo contemporáneo.
+                    </p>
+                    <a href="https://pablokriger.github.io/GeoRoot/flujos-migratorios"
+                        class="btn btn-hero mt-3">
+                        <i class="fa-solid fa-arrow-right me-2"></i>Explorar datos
+                    </a>
+                </div>
+                <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                    <!-- Ilustración institucional: globo con líneas de conexión -->
+                    <svg viewBox="0 0 300 240" width="280" height="220" aria-hidden="true"
+                        style="opacity:0.9;">
+                        <circle cx="150" cy="120" r="90" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" />
+                        <circle cx="150" cy="120" r="70" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                        <ellipse cx="150" cy="120" rx="90" ry="35" fill="none" stroke="rgba(255,255,255,0.3)"
+                            stroke-width="1.2" />
+                        <line x1="60" y1="120" x2="240" y2="120" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                        <!-- Puntos de conexión -->
+                        <circle cx="90" cy="80" r="5" fill="#c49b3f" opacity="0.9" />
+                        <circle cx="200" cy="70" r="5" fill="#c49b3f" opacity="0.9" />
+                        <circle cx="70" cy="150" r="5" fill="#c49b3f" opacity="0.9" />
+                        <circle cx="210" cy="155" r="5" fill="#c49b3f" opacity="0.9" />
+                        <circle cx="145" cy="60" r="5" fill="#c49b3f" opacity="0.9" />
+                        <!-- Líneas curvas entre puntos -->
+                        <path d="M90,80 Q140,50 200,70" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+                        <path d="M70,150 Q130,130 210,155" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+                        <path d="M90,80 Q100,120 70,150" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
+                        <path d="M200,70 Q190,110 210,155" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== SECCIÓN PRINCIPAL: TEMAS CLAVE ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Áreas de investigación</h2>
+                <p class="section-subtitle mx-auto mt-2">
+                    Datos curados, análisis geográfico y recursos para comprender la movilidad humana y el territorio.
+                </p>
+            </div>
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                            style="background: linear-gradient(135deg, #e8f0f8 0%, #d4e4f5 100%);">
+                            <i class="fa-solid fa-people-arrows" style="font-size:3rem; color:#2c5f8a;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Flujos Migratorios</h3>
+                            <p class="card-text">Corredores migratorios, tendencias globales y patrones de movilidad
+                                humana a escala regional e internacional.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/flujos-migratorios"
+                                class="btn btn-outline mt-2">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                            style="background: linear-gradient(135deg, #f5efe0 0%, #efe4cc 100%);">
+                            <i class="fa-solid fa-chart-pie" style="font-size:3rem; color:#c49b3f;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Demografía</h3>
+                            <p class="card-text">Indicadores poblacionales, estructuras etarias, tasas de urbanización
+                                y proyecciones a futuro.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/demografia"
+                                class="btn btn-outline mt-2">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                            style="background: linear-gradient(135deg, #dce8e8 0%, #c8dcdc 100%);">
+                            <i class="fa-solid fa-map" style="font-size:3rem; color:#2c5f8a;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Cartografía</h3>
+                            <p class="card-text">Mapas temáticos, representaciones geoespaciales y herramientas visuales
+                                para el análisis territorial.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/mapas"
+                                class="btn btn-outline mt-2">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom">
+                        <div class="card-img-top d-flex align-items-center justify-content-center"
+                            style="background: linear-gradient(135deg, #f0eef5 0%, #e0dcec 100%);">
+                            <i class="fa-solid fa-book-open" style="font-size:3rem; color:#5c4f8a;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Recursos</h3>
+                            <p class="card-text">Publicaciones, bases de datos, informes y enlaces a fuentes oficiales
+                                para investigadores y público general.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/recursos"
+                                class="btn btn-outline mt-2">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BANDA DE ESTADÍSTICAS ========== -->
+    <div class="stats-band">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number">281M</div>
+                    <div class="stat-label">Migrantes internacionales (2024)</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number">3.6%</div>
+                    <div class="stat-label">De la población mundial</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number">195+</div>
+                    <div class="stat-label">Países analizados</div>
+                </div>
+                <div class="col-6 col-md-3 stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Indicadores geográficos</div>
+                </div>
+            </div>
+            <p class="text-center mt-3 mb-0" style="font-size:0.85rem; color: var(--text-medium);">
+                Fuente: Naciones Unidas, Departamento de Asuntos Económicos y Sociales (DAES), 2024.
+            </p>
+        </div>
+    </div>
+
+    <!-- ========== SECCIÓN DESTACADA ========== -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-light text-dark mb-3 px-3 py-2"
+                        style="font-weight:600; letter-spacing:0.04em; border:1px solid var(--border-light);">EN
+                        FOCO</span>
+                    <h2 class="mb-3" style="font-size:1.9rem;">El rostro cambiante de la migración global</h2>
+                    <p style="color: var(--text-medium); font-size:1.02rem;">
+                        La movilidad humana es uno de los fenómenos más relevantes del siglo XXI.
+                        En <strong>GeoRoot</strong> recopilamos, organizamos y presentamos información
+                        verificada sobre corrientes migratorias, distribución geográfica y
+                        factores territoriales que inciden en los desplazamientos poblacionales.
+                    </p>
+                    <p style="color: var(--text-medium); font-size:1.02rem;">
+                        Nuestro enfoque institucional garantiza datos objetivos, fuentes
+                        reconocidas y una presentación accesible para el público general,
+                        educadores, periodistas y tomadores de decisiones.
+                    </p>
+                    <a href="https://pablokriger.github.io/GeoRoot/acerca"
+                        class="btn btn-outline mt-2" style="border-color: var(--deep-blue); color: var(--deep-blue);">
+                        <i class="fa-solid fa-circle-info me-2"></i>Conocer más sobre GeoRoot
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="cta-section text-center">
+                        <i class="fa-solid fa-database mb-3" style="font-size:2.5rem; color: var(--deep-blue);"></i>
+                        <h3>Base de datos abierta</h3>
+                        <p style="color: var(--text-medium);">
+                            Acceda a nuestras tablas dinámicas, informes descargables
+                            y visualizaciones interactivas.
+                        </p>
+                        <a href="https://pablokriger.github.io/GeoRoot/recursos"
+                            class="btn btn-hero mt-2" style="background: var(--deep-blue); color: #fff;">
+                            Ir a Recursos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN: ÚLTIMAS ACTUALIZACIONES ========== -->
+    <section class="py-5 bg-soft">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Novedades</h2>
+                <p class="section-subtitle mx-auto mt-2">
+                    Actualizaciones recientes en datos, mapas y publicaciones.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card-custom">
+                        <div class="card-body">
+                            <span class="badge mb-2" style="background:var(--accent-gold); color:#1b3a5c;">Nuevo</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">Informe: Migración en América Latina</h4>
+                            <p class="card-text" style="font-size:0.9rem;">Análisis actualizado de los flujos
+                                intrarregionales, con datos de 2023-2024.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/flujos-migratorios"
+                                class="btn btn-outline btn-sm">Leer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom">
+                        <div class="card-body">
+                            <span class="badge mb-2" style="background:#5c4f8a; color:#fff;">Mapa</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">Cartografía de corredores migratorios</h4>
+                            <p class="card-text" style="font-size:0.9rem;">Visualización interactiva de los 20 principales
+                                corredores del mundo.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/mapas"
+                                class="btn btn-outline btn-sm">Explorar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-custom">
+                        <div class="card-body">
+                            <span class="badge mb-2" style="background:#2c5f8a; color:#fff;">Datos</span>
+                            <h4 class="card-title" style="font-size:1.1rem;">Indicadores actualizados OIM 2025</h4>
+                            <p class="card-text" style="font-size:0.9rem;">Incorporamos las últimas cifras de la
+                                Organización Internacional para las Migraciones.</p>
+                            <a href="https://pablokriger.github.io/GeoRoot/recursos"
+                                class="btn btn-outline btn-sm">Consultar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5>GeoRoot</h5>
+                    <p style="font-size:0.9rem; color: rgba(255,255,255,0.7);">
+                        Datos de migración y geografía para un público general.
+                        Un proyecto institucional de análisis territorial.
+                    </p>
+                    <p style="font-size:0.85rem; color: rgba(255,255,255,0.55);">
+                        © 2024-2026 Pablo Kriger. Todos los derechos reservados.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/">Inicio</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/flujos-migratorios">Flujos Migratorios</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/demografia">Demografía</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/mapas">Mapas</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/regiones">Regiones</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/recursos">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto y más</h5>
+                    <ul class="footer-links">
+                        <li><a href="https://pablokriger.github.io/GeoRoot/acerca">Acerca de GeoRoot</a></li>
+                        <li><a href="https://pablokriger.github.io/GeoRoot/privacidad">Política de Privacidad</a></li>
+                        <li>
+                            <a href="https://github.com/pablokriger" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-github me-1"></i>GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider" />
+            <div class="footer-bottom text-center">
+                <small>
+                    Sitio diseñado y mantenido por <strong>Pablo Kriger</strong> &copy; 2024-2026.
+                    El contenido se ofrece con fines informativos y educativos. Las fuentes de datos
+                    son organismos internacionales reconocidos. Para más información, visite
+                    <a href="https://pablokriger.github.io/GeoRoot/acerca">Acerca de</a>.
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous">
+    </script>
 </body>
 </html>
