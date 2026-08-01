@@ -265,13 +265,11 @@
             padding: 5rem 0 4rem;
             overflow: hidden;
             background-color: #1b3a5c;
-            /* fallback */
             background-image: url('https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8245_6.png');
             background-size: cover;
             background-position: center right;
             background-repeat: no-repeat;
         }
-        /* Capa de degradado: izquierda azul sólido, derecha transparente para ver la imagen */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -288,7 +286,6 @@
             z-index: 1;
             pointer-events: none;
         }
-        /* Capa adicional sutil para garantizar legibilidad en móviles */
         .hero-section::after {
             content: '';
             position: absolute;
@@ -336,7 +333,6 @@
             text-decoration: none;
             color: #1b3a5c;
         }
-        /* Ocultamos la imagen anterior (ya no se usa como img) */
         .hero-image {
             display: none;
         }
@@ -363,20 +359,21 @@
             max-width: 600px;
         }
 
-        /* ---- LOGO CENTRADO ---- */
+        /* ---- LOGO CENTRADO (más grande) ---- */
         .logo-centered {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         .logo-centered img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
-            transition: transform var(--transition);
-        }
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    object-fit: contain;
+    border: none; /* por si hubiera algún borde heredado */
+    transition: transform var(--transition);
+}
         .logo-centered img:hover {
-            transform: scale(1.03);
+            transform: scale(1.1);
         }
 
         /* ---- CARDS ---- */
@@ -652,8 +649,7 @@
                 justify-content: center;
             }
             .logo-centered img {
-                width: 80px;
-                height: 80px;
+                max-width: 260px;
             }
         }
 
@@ -1138,7 +1134,6 @@
                 });
             });
 
-            // Selector de idioma mejorado
             const langBtn = document.getElementById('langDropdown');
             document.querySelectorAll('.lang-menu .dropdown-item').forEach(function (item) {
                 item.addEventListener('click', function (e) {
@@ -1146,13 +1141,11 @@
                     const lang = this.getAttribute('data-lang');
                     const flagSpan = this.querySelector('.lang-flag');
                     if (flagSpan && langBtn) {
-                        // Actualizar el botón con la bandera seleccionada
                         langBtn.innerHTML = flagSpan.outerHTML;
                     }
                     try {
                         localStorage.setItem('geoRoot_preferred_lang', lang);
                     } catch (ex) { }
-                    // Cerrar dropdown
                     const dropdown = bootstrap.Dropdown.getInstance(langBtn);
                     if (dropdown) {
                         dropdown.hide();
@@ -1160,7 +1153,6 @@
                 });
             });
 
-            // Restaurar idioma guardado al cargar
             try {
                 const savedLang = localStorage.getItem('geoRoot_preferred_lang');
                 if (savedLang && langBtn) {
