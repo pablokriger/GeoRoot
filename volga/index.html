@@ -25,6 +25,7 @@
         rel="stylesheet" />
 
     <style>
+        /* (estilos intactos, no se modifican) */
         :root {
             --deep-blue: #1b3a5c;
             --mid-blue: #2c5f8a;
@@ -654,13 +655,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <p>Esta sección pone a disposición una <strong>herramienta de consulta</strong> dedicada al estudio de los apellidos vinculados con la migración de los <strong>Alemanes del Volga</strong> y otras comunidades de origen alemán. Los usuarios podrán consultar si un apellido integra la base de datos y explorar posibles <strong>variantes ortográficas o fonéticas</strong> originadas por diferencias de idioma, transcripción o procesos migratorios.</p>
-                    <p>La base de datos es el resultado de una fuerte investigación en <strong>estadística aplicada y análisis demográfico</strong>, construida a partir de censos históricos, registros migratorios, padrones y otras fuentes nacionales e internacionales, públicas y privadas. Además, los usuarios podrán <strong>aportar nuevos apellidos o variantes</strong>, que serán verificados y contrastados antes de su incorporación para garantizar la calidad de la información.</p>
-                    <p>El objetivo es desarrollar una <strong>base de datos colaborativa de referencia</strong> para el estudio de la genealogía, la historia migratoria, la distribución geográfica y la evolución de los apellidos en Argentina y otros países. Quienes lo deseen podrán incluir su nombre y un medio de contacto para facilitar futuras consultas relacionadas con la investigación. Cada aporte contribuirá al crecimiento de este proyecto y al desarrollo de nuevas publicaciones.</p>
-
+                    <p>Consulta si tus apellidos están dentro de la base de datos de descendientes de alemanes del Volga.</p>
+                    
                     <div class="alert alert-info mt-4" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
                         <i class="fa-solid fa-circle-info me-2"></i>
-                        <strong>Importante:</strong> Esta base de datos incluye exclusivamente <strong>apellidos de Alemanes del Volga</strong>. Se actualiza periódicamente a medida que se incorporan y verifican nuevos registros. Si tu apellido no aparece hoy, ¡volvé a consultar pronto!
+                        Si no está, por favor, envíanos el apellido o la variante. <strong>¡Consulta todos los que quieras!</strong>
                     </div>
 
                     <!-- HERRAMIENTA DE CONSULTA -->
@@ -673,7 +672,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="contribute-tab" data-bs-toggle="tab" data-bs-target="#contributePanel" type="button" role="tab" aria-controls="contributePanel" aria-selected="false">
-                                    <i class="fa-solid fa-pen-to-square me-1"></i> Aportar apellido
+                                    <i class="fa-solid fa-pen-to-square me-1"></i> Enviar apellido
                                 </button>
                             </li>
                         </ul>
@@ -681,7 +680,9 @@
                         <div class="tab-content pt-4" id="surnameTabContent">
                             <!-- PANEL DE CONSULTA -->
                             <div class="tab-pane fade show active" id="searchPanel" role="tabpanel" aria-labelledby="search-tab">
-                                <form id="searchForm" novalidate>
+                                <!-- MODIFICADO: action, method y campo oculto tipo -->
+                                <form id="searchForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
+                                    <input type="hidden" name="tipo" value="buscar">
                                     <div class="row g-3 align-items-end">
                                         <div class="col-md-6">
                                             <label for="searchSurname" class="form-label">Apellido a consultar <span class="required-asterisk">*</span></label>
@@ -709,7 +710,7 @@
 
                             <!-- PANEL DE APORTE -->
                             <div class="tab-pane fade" id="contributePanel" role="tabpanel" aria-labelledby="contribute-tab">
-                                <form id="contributeForm" action="https://formspree.io/f/xjgghfhf" method="POST" novalidate>
+                                <form id="contributeForm" action="https://script.google.com/macros/s/AKfycbzNL_5PvwRRqkJwfGhCY5JWMGWM-f1OOiJKTIIfLoEcmzPCs1xUkv-OTF6bK06V6ALN/exec" method="POST" novalidate>
                                     <div class="honeypot">
                                         <label for="website2">Website</label>
                                         <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off" />
@@ -722,12 +723,12 @@
                                             <div class="form-error-msg" id="error-contribSurname">Por favor, ingresá el apellido.</div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="contribVariant" class="form-label">Variante (si existe)</label>
+                                            <label for="contribVariant" class="form-label">Variantes (si existen)</label>
                                             <input type="text" class="form-control" id="contribVariant" name="contribVariant"
-                                                placeholder="Otra forma de escribirlo" maxlength="100" />
+                                                placeholder="Otras formas de escribirlos (oficialmente)" maxlength="100" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="contribOrigin" class="form-label">Origen / Localidad</label>
+                                            <label for="contribOrigin" class="form-label">Ubicación</label>
                                             <input type="text" class="form-control" id="contribOrigin" name="contribOrigin"
                                                 placeholder="Ej.: Colonia General Alvear, Entre Ríos" maxlength="150" />
                                         </div>
@@ -735,20 +736,6 @@
                                             <label for="contribName" class="form-label">Tu nombre (opcional)</label>
                                             <input type="text" class="form-control" id="contribName" name="contribName"
                                                 placeholder="Para acreditar tu aporte" maxlength="120" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="contribEmail" class="form-label">Correo electrónico (opcional)</label>
-                                            <input type="email" class="form-control" id="contribEmail" name="contribEmail"
-                                                placeholder="Para contactarte si es necesario" maxlength="120" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="contribReason" class="form-label">Tipo de aporte</label>
-                                            <select class="form-select" id="contribReason" name="contribReason">
-                                                <option value="Nuevo apellido">Nuevo apellido</option>
-                                                <option value="Variante ortográfica">Variante ortográfica</option>
-                                                <option value="Corrección de datos">Corrección de datos</option>
-                                                <option value="Información adicional">Información adicional</option>
-                                            </select>
                                         </div>
                                         <div class="col-12">
                                             <label for="contribComment" class="form-label">Comentario o información adicional</label>
@@ -915,52 +902,14 @@
                 }
             } catch (ex) {}
 
-            // === SIMULACIÓN DE BASE DE DATOS (a reemplazar por backend) ===
-            const simulatedDB = [
-                'Schmidt', 'Müller', 'Schneider', 'Fischer', 'Weber', 'Meyer', 'Wagner', 'Becker', 'Hoffmann', 'Schäfer',
-                'Koch', 'Bauer', 'Richter', 'Klein', 'Wolf', 'Schröder', 'Neumann', 'Schwarz', 'Zimmermann', 'Braun',
-                'Krüger', 'Hofmann', 'Hartmann', 'Lange', 'Schmitt', 'Werner', 'Krause', 'Meier', 'Lehmann', 'Schmid',
-                'Schulze', 'Maier', 'Köhler', 'Herrmann', 'König', 'Walter', 'Mayer', 'Huber', 'Kaiser', 'Fuchs',
-                'Peters', 'Lang', 'Scholz', 'Möller', 'Weiß', 'Jung', 'Hahn', 'Schubert', 'Vogel', 'Friedrich'
-            ]; // Lista de ejemplo, solo apellidos comunes alemanes del Volga
-
-            // === BÚSQUEDA DE APELLIDO ===
+            // === NUEVA BÚSQUEDA CON BACKEND (eliminada simulación) ===
             const searchForm = document.getElementById('searchForm');
             const searchInput = document.getElementById('searchSurname');
             const searchResult = document.getElementById('searchResult');
             const clearBtn = document.getElementById('clearSearchBtn');
             const errorSearch = document.getElementById('error-searchSurname');
 
-            function performSearch(surname) {
-                const query = surname.trim().toLowerCase();
-                const found = simulatedDB.some(item => item.toLowerCase() === query);
-                const variants = simulatedDB.filter(item => item.toLowerCase().startsWith(query) && item.toLowerCase() !== query);
-
-                let html = '';
-                if (found) {
-                    html = `<div class="result-box success">
-                        <i class="fa-solid fa-circle-check me-2"></i>
-                        <strong>¡Apellido encontrado!</strong> "<strong>${surname.trim()}</strong>" forma parte de nuestra base de datos de Alemanes del Volga.
-                    </div>`;
-                } else {
-                    html = `<div class="result-box warning">
-                        <i class="fa-solid fa-circle-exclamation me-2"></i>
-                        <strong>Apellido no encontrado</strong> en esta consulta. Puede deberse a que aún no fue incorporado o a que existe una variante ortográfica diferente.
-                    </div>`;
-                    if (variants.length > 0) {
-                        html += `<div class="result-box mt-2">
-                            <strong>Variantes similares encontradas:</strong>
-                            <ul class="mb-0 mt-2">${variants.map(v => `<li>${v}</li>`).join('')}</ul>
-                        </div>`;
-                    }
-                }
-                html += `<p class="mt-3" style="font-size:0.9rem; color: var(--text-medium);">
-                    <i class="fa-solid fa-sync-alt me-1"></i> La base de datos se actualiza periódicamente. Si tu apellido no aparece, podés <a href="#" onclick="document.getElementById('contribute-tab').click();">aportarlo aquí</a>.
-                </p>`;
-                searchResult.innerHTML = html;
-                searchResult.style.display = 'block';
-            }
-
+            // Cambiar evento submit para usar fetch
             searchForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 errorSearch.classList.remove('show');
@@ -969,16 +918,62 @@
                     errorSearch.classList.add('show');
                     return;
                 }
-                // Simular posible error de conexión (probabilidad baja)
-                if (Math.random() < 0.05) {
+
+                const searchBtn = document.getElementById('searchBtn');
+                searchBtn.disabled = true;
+                searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Buscando...';
+
+                const formData = new FormData(searchForm);
+                fetch(searchForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en la respuesta del servidor');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        let html = '';
+                        if (data.existe) {
+                            html = `<div class="result-box success">
+                                <i class="fa-solid fa-circle-check me-2"></i>
+                                <strong>¡Apellido encontrado!</strong> "${surname}" forma parte de nuestra base de datos de Alemanes del Volga.
+                            </div>`;
+                        } else {
+                            html = `<div class="result-box warning">
+                                <i class="fa-solid fa-circle-exclamation me-2"></i>
+                                <strong>Apellido no encontrado</strong> en nuestra base de datos. Puede deberse a que aún no fue incorporado o a que existe una variante ortográfica diferente.
+                            </div>`;
+                            // Opcional: podrías agregar sugerencias de variantes si el script las devuelve
+                        }
+                        // Agregar enlace a la pestaña de envío
+                        html += `<p class="mt-3" style="font-size:0.9rem; color: var(--text-medium);">
+                            <i class="fa-solid fa-sync-alt me-1"></i> La base de datos se actualiza periódicamente. Si tu apellido no aparece, podés <a href="#" onclick="document.getElementById('contribute-tab').click();">aportarlo aquí</a>.
+                        </p>`;
+                        searchResult.innerHTML = html;
+                        searchResult.style.display = 'block';
+                    } else {
+                        searchResult.innerHTML = `<div class="result-box error">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                            <strong>Error en la búsqueda.</strong> Intentá nuevamente.
+                        </div>`;
+                        searchResult.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                     searchResult.innerHTML = `<div class="result-box error">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
-                        <strong>Error de conexión.</strong> No se pudo completar la búsqueda. Verificá tu conexión a internet e intentá nuevamente.
+                        <strong>Error de conexión.</strong> Verificá tu internet e intentá nuevamente.
                     </div>`;
                     searchResult.style.display = 'block';
-                    return;
-                }
-                performSearch(surname);
+                })
+                .finally(() => {
+                    searchBtn.disabled = false;
+                    searchBtn.innerHTML = '<i class="fa-solid fa-search me-2"></i>Buscar';
+                });
             });
 
             clearBtn.addEventListener('click', function () {
@@ -988,7 +983,7 @@
                 errorSearch.classList.remove('show');
             });
 
-            // === FORMULARIO DE APORTE ===
+            // === FORMULARIO DE APORTE (sin cambios, ya funciona) ===
             const contribForm = document.getElementById('contributeForm');
             const contribSuccess = document.getElementById('contribSuccess');
             const contribSubmitBtn = document.getElementById('contribSubmitBtn');
