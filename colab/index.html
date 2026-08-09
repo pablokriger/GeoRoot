@@ -248,7 +248,7 @@
 
         /* ---- SECCIONES ---- */
         .collab-section {
-            padding: 4rem 0;
+            padding: 3rem 0; /* reducido de 4rem a 3rem */
         }
         .collab-section h2 {
             font-size: 1.9rem;
@@ -271,12 +271,12 @@
             margin-bottom: 1.2rem;
         }
 
-        /* ---- TARJETAS DE FORMAS DE COLABORAR ---- */
+        /* ---- TARJETAS DE FORMAS DE COLABORAR (compactas) ---- */
         .way-card {
             background: var(--white);
             border: 1px solid var(--border-light);
             border-radius: var(--radius);
-            padding: 2rem 1.5rem;
+            padding: 1rem 0.75rem; /* reducido de 2rem 1.5rem */
             text-align: center;
             height: 100%;
             transition: all var(--transition);
@@ -288,16 +288,25 @@
             border-color: #cdd5dc;
         }
         .way-icon {
-            width: 70px;
-            height: 70px;
+            width: 50px;  /* reducido de 70px */
+            height: 50px; /* reducido de 70px */
             border-radius: 50%;
             background: var(--light-blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.2rem;
-            font-size: 1.8rem;
+            margin: 0 auto 0.6rem; /* reducido de 1.2rem */
+            font-size: 1.4rem; /* reducido de 1.8rem */
             color: var(--deep-blue);
+        }
+        .way-card h4 {
+            font-size: 0.95rem; /* reducido de 1.1rem */
+            margin-bottom: 0.2rem;
+        }
+        .way-card p {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            margin-bottom: 0.2rem;
         }
 
         /* ---- TARJETAS DE PAGO ---- */
@@ -515,6 +524,9 @@
             .navbar-brand { font-size: 1.1rem; }
             .navbar-brand .brand-logo { width: 30px; height: 30px; }
             .payment-card { padding: 1.5rem; }
+            .way-card { padding: 0.75rem 0.5rem; }
+            .way-icon { width: 40px; height: 40px; font-size: 1.1rem; }
+            .way-card h4 { font-size: 0.85rem; }
         }
 
         img { max-width: 100%; height: auto; }
@@ -628,51 +640,47 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    
-
-                    <h2 class="mt-5">Formas de colaborar:</h2>
-                    
-                    <div class="row g-4 mt-3">
+                    <div class="row g-3 mt-3"> <!-- reducido de g-4 a g-3 -->
                         <div class="col-md-4">
                             <div class="way-card">
                                 <div class="way-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                                <h4 style="font-size:1.1rem;">Aportes económicos</h4>
-                               
+                                <h4>Aportes económicos</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Realizá transferencias o donaciones para sostener el proyecto.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="way-card">
                                 <div class="way-icon"><i class="fa-solid fa-building-columns"></i></div>
-                                <h4 style="font-size:1.1rem;">Colaboraciones académicas</h4>
-                               
+                                <h4>Colaboraciones académicas</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Instituciones, universidades o investigadores.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="way-card">
                                 <div class="way-icon"><i class="fa-solid fa-database"></i></div>
-                                <h4 style="font-size:1.1rem;">Aportes de información</h4>
-                               
+                                <h4>Aportes de información</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Datos genealógicos, documentos o historias familiares.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="way-card">
                                 <div class="way-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                                <h4 style="font-size:1.1rem;">Apoyo tecnológico</h4>
-                                
+                                <h4>Apoyo tecnológico</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Desarrollo web, visualización de datos o infraestructura.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="way-card">
                                 <div class="way-icon"><i class="fa-solid fa-people-arrows"></i></div>
-                                <h4 style="font-size:1.1rem;">Redes y contactos</h4>
-                               
+                                <h4>Redes y contactos</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Difusión, conexiones con comunidades y asociaciones.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="way-card" style="background: linear-gradient(135deg, #fef9e7 0%, #fdf2d0 100%); border-color: var(--accent-gold);">
                                 <div class="way-icon" style="background: rgba(196, 155, 63, 0.2); color: var(--accent-gold);"><i class="fa-solid fa-star"></i></div>
-                                <h4 style="font-size:1.1rem;">¡Cada colaboración cuenta!</h4>
-                                
+                                <h4>¡Cada colaboración cuenta!</h4>
+                                <p style="font-size:0.85rem; color: var(--text-medium); margin-bottom:0;">Sumá tu granito de arena, cualquier aporte es valioso.</p>
                             </div>
                         </div>
                     </div>
@@ -686,7 +694,7 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <h2>Realizar un aporte</h2>
-                    <p>Seleccioná la opción que mejor se adapte a vos. Cada contribución, por pequeña que sea, ayuda a sostener y ampliar este proyecto.</p>
+                    <p>Cada contribución, por pequeña que sea, ayuda a sostener y ampliar este proyecto.</p>
 
                     <div class="row g-4 mt-3">
                         <div class="col-md-6">
