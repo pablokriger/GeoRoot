@@ -643,8 +643,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <p>Este espacio está abierto a todas aquellas <strong>personas, instituciones y organizaciones</strong> que deseen comunicarse para realizar <strong>consultas, compartir información, aportar datos, proponer colaboraciones</strong> o acompañar el desarrollo de esta iniciativa.</p>
-                    <p>Si tenés información sobre <strong>antepasados, apellidos, migraciones, comunidades o documentos</strong> relacionados, tu aporte puede contribuir a ampliar el conocimiento y preservar nuestra <strong>memoria colectiva</strong>. También son bienvenidas las propuestas de <strong>colaboración académica, institucional, cultural y tecnológica</strong>.</p>
+                    <p>Espacio para realizar <strong>consultas, compartir información, aportar datos, proponer colaboraciones</strong> o acompañar el desarrollo de esta iniciativa.</p>
+                    
 
                     <!-- FORMULARIO -->
                     <div class="form-card mt-4" id="formContainer">
@@ -653,7 +653,9 @@
                             Los campos marcados con <span class="required-asterisk">*</span> son obligatorios.
                         </p>
 
-                        <form id="contactForm" action="https://formspree.io/f/xjgnqrqd" method="POST" novalidate>
+                        <!-- Cambio del action y añadido campo oculto tipo -->
+                        <form id="contactForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
+                            <input type="hidden" name="tipo" value="contacto">
                             <!-- Honeypot antispam -->
                             <div class="honeypot">
                                 <label for="website">Website</label>
