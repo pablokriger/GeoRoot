@@ -492,7 +492,7 @@
   "volga_contribute_submit": "Enviar aporte",
   "volga_contribute_success_title": "¡Aporte enviado con éxito!",
   "volga_contribute_success_text": "Gracias por contribuir. Tu información será revisada y, si corresponde, incorporada a la base de datos.",
-  "volga_contribute_reset": "Reenviar un nuevo apellido"
+  "volga_contribute_reset": "Reenviar un nuevo apellido",
 
   "volga_familiares_label_edad": "Tu edad",
   "volga_familiares_placeholder_edad": "Ej.: 35",
@@ -504,12 +504,11 @@
   "volga_familiares_sexo_prefiero_no": "Prefiero no decirlo",
   "volga_familiares_error_sexo": "Por favor, seleccioná una opción.",
   "volga_familiares_label_pareja": "Apellido de tu pareja (si tuvieses)",
-  "volga_familiares_placeholder_pareja": "Ej.: Müller"
-  "volga_familiares_label_hijos_tot": "Cantidad de hijos ("0" si no tienes)",
+  "volga_familiares_placeholder_pareja": "Ej.: Müller",
+  "volga_familiares_label_hijos_tot": "Cantidad de hijos (\"0\" si no tienes)",
   "volga_familiares_placeholder_hijos_tot": "Ej.: 2",
   "volga_familiares_error_hijos_tot": "Ingresá un número válido (0 o más).",
   "volga_familiares_label_hijos_no_aleman": "Cantidad de hijos que <strong>NO</strong> tienen apellido alemán",
   "volga_familiares_placeholder_hijos_no_aleman": "Ej.: 1",
   "volga_familiares_error_hijos_no_aleman": "Ingresá un número válido (0 o más)."
-
 }
