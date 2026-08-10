@@ -437,8 +437,13 @@
             })
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
+                // Aplicar traducciones al footer
                 if (typeof applyTranslations === 'function') {
                     applyTranslations();
+                }
+                // Inicializar el cookie banner ahora que el footer está cargado
+                if (typeof initCookieBanner === 'function') {
+                    initCookieBanner();
                 }
             })
             .catch(error => console.warn('Error al cargar el footer:', error));
@@ -448,23 +453,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
+    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS ====== -->
     <script>
         (function () {
-            // ========================================
-            //  COOKIE BANNER (se maneja desde scripts.js, pero mantenemos por si acaso)
-            // ========================================
-            // === SUBMENÚS MÓVILES ===
-            document.querySelectorAll('.dropdown-submenu > a').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    if (window.innerWidth < 992) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const li = this.closest('.dropdown-submenu');
-                        if (li) li.classList.toggle('show');
-                    }
-                });
-            });
-
             // ========================================
             //  PANEL 1: APELLIDOS FAMILIARES
             // ========================================
