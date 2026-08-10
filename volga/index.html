@@ -245,13 +245,14 @@
                                     </ul>
                                 </div>
                                 <hr />
-                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbwxOhxiGeLXWHV1J9hOKto5eLFQReUBdKc4g9OuYJms3gnWE4VyULQxsXUhiH53wIM-/exec" method="POST" novalidate>
+                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbybAzbfjOqHDTXbzIJ4GFdLpYutnjultvSsdXD-eZqagc0_tIG1uwF9MiglGLeqIjnP/exec" method="POST" novalidate>
                                     <input type="hidden" name="tipo" value="familiares">
                                     <div class="honeypot">
                                         <label for="website3">Website</label>
                                         <input type="text" id="website3" name="website" tabindex="-1" autocomplete="off" />
                                     </div>
                                     <div class="row g-3">
+                                        <!-- Apellidos de los padres -->
                                         <div class="col-md-6">
                                             <label for="apellido_mama" class="form-label"><span data-i18n="volga_familiares_label_mama">Apellido de tu mamá</span> <span class="required-asterisk">*</span></label>
                                             <input type="text" class="form-control" id="apellido_mama" name="apellido_mama" required
@@ -265,7 +266,7 @@
                                             <div class="form-error-msg" id="error-apellido_papa" data-i18n="volga_familiares_error_papa">Por favor, ingresá el apellido de tu papá.</div>
                                         </div>
 
-                                        <!-- NUEVOS CAMPOS: Edad, Sexo, Apellido de pareja -->
+                                        <!-- Edad y Sexo -->
                                         <div class="col-md-4">
                                             <label for="edad" class="form-label"><span data-i18n="volga_familiares_label_edad">Tu edad</span> <span class="required-asterisk">*</span></label>
                                             <input type="number" class="form-control" id="edad" name="edad" required
@@ -282,12 +283,24 @@
                                             </select>
                                             <div class="form-error-msg" id="error-sexo" data-i18n="volga_familiares_error_sexo">Por favor, seleccioná una opción.</div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <label for="apellido_pareja" class="form-label"><span data-i18n="volga_familiares_label_pareja">Apellido de tu pareja (si tuvieses)</span></label>
-                                            <input type="text" class="form-control" id="apellido_pareja" name="apellido_pareja"
-                                                placeholder="Ej.: Müller" maxlength="100" data-i18n-placeholder="volga_familiares_placeholder_pareja" />
+                                        <!-- Espacio sutil (col-md-4 vacío para alinear) -->
+                                        <div class="col-md-4"></div>
+
+                                        <!-- Cantidad de hijos (fila separada con margen sutil) -->
+                                        <div class="col-md-6" style="margin-top: 0.5rem;">
+                                            <label for="hijos_tot" class="form-label"><span data-i18n="volga_familiares_label_hijos_tot">Cantidad de hijos (\"0\" si no tienes)</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hijos_tot" name="hijos_tot" required
+                                                placeholder="Ej.: 2" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hijos_tot" />
+                                            <div class="form-error-msg" id="error-hijos_tot" data-i18n="volga_familiares_error_hijos_tot">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top: 0.5rem;">
+                                            <label for="hijos_no_aleman" class="form-label"><span data-i18n="volga_familiares_label_hijos_no_aleman">Cantidad de hijos que <strong>NO</strong> tienen apellido alemán</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hijos_no_aleman" name="hijos_no_aleman" required
+                                                placeholder="Ej.: 1" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hijos_no_aleman" />
+                                            <div class="form-error-msg" id="error-hijos_no_aleman" data-i18n="volga_familiares_error_hijos_no_aleman">Ingresá un número válido (0 o más).</div>
                                         </div>
 
+                                        <!-- Primos y sobrinos (sin cambios) -->
                                         <div class="col-md-6">
                                             <label for="primos_tot" class="form-label"><span data-i18n="volga_familiares_label_primos_tot">Cantidad de primos/as (solo por parte de tus padres con apellido alemán)</span> <span class="required-asterisk">*</span></label>
                                             <input type="number" class="form-control" id="primos_tot" name="primos_tot" required
@@ -343,7 +356,7 @@
                             </div>
 
                             <!-- ============================================ -->
-                            <!-- PANEL 2: CONSULTA                           -->
+                            <!-- PANEL 2: CONSULTA (sin cambios)              -->
                             <!-- ============================================ -->
                             <div class="tab-pane fade" id="searchPanel" role="tabpanel" aria-labelledby="search-tab">
                                 <form id="searchForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
@@ -376,7 +389,7 @@
                             </div>
 
                             <!-- ============================================ -->
-                            <!-- PANEL 3: ENVÍO DE APELLIDO                  -->
+                            <!-- PANEL 3: ENVÍO DE APELLIDO (sin cambios)     -->
                             <!-- ============================================ -->
                             <div class="tab-pane fade" id="contributePanel" role="tabpanel" aria-labelledby="contribute-tab">
                                 <form id="contributeForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
@@ -475,21 +488,20 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS (actualizado con nuevos campos) ====== -->
+    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS (actualizado) ====== -->
     <script>
         (function () {
             // ========================================
-            //  PANEL 1: APELLIDOS FAMILIARES (con nuevos campos)
+            //  PANEL 1: APELLIDOS FAMILIARES
             // ========================================
             const familiaresForm = document.getElementById('familiaresForm');
             const familiaresSuccess = document.getElementById('familiaresSuccess');
             const familiaresSubmitBtn = document.getElementById('familiaresSubmitBtn');
             const resetFamiliaresBtn = document.getElementById('resetFamiliaresBtn');
 
-            // Lista de campos numéricos (incluyendo el nuevo "edad")
-            const numberFieldsFam = ['edad', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+            // Lista de campos numéricos (incluyendo los nuevos hijos)
+            const numberFieldsFam = ['edad', 'hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
 
-            // Generar captcha
             function generateCaptchaFam() {
                 const num1 = Math.floor(Math.random() * 8) + 2;
                 const num2 = Math.floor(Math.random() * 8) + 1;
@@ -500,7 +512,7 @@
             }
             generateCaptchaFam();
 
-            // Validación de números (solo dígitos y >=0, para edad min 1)
+            // Validación de números
             numberFieldsFam.forEach(id => {
                 const input = document.getElementById(id);
                 input.addEventListener('input', function () {
@@ -517,7 +529,6 @@
                 });
             });
 
-            // Submit del formulario
             familiaresForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 document.querySelectorAll('#familiaresPanel .form-error-msg').forEach(el => el.classList.remove('show'));
@@ -536,23 +547,23 @@
                     valid = false;
                 }
 
-                // Validar edad (numérica, 1-120)
+                // Validar edad
                 const edad = parseInt(document.getElementById('edad').value, 10);
                 if (isNaN(edad) || edad < 1 || edad > 120) {
                     document.getElementById('error-edad').classList.add('show');
                     valid = false;
                 }
 
-                // Validar sexo (selector)
+                // Validar sexo
                 const sexo = document.getElementById('sexo').value;
                 if (!sexo) {
                     document.getElementById('error-sexo').classList.add('show');
                     valid = false;
                 }
 
-                // Validar campos numéricos (primos, sobrinos)
-                numberFieldsFam.forEach(id => {
-                    if (id === 'edad') return; // ya validado
+                // Validar campos numéricos (hijos, primos, sobrinos)
+                const numericIds = ['hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+                numericIds.forEach(id => {
                     const val = parseInt(document.getElementById(id).value, 10);
                     if (isNaN(val) || val < 0) {
                         document.getElementById('error-' + id).classList.add('show');
@@ -571,7 +582,6 @@
 
                 if (!valid) return;
 
-                // Envío
                 familiaresSubmitBtn.disabled = true;
                 familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
 
@@ -598,7 +608,6 @@
                 });
             });
 
-            // Botón "Volver a enviar otro"
             resetFamiliaresBtn.addEventListener('click', function () {
                 familiaresForm.reset();
                 familiaresSuccess.style.display = 'none';
@@ -613,7 +622,6 @@
                 document.getElementById('sexo').value = '';
             });
 
-            // Limpiar errores al escribir
             document.getElementById('apellido_mama').addEventListener('input', () => document.getElementById('error-apellido_mama').classList.remove('show'));
             document.getElementById('apellido_papa').addEventListener('input', () => document.getElementById('error-apellido_papa').classList.remove('show'));
             document.getElementById('edad').addEventListener('input', () => document.getElementById('error-edad').classList.remove('show'));
@@ -621,7 +629,7 @@
             document.getElementById('captchaAnswerFam').addEventListener('input', () => document.getElementById('error-captchaFam').classList.remove('show'));
 
             // ========================================
-            //  PANEL 2: BÚSQUEDA DE APELLIDOS (sin cambios)
+            //  PANEL 2: BÚSQUEDA (sin cambios)
             // ========================================
             const searchForm = document.getElementById('searchForm');
             const searchInput = document.getElementById('searchSurname');
