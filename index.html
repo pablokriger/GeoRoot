@@ -834,7 +834,7 @@
     <!-- ====== HEADER (cargado dinámicamente) ====== -->
     <div id="header-placeholder"></div>
     <script>
-        fetch('_elements/header.html')
+        fetch('elements/header.html')
             .then(response => {
                 if (!response.ok) throw new Error('Error al cargar header');
                 return response.text();
@@ -1065,7 +1065,7 @@
     <!-- ====== FOOTER (cargado dinámicamente) ====== -->
     <div id="footer-placeholder"></div>
     <script>
-        fetch('_elements/footer.html')
+        fetch('elements/footer.html')
             .then(response => {
                 if (!response.ok) throw new Error('Error al cargar footer');
                 return response.text();
