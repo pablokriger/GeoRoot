@@ -259,14 +259,28 @@
             .catch(error => console.warn('Error al cargar el header:', error));
     </script>
 
-    <!-- ====== CONTENIDO PRINCIPAL ====== -->
-    <main class="legal-container" id="main-content">
-        <div class="container">
-            <h1>Privacy Policy, Terms of Use, and Cookie Policy</h1>
-            <p class="last-update">Last updated: March 25, 2026</p>
+<!-- ====== CONTENIDO PRINCIPAL ====== -->
+<main class="legal-container" id="main-content">
+    <div class="container">
+        <!-- Selector de idioma dentro del contenido -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h1 style="font-size:2.5rem; margin-bottom:0.5rem;">Privacy Policy, Terms of Use, and Cookie Policy</h1>
+                <p class="last-update" style="margin-top:0;">Last updated: March 25, 2026</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <span class="me-2" style="font-weight:600; color:var(--text-medium);">Language:</span>
+                <div class="btn-group" role="group" aria-label="Language selector">
+                    <a href="es.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇪🇸 ES</a>
+                    <a href="en.html" class="btn btn-outline-primary btn-sm active" style="border-color:var(--mid-blue); background:var(--mid-blue); color:#fff;">🇺🇸 EN</a>
+                    <a href="de.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇩🇪 DE</a>
+                    <a href="pt.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇧🇷 PT</a>
+                </div>
+            </div>
+        </div>
 
-            <p>This document sets forth the Terms of Use, Privacy Policy, and Cookie Policy applicable to the <strong>GeoRoots</strong> website. By accessing, browsing, or using any of the services offered by this platform, the user declares that they have read, understood, and accepted these terms and conditions. If you do not agree with these terms, you must refrain from using the site.</p>
-
+        <p>This document sets forth the Terms of Use, Privacy Policy, and Cookie Policy applicable to the <strong>GeoRoots</strong> website...</p>
+        <!-- resto del contenido -->
             <div class="legal-index">
                 <h2>Index</h2>
                 <ol>
