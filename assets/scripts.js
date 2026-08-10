@@ -1,6 +1,5 @@
 // ============================================================
 //  GeoRoot - Scripts compartidos (internacionalización, cookies, etc.)
-//  Se carga una vez desde cada página después de insertar el header.
 // ============================================================
 
 (function () {
@@ -9,11 +8,11 @@
     // === CONFIGURACIÓN ===
     const AVAILABLE_LANGS = ['es', 'en', 'de', 'pt'];
     const DEFAULT_LANG = 'es';
-    const LANG_PATH = 'https://pablokriger.github.io/GeoRoot/lang/'; // Ajusta si es necesario
+    const LANG_PATH = 'https://pablokriger.github.io/GeoRoot/lang/';
     let currentLang = DEFAULT_LANG;
     let translations = {};
 
-    // === ELEMENTOS DEL DOM (se buscan cuando se necesitan) ===
+    // === ELEMENTOS DEL DOM ===
     function getLangBtn() {
         return document.getElementById('langDropdown');
     }
@@ -28,62 +27,64 @@
     }
 
     // === COOKIE BANNER ===
+    let cookieBannerInitialized = false;
+
+    function hasConsent() {
+        try {
+            return localStorage.getItem('geoRoot_cookie_consent') === 'accepted';
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function setCookieConsent() {
+        try {
+            localStorage.setItem('geoRoot_cookie_consent', 'accepted');
+            localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
+        } catch (e) { }
+    }
+
     function initCookieBanner() {
         const banner = getCookieBanner();
         const acceptBtn = getAcceptBtn();
         const closeBtn = getCloseBtn();
 
-        function hideBanner() {
-            if (banner) {
-                banner.classList.add('hidden-banner');
-                setTimeout(function () {
-                    if (banner.parentNode) {
-                        banner.parentNode.removeChild(banner);
-                    }
-                }, 500);
-            }
-        }
+        // Si no hay banner, no hacemos nada.
+        if (!banner) return;
 
-        function setCookieConsent() {
-            try {
-                localStorage.setItem('geoRoot_cookie_consent', 'accepted');
-                localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
-            } catch (e) { }
-        }
-
-        function hasConsent() {
-            try {
-                return localStorage.getItem('geoRoot_cookie_consent') === 'accepted';
-            } catch (e) {
-                return false;
-            }
-        }
-
-        // Si ya hay consentimiento, ocultar banner
-        if (hasConsent() && banner) {
+        // Si ya tiene consentimiento, ocultar y salir.
+        if (hasConsent()) {
             banner.style.display = 'none';
             return;
         }
 
-        // Asignar eventos si los botones existen
+        // Si ya se inicializó antes, no volver a asignar eventos.
+        if (cookieBannerInitialized) return;
+
+        // Función para ocultar y guardar consentimiento
+        function hideBanner() {
+            banner.classList.add('hidden-banner');
+            setTimeout(function () {
+                if (banner.parentNode) {
+                    banner.parentNode.removeChild(banner);
+                }
+            }, 500);
+            setCookieConsent();
+        }
+
         if (acceptBtn) {
-            acceptBtn.addEventListener('click', function () {
-                setCookieConsent();
-                hideBanner();
-            });
+            acceptBtn.addEventListener('click', hideBanner);
         }
         if (closeBtn) {
-            closeBtn.addEventListener('click', function () {
-                setCookieConsent();
-                hideBanner();
-            });
+            closeBtn.addEventListener('click', hideBanner);
         }
+
+        cookieBannerInitialized = true;
     }
 
     // === SUBMENÚS MÓVILES ===
     function initMobileSubmenus() {
         document.querySelectorAll('.dropdown-submenu > a').forEach(function (submenuLink) {
-            // Remover listeners previos para evitar duplicados
             submenuLink.removeEventListener('click', handleSubmenuClick);
             submenuLink.addEventListener('click', handleSubmenuClick);
         });
@@ -154,7 +155,6 @@
         const langBtn = getLangBtn();
         if (!langBtn) return;
 
-        // Cargar preferencia guardada
         try {
             const savedLang = localStorage.getItem('geoRoot_preferred_lang');
             if (savedLang && AVAILABLE_LANGS.includes(savedLang)) {
@@ -162,13 +162,11 @@
             }
         } catch (ex) { }
 
-        // Asignar eventos a las opciones del dropdown
         document.querySelectorAll('.lang-menu .dropdown-item').forEach(function (item) {
             item.removeEventListener('click', handleLangClick);
             item.addEventListener('click', handleLangClick);
         });
 
-        // Cargar idioma inicial
         updateLangButton(currentLang);
         loadLanguage(currentLang);
     }
@@ -179,7 +177,6 @@
         if (lang && AVAILABLE_LANGS.includes(lang) && lang !== currentLang) {
             loadLanguage(lang);
         }
-        // Cerrar dropdown
         const langBtn = getLangBtn();
         if (langBtn) {
             const dropdown = bootstrap.Dropdown.getInstance(langBtn);
@@ -189,28 +186,23 @@
         }
     }
 
-    // === INICIALIZACIÓN COMPLETA (se llama después de cargar header y footer) ===
+    // === INICIALIZACIÓN ===
     function initApp() {
-        initCookieBanner();
+        // El cookie banner se inicializa después de cargar el footer (ver llamada al final del fetch del footer)
         initMobileSubmenus();
         initLanguageSelector();
     }
 
-    // Exponer funciones globalmente para que puedan ser llamadas desde los includes
+    // Exponer funciones globalmente
     window.initApp = initApp;
     window.applyTranslations = applyTranslations;
     window.loadLanguage = loadLanguage;
     window.currentLang = currentLang;
+    window.initCookieBanner = initCookieBanner;
 
-    // Si el DOM ya está cargado, ejecutar initApp (por si se carga el script después del header)
+    // Si el DOM ya está cargado, ejecutar initApp (por si acaso)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initApp);
-    } else {
-        // Si el script se carga después de que el DOM esté listo (ej. mediante fetch)
-        // esperamos un poco para asegurar que header y footer estén insertados.
-        // Pero como se llama desde el index después de insertar el header, podemos ejecutar directamente.
-        // Sin embargo, lo dejamos como función para que se llame explícitamente desde el index.
-        // initApp(); // No ejecutamos automáticamente, lo llamará el index después de cargar footer también.
     }
 
 })();
