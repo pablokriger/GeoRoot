@@ -494,6 +494,11 @@
   "volga_contribute_success_text": "Gracias por contribuir. Tu información será revisada y, si corresponde, incorporada a la base de datos.",
   "volga_contribute_reset": "Reenviar un nuevo apellido",
 
+
+  "privacy_banner_message": "Al utilizar esta página, aceptas los términos y condiciones de nuestra política de privacidad.",
+  "privacy_banner_accept": "Aceptar",
+
+
   "volga_familiares_label_edad": "Tu edad",
   "volga_familiares_placeholder_edad": "Ej.: 35",
   "volga_familiares_error_edad": "Por favor, ingresá una edad válida (1-120).",
