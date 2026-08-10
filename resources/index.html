@@ -25,6 +25,7 @@
         rel="stylesheet" />
 
     <style>
+        /* ====== ESTILOS (idénticos a los del HTML original) ====== */
         :root {
             --deep-blue: #1b3a5c;
             --mid-blue: #2c5f8a;
@@ -44,490 +45,115 @@
             --collab-border: #8ab88a;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            overflow-x: hidden;
-            width: 100%;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; width: 100%; }
         body {
-            font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
-            color: var(--text-dark);
-            background: var(--white);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            padding-bottom: 0;
-            position: relative;
-            min-height: 100vh;
-            overflow-x: hidden;
-            width: 100%;
-            max-width: 100vw;
+            font-family: 'Open Sans', system-ui, sans-serif;
+            color: var(--text-dark); background: var(--white); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            overflow-x: hidden; width: 100%; max-width: 100vw;
         }
-
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Merriweather', 'Times New Roman', serif;
-            font-weight: 700;
-            color: var(--deep-blue);
-            letter-spacing: -0.01em;
+            font-family: 'Merriweather', serif;
+            font-weight: 700; color: var(--deep-blue); letter-spacing: -0.01em;
         }
-
-        a {
-            color: var(--mid-blue);
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-        a:hover {
-            color: #1a4a6e;
-            text-decoration: underline;
-        }
-
+        a { color: var(--mid-blue); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: #1a4a6e; text-decoration: underline; }
         .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--deep-blue);
-            color: #fff !important;
-            padding: 8px 16px;
-            border-radius: 0 0 6px 6px;
-            z-index: 1050;
-            transition: top 0.2s;
-            font-weight: 600;
+            position: absolute; top: -40px; left: 6px; background: var(--deep-blue);
+            color: #fff !important; padding: 8px 16px; border-radius: 0 0 6px 6px;
+            z-index: 1050; transition: top 0.2s; font-weight: 600;
         }
         .skip-link:focus { top: 0; }
 
-        /* ---- NAVBAR ---- */
-        .navbar {
-            background: var(--deep-blue);
-            padding: 0.55rem 0;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-            position: sticky;
-            top: 0;
-            z-index: 1020;
-            width: 100%;
-        }
-        .navbar .container {
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        .navbar-brand {
-            font-family: 'Merriweather', serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: var(--white) !important;
-            letter-spacing: 0.03em;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-        }
-        .navbar-brand .brand-logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 3px;
-            flex-shrink: 0;
-        }
-        .navbar-nav .nav-link {
-            color: rgba(255, 255, 255, 0.88) !important;
-            font-weight: 500;
-            padding: 0.5rem 1.1rem !important;
-            border-radius: 6px;
-            transition: background var(--transition), color var(--transition);
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-            white-space: nowrap;
-        }
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            background: rgba(255, 255, 255, 0.12);
-            color: #fff !important;
-            text-decoration: none;
-        }
-        .navbar-toggler { border-color: rgba(255, 255, 255, 0.4); }
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        .nav-link.collab-highlight {
-            border: 2px solid var(--collab-border) !important;
-            border-radius: 22px !important;
-            padding: 0.4rem 1.3rem !important;
-            margin: 0 0.2rem;
-            background: rgba(138, 184, 138, 0.1);
-            transition: all var(--transition);
-        }
-        .nav-link.collab-highlight:hover {
-            background: rgba(138, 184, 138, 0.22) !important;
-            border-color: #9cc99c !important;
-            color: #fff !important;
-        }
+        /* NAVBAR */
+        .navbar { background: var(--deep-blue); padding: 0.55rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 1020; width: 100%; }
+        .navbar .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .navbar-brand { font-family: 'Merriweather', serif; font-size: 1.7rem; font-weight: 700; color: var(--white) !important; letter-spacing: 0.03em; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+        .navbar-brand .brand-logo { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; background: rgba(255,255,255,0.1); padding: 3px; flex-shrink: 0; }
+        .navbar-nav .nav-link { color: rgba(255,255,255,0.88) !important; font-weight: 500; padding: 0.5rem 1.1rem !important; border-radius: 6px; transition: background var(--transition), color var(--transition); font-size: 0.95rem; letter-spacing: 0.02em; white-space: nowrap; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background: rgba(255,255,255,0.12); color: #fff !important; text-decoration: none; }
+        .navbar-toggler { border-color: rgba(255,255,255,0.4); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .nav-link.collab-highlight { border: 2px solid var(--collab-border) !important; border-radius: 22px !important; padding: 0.4rem 1.3rem !important; margin: 0 0.2rem; background: rgba(138,184,138,0.1); transition: all var(--transition); }
+        .nav-link.collab-highlight:hover { background: rgba(138,184,138,0.22) !important; border-color: #9cc99c !important; color: #fff !important; }
 
-        /* ---- IDIOMA DROPDOWN ---- */
-        .lang-btn {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            color: #fff;
-            border-radius: 50%;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-size: 1.2rem;
-            padding: 0;
-            flex-shrink: 0;
-            line-height: 1;
-            text-align: center;
-        }
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #fff;
-        }
-        .dropdown-menu.lang-menu {
-            min-width: 160px;
-            border-radius: 10px;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-md);
-            padding: 6px 0;
-        }
-        .dropdown-menu.lang-menu .dropdown-item {
-            padding: 0.6rem 1.2rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: background var(--transition);
-        }
+        /* IDIOMA */
+        .lang-btn { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition); font-size: 1.2rem; padding: 0; flex-shrink: 0; line-height: 1; text-align: center; }
+        .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+        .dropdown-menu.lang-menu { min-width: 160px; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); padding: 6px 0; }
+        .dropdown-menu.lang-menu .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: background var(--transition); }
         .dropdown-menu.lang-menu .dropdown-item:hover { background: var(--light-blue); }
         .lang-flag { font-size: 1.3rem; }
 
-        /* ---- HERO ---- */
-        .resources-hero {
-            background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%);
-            color: #fff;
-            padding: 4rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .resources-hero::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -80px;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .resources-hero h1 {
-            color: #fff;
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .resources-hero .lead {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
+        /* HERO */
+        .resources-hero { background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%); color: #fff; padding: 4rem 0; text-align: center; position: relative; overflow: hidden; }
+        .resources-hero::before { content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px; background: rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none; }
+        .resources-hero h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .resources-hero .lead { font-size: 1.2rem; font-weight: 300; opacity: 0.9; position: relative; z-index: 1; }
 
-        /* ---- SECCIONES ---- */
-        .section-page {
-            padding: 4rem 0;
-        }
-        .section-page h2 {
-            font-size: 1.9rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        .section-page h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-gold);
-            margin-top: 8px;
-            border-radius: 2px;
-        }
-        .section-page p {
-            color: var(--text-medium);
-            font-size: 1.02rem;
-            margin-bottom: 1.2rem;
-        }
+        /* SECCIONES */
+        .section-page { padding: 4rem 0; }
+        .section-page h2 { font-size: 1.9rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        .section-page h2::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-gold); margin-top: 8px; border-radius: 2px; }
+        .section-page p { color: var(--text-medium); font-size: 1.02rem; margin-bottom: 1.2rem; }
 
-        /* ---- TARJETAS DE RECURSOS ---- */
-        .resource-card {
-            background: var(--white);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 2rem 1.5rem;
-            text-align: center;
-            height: 100%;
-            transition: all var(--transition);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .resource-card:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-            border-color: #cdd5dc;
-        }
-        .resource-icon {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.2rem;
-            font-size: 2rem;
-        }
-        .resource-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .resource-card p {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            flex-grow: 1;
-        }
-        .resource-card .btn-resource {
-            border: 2px solid var(--deep-blue);
-            color: var(--deep-blue);
-            border-radius: 25px;
-            font-weight: 600;
-            padding: 0.5rem 1.8rem;
-            transition: all var(--transition);
-            font-size: 0.9rem;
-            letter-spacing: 0.02em;
-            margin-top: 1rem;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .resource-card .btn-resource:hover {
-            background: var(--deep-blue);
-            color: #fff;
-            text-decoration: none;
-        }
-        .resource-card.coming-soon {
-            opacity: 0.7;
-            border-style: dashed;
-        }
-        .resource-card.coming-soon .resource-icon {
-            background: var(--soft-gray) !important;
-            color: #aaa !important;
-        }
-        .badge-coming {
-            background: #ccc;
-            color: #666;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.7rem;
-            border-radius: 12px;
-            margin-top: 0.5rem;
-        }
+        /* TARJETAS DE RECURSOS */
+        .resource-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; height: 100%; transition: all var(--transition); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+        .resource-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: #cdd5dc; }
+        .resource-icon { width: 75px; height: 75px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; font-size: 2rem; }
+        .resource-card h4 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .resource-card p { font-size: 0.9rem; color: var(--text-medium); flex-grow: 1; }
+        .resource-card .btn-resource { border: 2px solid var(--deep-blue); color: var(--deep-blue); border-radius: 25px; font-weight: 600; padding: 0.5rem 1.8rem; transition: all var(--transition); font-size: 0.9rem; letter-spacing: 0.02em; margin-top: 1rem; text-decoration: none; display: inline-block; }
+        .resource-card .btn-resource:hover { background: var(--deep-blue); color: #fff; text-decoration: none; }
+        .resource-card.coming-soon { opacity: 0.7; border-style: dashed; }
+        .resource-card.coming-soon .resource-icon { background: var(--soft-gray) !important; color: #aaa !important; }
+        .badge-coming { background: #ccc; color: #666; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 12px; margin-top: 0.5rem; }
 
-        /* ---- DRIVE BOX ---- */
-        .drive-box {
-            background: linear-gradient(135deg, #f5f6f8 0%, #e8f0f8 100%);
-            border-radius: var(--radius);
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--border-light);
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .btn-drive {
-            background: #4285f4;
-            color: #fff;
-            font-weight: 700;
-            padding: 0.8rem 2.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all var(--transition);
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-drive:hover {
-            background: #3367d6;
-            color: #fff;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
+        /* DRIVE BOX */
+        .drive-box { background: linear-gradient(135deg, #f5f6f8 0%, #e8f0f8 100%); border-radius: var(--radius); padding: 2.5rem 2rem; border: 1px solid var(--border-light); text-align: center; margin-top: 3rem; }
+        .btn-drive { background: #4285f4; color: #fff; font-weight: 700; padding: 0.8rem 2.2rem; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all var(--transition); font-size: 1rem; border: none; cursor: pointer; }
+        .btn-drive:hover { background: #3367d6; color: #fff; text-decoration: none; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
-        /* ---- FOOTER ---- */
-        .site-footer {
-            background: var(--footer-bg);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 3rem 0 2rem;
-            font-size: 0.93rem;
-            width: 100%;
-            max-width: 100vw;
-            overflow: hidden;
-        }
-        .site-footer h5 {
-            color: #fff;
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-        .site-footer a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+        /* FOOTER (común) */
+        .site-footer { background: var(--footer-bg); color: rgba(255,255,255,0.8); padding: 3rem 0 2rem; font-size: 0.93rem; width: 100%; max-width: 100vw; overflow: hidden; }
+        .site-footer h5 { color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; }
+        .site-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
         .site-footer a:hover { color: #fff; text-decoration: underline; }
         .site-footer .footer-links { list-style: none; padding: 0; }
         .site-footer .footer-links li { margin-bottom: 0.4rem; }
-        .footer-divider {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            margin: 2rem 0 1.5rem;
-        }
-        .footer-bottom {
-            color: rgba(255, 255, 255, 0.55);
-            font-size: 0.85rem;
-            word-wrap: break-word;
-        }
-        .footer-bottom strong { color: rgba(255, 255, 255, 0.8); }
+        .footer-divider { border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0 1.5rem; }
+        .footer-bottom { color: rgba(255,255,255,0.55); font-size: 0.85rem; word-wrap: break-word; }
+        .footer-bottom strong { color: rgba(255,255,255,0.8); }
 
-        /* ---- COOKIE BANNER ---- */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border-top: 2px solid var(--deep-blue);
-            box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.12);
-            z-index: 9999;
-            padding: 1rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            transform: translateY(0);
-            opacity: 1;
-            width: 100%;
-            max-width: 100vw;
-        }
-        .cookie-banner.hidden-banner {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .cookie-banner .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        .cookie-banner .cookie-text {
-            flex: 1 1 60%;
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            min-width: 240px;
-            word-wrap: break-word;
-        }
+        /* COOKIE BANNER */
+        .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid var(--deep-blue); box-shadow: 0 -6px 28px rgba(0,0,0,0.12); z-index: 9999; padding: 1rem 0; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease, opacity 0.4s ease; transform: translateY(0); opacity: 1; width: 100%; max-width: 100vw; }
+        .cookie-banner.hidden-banner { transform: translateY(100%); opacity: 0; pointer-events: none; }
+        .cookie-banner .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .cookie-banner .cookie-text { flex: 1 1 60%; font-size: 0.9rem; color: var(--text-medium); min-width: 240px; word-wrap: break-word; }
         .cookie-banner .cookie-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
-        .cookie-banner .btn-accept {
-            background: var(--deep-blue);
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            padding: 0.5rem 1.6rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
+        .cookie-banner .btn-accept { background: var(--deep-blue); color: #fff; border: none; border-radius: 20px; padding: 0.5rem 1.6rem; font-weight: 600; cursor: pointer; transition: all var(--transition); font-size: 0.9rem; white-space: nowrap; }
         .cookie-banner .btn-accept:hover { background: #1e4668; }
-        .cookie-banner .btn-close-cookie {
-            background: transparent;
-            border: none;
-            font-size: 1.3rem;
-            color: #888;
-            cursor: pointer;
-            padding: 0 6px;
-            transition: color var(--transition);
-        }
+        .cookie-banner .btn-close-cookie { background: transparent; border: none; font-size: 1.3rem; color: #888; cursor: pointer; padding: 0 6px; transition: color var(--transition); }
         .cookie-banner .btn-close-cookie:hover { color: #333; }
 
-        /* ---- DROPDOWN SUBMENU ---- */
+        /* DROPDOWN SUBMENU */
         .dropdown-submenu { position: relative; }
-        .dropdown-submenu>.dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: 0;
-            border-radius: 8px;
-            border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-md);
-            display: none;
-            position: absolute;
-        }
-        .dropdown-submenu:hover>.dropdown-menu,
-        .dropdown-submenu:focus-within>.dropdown-menu { display: block; }
-        .dropdown-submenu>a::after {
-            display: inline-block;
-            margin-left: 0.5em;
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            content: "\f054";
-            font-size: 0.6rem;
-            vertical-align: middle;
-        }
+        .dropdown-submenu>.dropdown-menu { top: 0; left: 100%; margin-top: -6px; margin-left: 0; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); display: none; position: absolute; }
+        .dropdown-submenu:hover>.dropdown-menu, .dropdown-submenu:focus-within>.dropdown-menu { display: block; }
+        .dropdown-submenu>a::after { display: inline-block; margin-left: 0.5em; font-family: "Font Awesome 6 Free"; font-weight: 900; content: "\f054"; font-size: 0.6rem; vertical-align: middle; }
 
         @media (max-width: 992px) {
-            .dropdown-submenu>.dropdown-menu {
-                position: static;
-                box-shadow: none;
-                border: none;
-                padding-left: 1.5rem;
-                display: none;
-            }
+            .dropdown-submenu>.dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 1.5rem; display: none; }
             .dropdown-submenu.show>.dropdown-menu { display: block; }
             .resources-hero h1 { font-size: 2rem; }
         }
-
         @media (max-width: 768px) {
-            .container,
-            .navbar .container,
-            .cookie-banner .container {
-                padding-left: 15px;
-                padding-right: 15px;
-                max-width: 100%;
-            }
+            .container, .navbar .container, .cookie-banner .container { padding-left: 15px; padding-right: 15px; max-width: 100%; }
             .row { margin-left: 0; margin-right: 0; }
             .navbar-brand { font-size: 1.1rem; }
             .navbar-brand .brand-logo { width: 30px; height: 30px; }
         }
-
         img { max-width: 100%; height: auto; }
         .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
         .row { margin-left: 0; margin-right: 0; }
@@ -535,101 +161,29 @@
 </head>
 
 <body>
-    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <!-- ====== HEADER (cargado dinámicamente) ====== -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('../elements/header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar header');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                const script = document.createElement('script');
+                script.src = '../assets/scripts.js';
+                script.onload = () => { if (typeof initApp === 'function') initApp(); };
+                document.body.appendChild(script);
+            })
+            .catch(error => console.warn('Error al cargar el header:', error));
+    </script>
 
-    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
-        <div class="container">
-            <a class="navbar-brand" href="https://pablokriger.github.io/GeoRoot/">
-                <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/Icono_GeoRoot.png"
-                    alt="GeoRoot Logo" class="brand-logo" width="44" height="44" loading="eager" />
-                GeoRoot | Volga
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-                aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir menú">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Datos Migratorios</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
-                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
-                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
-                            <li><a class="dropdown-item active" href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">Historia</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/history">Historia</a></li>
-                            <li><a class="dropdown-item" href="https://pablokriger.github.io/GeoRoot/migration">Flujos migratorios</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle collab-highlight" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora!
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item fw-bold" href="https://pablokriger.github.io/GeoRoot/colab"><strong>Colabora con GeoRoots</strong></a></li>
-                            <li><hr class="dropdown-divider" /></li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item" href="#">Otros Proyectos</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/PMP/" target="_blank" rel="noopener noreferrer">PMP Management</a></li>
-                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/testvial/" target="_blank" rel="noopener noreferrer">Test Vial</a></li>
-                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/climate/" target="_blank" rel="noopener noreferrer">ClimateData</a></li>
-                                    <li><a class="dropdown-item" href="https://pablokriger.github.io/lider/" target="_blank" rel="noopener noreferrer">LidER</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de</a>
-                    </li>
-                    <!-- Ícono de contacto con notificación -->
-                    <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link position-relative" href="https://pablokriger.github.io/GeoRoot/contact/" title="Contacto" style="padding: 0.5rem 0.8rem !important;">
-                            <i class="fa-solid fa-envelope" style="font-size: 1.2rem;"></i>
-                            <span style="
-                                position: absolute;
-                                top: 6px;
-                                right: 6px;
-                                width: 12px;
-                                height: 12px;
-                                background: #e74c3c;
-                                border-radius: 50%;
-                                border: 2px solid var(--deep-blue);
-                                display: inline-block;
-                            "></span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown ms-lg-2">
-                        <button class="lang-btn dropdown-toggle" id="langDropdown" data-bs-toggle="dropdown"
-                            aria-expanded="false" aria-label="Seleccionar idioma" title="Idioma"
-                            style="font-size:1.3rem;">🇪🇸</button>
-                        <ul class="dropdown-menu dropdown-menu-end lang-menu" aria-labelledby="langDropdown">
-                            <li><a class="dropdown-item" href="#" data-lang="es"><span class="lang-flag">🇪🇸</span>Español</a></li>
-                            <li><a class="dropdown-item" href="#" data-lang="en"><span class="lang-flag">🇺🇸</span>English</a></li>
-                            <li><a class="dropdown-item" href="#" data-lang="de"><span class="lang-flag">🇩🇪</span>Deutsch</a></li>
-                            <li><a class="dropdown-item" href="#" data-lang="pt"><span class="lang-flag">🇧🇷</span>Português</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <!-- ====== CONTENIDO PROPIO (con data-i18n) ====== -->
     <header class="resources-hero" id="main-content">
         <div class="container">
-            <h1>Recursos documentales</h1>
-            <p class="lead">Repositorio de fuentes para la investigación sobre Alemanes del Volga</p>
+            <h1 data-i18n="resources_hero_title">Recursos documentales</h1>
+            <p class="lead" data-i18n="resources_hero_lead">Repositorio de fuentes para la investigación sobre Alemanes del Volga</p>
         </div>
     </header>
 
@@ -637,105 +191,105 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <p>Esta sección reúne una <strong>colección en permanente crecimiento</strong> de recursos destinados a apoyar la investigación sobre los <strong>Alemanes del Volga</strong>, los procesos migratorios, la demografía histórica, la genealogía, la geografía y otras temáticas vinculadas con las comunidades de origen alemán en Argentina y el mundo.</p>
-
+                    <p data-i18n="resources_intro">Esta sección reúne una <strong>colección en permanente crecimiento</strong> de recursos destinados a apoyar la investigación sobre los <strong>Alemanes del Volga</strong>, los procesos migratorios, la demografía histórica, la genealogía, la geografía y otras temáticas vinculadas con las comunidades de origen alemán en Argentina y el mundo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- CATEGORÍAS DE RECURSOS -->
-<section class="section-page" style="background: var(--soft-gray); padding-top: 2rem; padding-bottom: 2rem;">
-    <div class="container">
-        <div class="text-center mb-4">
-            <h2 style="font-size: 1.7rem;">Algunas categorías que podrás encontrar</h2>
-            <p style="color: var(--text-medium); font-size: 0.95rem;">El material se irá ampliando y extendiendo con el tiempo</p>
+    <!-- CATEGORÍAS DE RECURSOS -->
+    <section class="section-page" style="background: var(--soft-gray); padding-top: 2rem; padding-bottom: 2rem;">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 style="font-size: 1.7rem;" data-i18n="resources_categories_title">Algunas categorías que podrás encontrar</h2>
+                <p style="color: var(--text-medium); font-size: 0.95rem;" data-i18n="resources_categories_subtitle">El material se irá ampliando y extendiendo con el tiempo</p>
+            </div>
+            <div class="row g-3">
+                <!-- Tarjeta 1 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e8f0f8; color: #2c5f8a; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card1_title">Libros digitales</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card1_desc">Obras completas, investigaciones y publicaciones históricas.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fef3e0; color: #c49b3f; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-newspaper"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card2_title">Artículos y publicaciones</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card2_desc">Papers académicos, artículos científicos y divulgación.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e8f5e9; color: #5cb85c; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-map"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card3_title">Mapas y cartografía</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card3_desc">Mapas históricos, atlas de colonias y representaciones geográficas.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fdecea; color: #d9534f; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-table"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card4_title">Bases de datos</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card4_desc">Registros migratorios, padrones, censos históricos y estadísticas.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 5 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #ede7f6; color: #5c4f8a; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card5_title">Fotografías y archivos</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card5_desc">Colecciones fotográficas, documentos escaneados y material de archivo.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 6 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e0f2f1; color: #00897b; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-file-alt"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card6_title">Informes técnicos</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card6_desc">Reportes demográficos, estudios territoriales y análisis poblacional.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 7 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fff8e1; color: #ff8f00; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card7_title">Documentos históricos</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card7_desc">Manifiestos, actas, registros parroquiales y documentos oficiales.</p>
+                    </div>
+                </div>
+                <!-- Tarjeta 8 (coming soon) -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition); position: relative; opacity: 0.8;">
+                        <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #f5f5f5; color: #888; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;" data-i18n="resources_card8_title">Multimedia</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;" data-i18n="resources_card8_desc">Entrevistas, documentales y material audiovisual sobre las comunidades.</p>
+                        <span class="badge bg-warning text-dark" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 20px;" data-i18n="resources_card8_badge">Próximamente</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row g-3">
-            <!-- Tarjeta 1 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e8f0f8; color: #2c5f8a; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-book"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Libros digitales</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Obras completas, investigaciones y publicaciones históricas.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 2 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fef3e0; color: #c49b3f; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-newspaper"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Artículos y publicaciones</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Papers académicos, artículos científicos y divulgación.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 3 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e8f5e9; color: #5cb85c; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-map"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Mapas y cartografía</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Mapas históricos, atlas de colonias y representaciones geográficas.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 4 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fdecea; color: #d9534f; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-table"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Bases de datos</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Registros migratorios, padrones, censos históricos y estadísticas.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 5 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #ede7f6; color: #5c4f8a; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-camera"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Fotografías y archivos</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Colecciones fotográficas, documentos escaneados y material de archivo.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 6 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #e0f2f1; color: #00897b; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-file-alt"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Informes técnicos</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Reportes demográficos, estudios territoriales y análisis poblacional.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 7 -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition);">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #fff8e1; color: #ff8f00; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-scroll"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Documentos históricos</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Manifiestos, actas, registros parroquiales y documentos oficiales.</p>
-                </div>
-            </div>
-            <!-- Tarjeta 8 (coming soon) -->
-            <div class="col-md-4 col-lg-3">
-                <div class="resource-card p-3" style="border-radius: var(--radius); background: var(--white); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); text-align: center; height: 100%; transition: all var(--transition); position: relative; opacity: 0.8;">
-                    <div class="resource-icon" style="width: 44px; height: 44px; border-radius: 50%; background: #f5f5f5; color: #888; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.3rem;">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-                    <h4 style="font-size: 0.95rem; margin-bottom: 0.3rem;">Multimedia</h4>
-                    <p style="font-size: 0.8rem; color: var(--text-medium); margin-bottom: 0.5rem;">Entrevistas, documentales y material audiovisual sobre las comunidades.</p>
-                    <span class="badge bg-warning text-dark" style="font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 20px;">Próximamente</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+
     <!-- ACCESO AL DRIVE -->
     <section class="section-page" id="driveSection">
         <div class="container">
@@ -743,153 +297,46 @@
                 <div class="col-lg-10 mx-auto">
                     <div class="drive-box">
                         <i class="fa-brands fa-google-drive mb-3" style="font-size: 3rem; color: #4285f4;"></i>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 0.8rem;">Accedé al repositorio completo</h3>
-                        <p style="color: var(--text-medium); margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 0.8rem;" data-i18n="resources_drive_title">Accedé al repositorio completo</h3>
+                        <p style="color: var(--text-medium); margin-bottom: 1.5rem;" data-i18n="resources_drive_desc">
                             Todos los recursos documentales están disponibles en nuestra carpeta de Google Drive.
                             El contenido se actualiza periódicamente con nuevos materiales.
                         </p>
-                        <a href="https://drive.google.com/open?id=1LUJJlJNnzsgVRIrpyaIuiVXV-QO_38X7" target="_blank" rel="noopener noreferrer" class="btn-drive">
+                        <a href="https://drive.google.com/open?id=1LUJJlJNnzsgVRIrpyaIuiVXV-QO_38X7" target="_blank" rel="noopener noreferrer" class="btn-drive" data-i18n="resources_drive_button">
                             <i class="fa-brands fa-google-drive me-2"></i>Abrir repositorio en Drive
                         </a>
-                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 1rem;">
+                        <p style="font-size: 0.8rem; color: var(--text-medium); margin-top: 1rem;" data-i18n="resources_drive_note">
                             <i class="fa-solid fa-lock-open me-1"></i> Acceso público · Materiales en constante actualización
                         </p>
                     </div>
 
-                    <p class="text-center mt-5" style="font-size: 0.95rem; color: var(--text-medium);">
-                        ¿Tenés material para compartir? <a href="https://pablokriger.github.io/GeoRoot/contact/" style="font-weight: 600;">Contactanos</a> para sumar tu aporte al repositorio.
+                    <p class="text-center mt-5" style="font-size: 0.95rem; color: var(--text-medium);" data-i18n="resources_contact_text">
+                        ¿Tenés material para compartir? <a href="https://pablokriger.github.io/GeoRoot/contact/" style="font-weight: 600;" data-i18n="resources_contact_link">Contactanos</a> para sumar tu aporte al repositorio.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h5>GeoRoot | Volga</h5>
-                    <p style="font-size:0.9rem; color: rgba(255,255,255,0.7);">
-                        Datos de migración y geografía para un público general. Un proyecto institucional de análisis
-                        territorial sobre Alemanes del Volga y otras corrientes migratorias.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Enlaces</h5>
-                    <ul class="footer-links">
-                        <li><a href="https://pablokriger.github.io/GeoRoot/">Inicio</a></li>
-                        <li><a href="https://pablokriger.github.io/GeoRoot/volga">Apellidos y variantes</a></li>
-                        <li><a href="https://pablokriger.github.io/GeoRoot/demograf">Demografía</a></li>
-                        <li><a href="https://pablokriger.github.io/GeoRoot/methods">Fuentes e indicadores</a></li>
-                        <li><a href="https://pablokriger.github.io/GeoRoot/resources">Recursos</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Contacto y más</h5>
-                    <ul class="footer-links">
-                        <li><a href="https://pablokriger.github.io/GeoRoot/about/index">Acerca de GeoRoot</a></li>
-                        <li><a href="https://pablokriger.github.io/GeoRoot/legal/es.html">Política de Privacidad</a></li>
-                        <li>
-                            <a href="https://pablokriger.github.io/GeoRoot/contact">
-                                <i class="fa-solid fa-envelope me-1"></i>Contacto
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="footer-divider" />
-            <div class="footer-bottom text-center">
-                <small>
-                    Copyright © <strong>Pablo Kriger</strong> 2020-2026.
-                    Se emplean fuentes de datos de organismos nacionales e internacionales reconocidos.
-                    <br />
-                    <a href="https://pablokriger.github.io/GeoRoot/colab"
-                        style="color: var(--accent-gold); font-weight: 600;">
-                        <i class="fa-solid fa-handshake-angle me-1"></i>¡Colabora con nuestro Proyecto!
-                    </a>
-                </small>
-            </div>
-        </div>
-    </footer>
-
-    <div id="cookieBanner" class="cookie-banner" role="alert" aria-live="polite">
-        <div class="container">
-            <div class="cookie-text">
-                <strong>🍪 Política de privacidad y cookies</strong><br />
-                Este sitio web utiliza cookies para mejorar la experiencia de navegación y recopilar datos estadísticos
-                anónimos. Al continuar navegando, acepta nuestra
-                <a href="https://pablokriger.github.io/GeoRoot/legal/es.html"
-                    style="color:var(--deep-blue);text-decoration:underline;">política de privacidad</a>.
-            </div>
-            <div class="cookie-actions">
-                <button class="btn-accept" id="acceptCookies" aria-label="Aceptar política de privacidad">Aceptar</button>
-                <button class="btn-close-cookie" id="closeCookieBanner" aria-label="Cerrar aviso de cookies" title="Cerrar">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous">
+    <!-- ====== FOOTER (cargado dinámicamente) ====== -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('../elements/footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar footer');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations();
+                }
+            })
+            .catch(error => console.warn('Error al cargar el footer:', error));
     </script>
 
-    <script>
-        (function () {
-            const banner = document.getElementById('cookieBanner');
-            const acceptBtn = document.getElementById('acceptCookies');
-            const closeBtn = document.getElementById('closeCookieBanner');
-            function hideBanner() {
-                if (banner) {
-                    banner.classList.add('hidden-banner');
-                    setTimeout(() => { if (banner.parentNode) banner.parentNode.removeChild(banner); }, 500);
-                }
-            }
-            function setCookieConsent() {
-                try {
-                    localStorage.setItem('geoRoot_cookie_consent', 'accepted');
-                    localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
-                } catch (e) {}
-            }
-            function hasConsent() {
-                try { return localStorage.getItem('geoRoot_cookie_consent') === 'accepted'; } catch (e) { return false; }
-            }
-            if (hasConsent() && banner) banner.style.display = 'none';
-            if (acceptBtn) acceptBtn.addEventListener('click', () => { setCookieConsent(); hideBanner(); });
-            if (closeBtn) closeBtn.addEventListener('click', () => { setCookieConsent(); hideBanner(); });
-
-            document.querySelectorAll('.dropdown-submenu > a').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    if (window.innerWidth < 992) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const li = this.closest('.dropdown-submenu');
-                        if (li) li.classList.toggle('show');
-                    }
-                });
-            });
-
-            const langBtn = document.getElementById('langDropdown');
-            document.querySelectorAll('.lang-menu .dropdown-item').forEach(item => {
-                item.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const lang = this.getAttribute('data-lang');
-                    try { localStorage.setItem('geoRoot_preferred_lang', lang); } catch (ex) {}
-                    window.location.href = 'https://pablokriger.github.io/GeoRoot/resources?lang=' + lang;
-                });
-            });
-            try {
-                const savedLang = localStorage.getItem('geoRoot_preferred_lang');
-                if (savedLang && langBtn) {
-                    const langItem = document.querySelector(`.lang-menu .dropdown-item[data-lang="${savedLang}"]`);
-                    if (langItem) {
-                        const flag = langItem.querySelector('.lang-flag');
-                        if (flag) langBtn.innerHTML = flag.outerHTML;
-                    }
-                }
-            } catch (ex) {}
-        })();
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 </body>
 </html>
