@@ -245,7 +245,7 @@
                                     </ul>
                                 </div>
                                 <hr />
-                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
+                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbwxOhxiGeLXWHV1J9hOKto5eLFQReUBdKc4g9OuYJms3gnWE4VyULQxsXUhiH53wIM-/exec" method="POST" novalidate>
                                     <input type="hidden" name="tipo" value="familiares">
                                     <div class="honeypot">
                                         <label for="website3">Website</label>
@@ -264,6 +264,30 @@
                                                 placeholder="Ej.: Schmidt" maxlength="100" data-i18n-placeholder="volga_familiares_placeholder_papa" />
                                             <div class="form-error-msg" id="error-apellido_papa" data-i18n="volga_familiares_error_papa">Por favor, ingresá el apellido de tu papá.</div>
                                         </div>
+
+                                        <!-- NUEVOS CAMPOS: Edad, Sexo, Apellido de pareja -->
+                                        <div class="col-md-4">
+                                            <label for="edad" class="form-label"><span data-i18n="volga_familiares_label_edad">Tu edad</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="edad" name="edad" required
+                                                placeholder="Ej.: 35" min="1" max="120" step="1" data-i18n-placeholder="volga_familiares_placeholder_edad" />
+                                            <div class="form-error-msg" id="error-edad" data-i18n="volga_familiares_error_edad">Por favor, ingresá una edad válida (1-120).</div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="sexo" class="form-label"><span data-i18n="volga_familiares_label_sexo">Sexo</span> <span class="required-asterisk">*</span></label>
+                                            <select class="form-select" id="sexo" name="sexo" required>
+                                                <option value="" selected disabled data-i18n="volga_familiares_sexo_default">Seleccioná...</option>
+                                                <option value="Masculino" data-i18n="volga_familiares_sexo_masculino">Masculino</option>
+                                                <option value="Femenino" data-i18n="volga_familiares_sexo_femenino">Femenino</option>
+                                                <option value="Prefiero no decirlo" data-i18n="volga_familiares_sexo_prefiero_no">Prefiero no decirlo</option>
+                                            </select>
+                                            <div class="form-error-msg" id="error-sexo" data-i18n="volga_familiares_error_sexo">Por favor, seleccioná una opción.</div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="apellido_pareja" class="form-label"><span data-i18n="volga_familiares_label_pareja">Apellido de tu pareja (si tuvieses)</span></label>
+                                            <input type="text" class="form-control" id="apellido_pareja" name="apellido_pareja"
+                                                placeholder="Ej.: Müller" maxlength="100" data-i18n-placeholder="volga_familiares_placeholder_pareja" />
+                                        </div>
+
                                         <div class="col-md-6">
                                             <label for="primos_tot" class="form-label"><span data-i18n="volga_familiares_label_primos_tot">Cantidad de primos/as (solo por parte de tus padres con apellido alemán)</span> <span class="required-asterisk">*</span></label>
                                             <input type="number" class="form-control" id="primos_tot" name="primos_tot" required
@@ -437,13 +461,11 @@
             })
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
-                // Aplicar traducciones al footer
                 if (typeof applyTranslations === 'function') {
                     applyTranslations();
                 }
-                // Inicializar el cookie banner ahora que el footer está cargado
                 if (typeof initCookieBanner === 'function') {
-    setTimeout(initCookieBanner, 300);
+                    setTimeout(initCookieBanner, 100);
                 }
             })
             .catch(error => console.warn('Error al cargar el footer:', error));
@@ -453,19 +475,21 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS ====== -->
+    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS (actualizado con nuevos campos) ====== -->
     <script>
         (function () {
             // ========================================
-            //  PANEL 1: APELLIDOS FAMILIARES
+            //  PANEL 1: APELLIDOS FAMILIARES (con nuevos campos)
             // ========================================
             const familiaresForm = document.getElementById('familiaresForm');
             const familiaresSuccess = document.getElementById('familiaresSuccess');
             const familiaresSubmitBtn = document.getElementById('familiaresSubmitBtn');
             const resetFamiliaresBtn = document.getElementById('resetFamiliaresBtn');
 
-            const numberFieldsFam = ['primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+            // Lista de campos numéricos (incluyendo el nuevo "edad")
+            const numberFieldsFam = ['edad', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
 
+            // Generar captcha
             function generateCaptchaFam() {
                 const num1 = Math.floor(Math.random() * 8) + 2;
                 const num2 = Math.floor(Math.random() * 8) + 1;
@@ -476,10 +500,16 @@
             }
             generateCaptchaFam();
 
+            // Validación de números (solo dígitos y >=0, para edad min 1)
             numberFieldsFam.forEach(id => {
                 const input = document.getElementById(id);
                 input.addEventListener('input', function () {
-                    if (this.value < 0) this.value = 0;
+                    if (id === 'edad') {
+                        if (this.value < 1) this.value = 1;
+                        if (this.value > 120) this.value = 120;
+                    } else {
+                        if (this.value < 0) this.value = 0;
+                    }
                     if (this.value !== '' && !/^\d+$/.test(this.value)) {
                         this.value = this.value.replace(/\D/g, '');
                     }
@@ -487,11 +517,14 @@
                 });
             });
 
+            // Submit del formulario
             familiaresForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 document.querySelectorAll('#familiaresPanel .form-error-msg').forEach(el => el.classList.remove('show'));
 
                 let valid = true;
+
+                // Validar apellidos
                 const apellido_mama = document.getElementById('apellido_mama').value.trim();
                 const apellido_papa = document.getElementById('apellido_papa').value.trim();
                 if (!apellido_mama) {
@@ -502,13 +535,32 @@
                     document.getElementById('error-apellido_papa').classList.add('show');
                     valid = false;
                 }
+
+                // Validar edad (numérica, 1-120)
+                const edad = parseInt(document.getElementById('edad').value, 10);
+                if (isNaN(edad) || edad < 1 || edad > 120) {
+                    document.getElementById('error-edad').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar sexo (selector)
+                const sexo = document.getElementById('sexo').value;
+                if (!sexo) {
+                    document.getElementById('error-sexo').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar campos numéricos (primos, sobrinos)
                 numberFieldsFam.forEach(id => {
+                    if (id === 'edad') return; // ya validado
                     const val = parseInt(document.getElementById(id).value, 10);
                     if (isNaN(val) || val < 0) {
                         document.getElementById('error-' + id).classList.add('show');
                         valid = false;
                     }
                 });
+
+                // Validar captcha
                 const captchaAnswer = parseInt(document.getElementById('captchaAnswerFam').value, 10);
                 const captchaExpected = parseInt(document.getElementById('captchaExpectedFam').value, 10);
                 if (isNaN(captchaAnswer) || captchaAnswer !== captchaExpected) {
@@ -516,8 +568,10 @@
                     generateCaptchaFam();
                     valid = false;
                 }
+
                 if (!valid) return;
 
+                // Envío
                 familiaresSubmitBtn.disabled = true;
                 familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
 
@@ -544,6 +598,7 @@
                 });
             });
 
+            // Botón "Volver a enviar otro"
             resetFamiliaresBtn.addEventListener('click', function () {
                 familiaresForm.reset();
                 familiaresSuccess.style.display = 'none';
@@ -555,14 +610,18 @@
                 numberFieldsFam.forEach(id => {
                     document.getElementById(id).value = '';
                 });
+                document.getElementById('sexo').value = '';
             });
 
+            // Limpiar errores al escribir
             document.getElementById('apellido_mama').addEventListener('input', () => document.getElementById('error-apellido_mama').classList.remove('show'));
             document.getElementById('apellido_papa').addEventListener('input', () => document.getElementById('error-apellido_papa').classList.remove('show'));
+            document.getElementById('edad').addEventListener('input', () => document.getElementById('error-edad').classList.remove('show'));
+            document.getElementById('sexo').addEventListener('change', () => document.getElementById('error-sexo').classList.remove('show'));
             document.getElementById('captchaAnswerFam').addEventListener('input', () => document.getElementById('error-captchaFam').classList.remove('show'));
 
             // ========================================
-            //  PANEL 2: BÚSQUEDA DE APELLIDOS
+            //  PANEL 2: BÚSQUEDA DE APELLIDOS (sin cambios)
             // ========================================
             const searchForm = document.getElementById('searchForm');
             const searchInput = document.getElementById('searchSurname');
@@ -647,7 +706,7 @@
             });
 
             // ========================================
-            //  PANEL 3: ENVÍO DE APELLIDO
+            //  PANEL 3: ENVÍO DE APELLIDO (sin cambios)
             // ========================================
             const contribForm = document.getElementById('contributeForm');
             const contribSuccess = document.getElementById('contribSuccess');
