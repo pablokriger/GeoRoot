@@ -259,13 +259,27 @@
             .catch(error => console.warn('Error al cargar el header:', error));
     </script>
 
-    <!-- ====== CONTENIDO PRINCIPAL ====== -->
-    <main class="legal-container" id="main-content">
-        <div class="container">
-            <h1>Datenschutzerklärung, Nutzungsbedingungen und Cookie-Richtlinie</h1>
-            <p class="last-update">Letzte Aktualisierung: 25. März 2026</p>
+<!-- ====== CONTENIDO PRINCIPAL ====== -->
+<main class="legal-container" id="main-content">
+    <div class="container">
+        <!-- Selector de idioma dentro del contenido -->
+        <div class="row align-items-center mb-4">
+            <div class="col-md-8">
+                <h1 style="font-size:2.5rem; margin-bottom:0.5rem;">Datenschutzerklärung, Nutzungsbedingungen und Cookie-Richtlinie</h1>
+                <p class="last-update" style="margin-top:0;">Letzte Aktualisierung: 25. März 2026</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <span class="me-2" style="font-weight:600; color:var(--text-medium);">Sprache:</span>
+                <div class="btn-group" role="group" aria-label="Sprachauswahl">
+                    <a href="es.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇪🇸 ES</a>
+                    <a href="en.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇺🇸 EN</a>
+                    <a href="de.html" class="btn btn-outline-primary btn-sm active" style="border-color:var(--mid-blue); background:var(--mid-blue); color:#fff;">🇩🇪 DE</a>
+                    <a href="pt.html" class="btn btn-outline-primary btn-sm" style="border-color:var(--mid-blue); color:var(--mid-blue);">🇧🇷 PT</a>
+                </div>
+            </div>
+        </div>
 
-            <p>Dieses Dokument fasst die Nutzungsbedingungen, die Datenschutzerklärung und die Cookie-Richtlinie zusammen, die für die Website <strong>GeoRoots</strong> gelten. Durch den Zugriff, das Surfen oder die Nutzung eines der von dieser Plattform angebotenen Dienste erklärt der Nutzer, dass er die vorliegenden Bedingungen gelesen, verstanden und akzeptiert hat. Sollten Sie mit diesen Bedingungen nicht einverstanden sein, müssen Sie von der Nutzung der Website Abstand nehmen.</p>
+        <p>Dieses Dokument fasst die Nutzungsbedingungen, die Datenschutzerklärung und die Cookie-Richtlinie zusammen, die für die Website <strong>GeoRoots</strong> gelten...</p>
 
             <div class="legal-index">
                 <h2>Inhaltsverzeichnis</h2>
