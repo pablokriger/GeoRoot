@@ -492,5 +492,23 @@
   "volga_contribute_submit": "Submit contribution",
   "volga_contribute_success_title": "Contribution submitted successfully!",
   "volga_contribute_success_text": "Thank you for contributing. Your information will be reviewed and, if applicable, incorporated into the database.",
-  "volga_contribute_reset": "Submit a new surname"
+  "volga_contribute_reset": "Submit a new surname",
+
+  "volga_familiares_label_edad": "Your age",
+  "volga_familiares_placeholder_edad": "E.g.: 35",
+  "volga_familiares_error_edad": "Please enter a valid age (1-120).",
+  "volga_familiares_label_sexo": "Gender",
+  "volga_familiares_sexo_default": "Select...",
+  "volga_familiares_sexo_masculino": "Male",
+  "volga_familiares_sexo_femenino": "Female",
+  "volga_familiares_sexo_prefiero_no": "Prefer not to say",
+  "volga_familiares_error_sexo": "Please select an option.",
+  "volga_familiares_label_pareja": "Your partner's surname (if any)",
+  "volga_familiares_placeholder_pareja": "E.g.: Müller",
+  "volga_familiares_label_hijos_tot": "Number of children ('0' if none)",
+  "volga_familiares_placeholder_hijos_tot": "E.g.: 2",
+  "volga_familiares_error_hijos_tot": "Enter a valid number (0 or more).",
+  "volga_familiares_label_hijos_no_aleman": "Number of children who DO NOT have a German surname",
+  "volga_familiares_placeholder_hijos_no_aleman": "E.g.: 1",
+  "volga_familiares_error_hijos_no_aleman": "Enter a valid number (0 or more)."
 }
