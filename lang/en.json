@@ -494,6 +494,9 @@
   "volga_contribute_success_text": "Thank you for contributing. Your information will be reviewed and, if applicable, incorporated into the database.",
   "volga_contribute_reset": "Submit a new surname",
 
+  "privacy_banner_message": "By using this site, you accept the terms and conditions of our privacy policy.",
+  "privacy_banner_accept": "Accept",
+
   "volga_familiares_label_edad": "Your age",
   "volga_familiares_placeholder_edad": "E.g.: 35",
   "volga_familiares_error_edad": "Please enter a valid age (1-120).",
