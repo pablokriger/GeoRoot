@@ -505,7 +505,7 @@
   "volga_familiares_error_sexo": "Por favor, seleccioná una opción.",
   "volga_familiares_label_pareja": "Apellido de tu pareja (si tuvieses)",
   "volga_familiares_placeholder_pareja": "Ej.: Müller",
-  "volga_familiares_label_hijos_tot": "Cantidad de hijos (\"0\" si no tienes)",
+  "volga_familiares_label_hijos_tot": "Cantidad de hijos ("0" si no tienes)",
   "volga_familiares_placeholder_hijos_tot": "Ej.: 2",
   "volga_familiares_error_hijos_tot": "Ingresá un número válido (0 o más).",
   "volga_familiares_label_hijos_no_aleman": "Cantidad de hijos que <strong>NO</strong> tienen apellido alemán",
