@@ -29,68 +29,67 @@
 // === COOKIE BANNER ===
 let cookieBannerInitialized = false;
 let cookieBannerRetryCount = 0;
-const COOKIE_BANNER_MAX_RETRIES = 3;
+const COOKIE_BANNER_MAX_RETRIES = 5;
 
 function initCookieBanner() {
     const banner = getCookieBanner();
     const acceptBtn = getAcceptBtn();
     const closeBtn = getCloseBtn();
 
-    // Si no hay banner, no hacemos nada.
+    // Si no hay banner, reintentar hasta 5 veces con retraso creciente
     if (!banner) {
-        // Si el banner no existe, reintentar hasta 3 veces con retraso
         if (cookieBannerRetryCount < COOKIE_BANNER_MAX_RETRIES) {
             cookieBannerRetryCount++;
-            setTimeout(initCookieBanner, 200);
+            setTimeout(initCookieBanner, 300 * cookieBannerRetryCount);
         }
         return;
     }
 
-    // Si ya tiene consentimiento, ocultar y salir.
+    // Si ya tiene consentimiento, ocultar y salir
     if (hasConsent()) {
         banner.style.display = 'none';
         return;
     }
 
-    // Si ya se inicializó (eventos asignados), no volver a asignar.
+    // Si ya se inicializó, no volver a asignar eventos
     if (cookieBannerInitialized) return;
 
     // Función para ocultar y guardar consentimiento
     function hideBanner() {
         banner.classList.add('hidden-banner');
+        // Guardar consentimiento ANTES de eliminar el banner
+        setCookieConsent();
         setTimeout(function () {
             if (banner.parentNode) {
                 banner.parentNode.removeChild(banner);
             }
         }, 500);
-        setCookieConsent();
     }
 
-    // Asignar eventos solo si los botones existen
-    let eventsAssigned = false;
+    // === DELEGACIÓN DE EVENTOS ===
+    // En lugar de asignar eventos directamente a los botones (que podrían no existir),
+    // asignamos un solo evento al banner y detectamos clics en los botones.
+    banner.addEventListener('click', function (e) {
+        const target = e.target.closest('.btn-accept, .btn-close-cookie');
+        if (target) {
+            e.preventDefault();
+            hideBanner();
+        }
+    });
+
+    // También asignamos eventos directamente a los botones por si acaso
     if (acceptBtn) {
         acceptBtn.addEventListener('click', hideBanner);
-        eventsAssigned = true;
     } else {
-        console.warn('Cookie banner: botón "Aceptar" no encontrado');
+        console.warn('Cookie banner: botón "Aceptar" no encontrado al asignar eventos directos');
     }
     if (closeBtn) {
         closeBtn.addEventListener('click', hideBanner);
-        eventsAssigned = true;
     } else {
-        console.warn('Cookie banner: botón "Cerrar" no encontrado');
+        console.warn('Cookie banner: botón "Cerrar" no encontrado al asignar eventos directos');
     }
 
-    // Si se asignaron al menos algunos eventos, marcar como inicializado
-    if (eventsAssigned) {
-        cookieBannerInitialized = true;
-    } else {
-        // Si no se encontraron botones, reintentar
-        if (cookieBannerRetryCount < COOKIE_BANNER_MAX_RETRIES) {
-            cookieBannerRetryCount++;
-            setTimeout(initCookieBanner, 200);
-        }
-    }
+    cookieBannerInitialized = true;
 }
 
     // === SUBMENÚS MÓVILES ===
