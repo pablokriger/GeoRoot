@@ -235,7 +235,7 @@ la <strong>composición demográfica, cultural y
             }
             // Inicializar el cookie banner ahora que el footer está cargado
             if (typeof initCookieBanner === 'function') {
-                initCookieBanner();
+                setTimeout(initCookieBanner, 100);
             }
         })
         .catch(error => console.warn('Error al cargar el footer:', error));
