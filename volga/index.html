@@ -247,6 +247,8 @@
                                 <hr />
                                 <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbybAzbfjOqHDTXbzIJ4GFdLpYutnjultvSsdXD-eZqagc0_tIG1uwF9MiglGLeqIjnP/exec" method="POST" novalidate>
                                     <input type="hidden" name="tipo" value="familiares">
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldFam" value="" />
                                     <div class="honeypot">
                                         <label for="website3">Website</label>
                                         <input type="text" id="website3" name="website" tabindex="-1" autocomplete="off" />
@@ -356,11 +358,13 @@
                             </div>
 
                             <!-- ============================================ -->
-                            <!-- PANEL 2: CONSULTA (sin cambios)              -->
+                            <!-- PANEL 2: CONSULTA                           -->
                             <!-- ============================================ -->
                             <div class="tab-pane fade" id="searchPanel" role="tabpanel" aria-labelledby="search-tab">
                                 <form id="searchForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
                                     <input type="hidden" name="tipo" value="buscar">
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldSearch" value="" />
                                     <div class="row g-3 align-items-end">
                                         <div class="alert alert-info" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
                                             <i class="fa-solid fa-circle-info me-2"></i>
@@ -389,10 +393,12 @@
                             </div>
 
                             <!-- ============================================ -->
-                            <!-- PANEL 3: ENVÍO DE APELLIDO (sin cambios)     -->
+                            <!-- PANEL 3: ENVÍO DE APELLIDO                  -->
                             <!-- ============================================ -->
                             <div class="tab-pane fade" id="contributePanel" role="tabpanel" aria-labelledby="contribute-tab">
                                 <form id="contributeForm" action="https://script.google.com/macros/s/AKfycbzPS_j0kPOn8ZSpmW4gZXP5EuoNBuQtK6fThKwKS8Wd3mCDxJPoLAZYytHLb6P_hA91/exec" method="POST" novalidate>
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldContrib" value="" />
                                     <div class="honeypot">
                                         <label for="website2">Website</label>
                                         <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off" />
@@ -486,6 +492,24 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <!-- ====== SCRIPT PARA OBTENER LA IP ====== -->
+    <script>
+        (function () {
+            // Obtener la IP del usuario y asignarla a todos los campos ocultos con id que contengan "ipField"
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip || '';
+                    // Asignar a todos los campos ocultos que tengan id empezando por ipField
+                    document.querySelectorAll('[id^="ipField"]').forEach(el => el.value = ip);
+                })
+                .catch(error => {
+                    console.warn('No se pudo obtener la IP:', error);
+                    // Dejar los campos vacíos
+                });
+        })();
     </script>
 
     <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS (actualizado) ====== -->
