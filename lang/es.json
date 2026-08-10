@@ -85,7 +85,7 @@
   "news_badge3": "BigData",
   "news_title3": "BigData para estudios WolgaDeutsch",
   "news_text3": "Incorporamos cifras y estadísticas de los asentamientos y flujos migratorios.",
-  "news_button3": "Consultar"
+  "news_button3": "Consultar",
 
   "about_hero_title": "Acerca del proyecto",
   "about_hero_lead": "Conocé la historia, los objetivos y las personas detrás de GeoRoot",
@@ -97,7 +97,7 @@
   "about_funding_title": "Financiamiento y colaboración",
   "about_funding_text1": "GeoRoot es un proyecto independiente financiado inicialmente por su autor. Su crecimiento depende del desarrollo de nuevas investigaciones, la incorporación de fuentes documentales, el procesamiento de datos y la creación de herramientas digitales. Por ello, se encuentra abierto a recibir apoyos de personas y organizaciones que compartan sus objetivos e intereses.",
   "about_funding_text2": "Los aportes contribuyen a preservar el patrimonio histórico, ampliar las investigaciones y fortalecer una plataforma científica de acceso público.",
-  "about_funding_button": "Colaborá con el proyecto"
+  "about_funding_button": "Colaborá con el proyecto",
 
   "book_hero_title": "Del Volga al Paraná",
   "book_hero_lead": "Historia y futuro de los Alemanes del Volga en Entre Ríos",
@@ -117,7 +117,7 @@
   "book_download_title": "Descarga gratuita",
   "book_download_text": "La obra se encuentra disponible para su consulta y descarga en formato digital.",
   "book_download_button": "Descargar documento (PDF)",
-  "book_download_footer": "Esta publicación constituye un aporte colectivo orientado a fortalecer la memoria histórica, favorecer el intercambio entre pueblos y acercar a nuevas generaciones una parte fundamental del patrimonio cultural de los Alemanes del Volga."
+  "book_download_footer": "Esta publicación constituye un aporte colectivo orientado a fortalecer la memoria histórica, favorecer el intercambio entre pueblos y acercar a nuevas generaciones una parte fundamental del patrimonio cultural de los Alemanes del Volga.",
 
   "colab_hero_title": "Colaborá con el proyecto",
   "colab_hero_lead": "Tu apoyo hace posible la investigación, la preservación de la memoria y el desarrollo de nuevas herramientas",
@@ -150,7 +150,7 @@
   "colab_institution_title": "¿Representás a una institución?",
   "colab_institution_desc": "Si representás a una institución, empresa, universidad, fundación o asociación interesada en establecer una colaboración o patrocinio, te invitamos a comunicarte a través de la sección de contacto.",
   "colab_institution_button": "Ir a Contacto",
-  "colab_final_message": "Muchas gracias por acompañar este proyecto y contribuir a preservar la historia, las raíces y el patrimonio cultural de nuestras comunidades."
+  "colab_final_message": "Muchas gracias por acompañar este proyecto y contribuir a preservar la historia, las raíces y el patrimonio cultural de nuestras comunidades.",
 
   "contact_hero_title": "Contacto",
   "contact_hero_lead": "Escribinos tu consulta, propuesta o información que quieras compartir",
@@ -189,7 +189,7 @@
   "contact_submit_button": "Enviar mensaje",
 
   "contact_success_title": "¡Mensaje enviado!",
-  "contact_success_text": "Gracias por comunicarte. Tu mensaje ha sido recibido y será respondido a la brevedad."
+  "contact_success_text": "Gracias por comunicarte. Tu mensaje ha sido recibido y será respondido a la brevedad.",
 
   "demograf_hero_title": "Demografía",
   "demograf_hero_lead": "Comprender una comunidad comienza por conocer su población",
@@ -229,7 +229,7 @@
   "demograf_stat3_label": "Colonias fundadas en Argentina en al menos 5 provincias",
   "demograf_stat4_number": "+11.000",
   "demograf_stat4_label": "Apellidos únicos registrados en nuestra base de datos (incluye variantes)",
-  "demograf_dashboard_footer": "<i class=\"fa-solid fa-circle-info me-1\"></i> Indicadores en permanente actualización a partir de fuentes censales, registros migratorios y estudios demográficos."
+  "demograf_dashboard_footer": "<i class=\"fa-solid fa-circle-info me-1\"></i> Indicadores en permanente actualización a partir de fuentes censales, registros migratorios y estudios demográficos.",
 
   "history_hero_title": "Historia de los Alemanes del Volga",
   "history_hero_lead": "Un pueblo que transformó la adversidad en legado",
@@ -263,7 +263,7 @@
   "history_section5_img_caption": "Documentos históricos, mapas y registros genealógicos para la investigación.",
   "history_section5_p1": "Conocer la historia de los Alemanes del Volga implica también <strong>preservar su patrimonio documental</strong>. Cada registro migratorio, censo, fotografía, mapa, libro, apellido o documento familiar representa una <strong>pieza fundamental para reconstruir la memoria colectiva</strong> de esta comunidad.",
   "history_section5_p2": "Este proyecto busca contribuir a esa tarea mediante la <strong>recopilación, digitalización, análisis y difusión de información histórica</strong> utilizando metodologías propias de la <strong>demografía, la genealogía, la geografía, la estadística y la ciencia de datos</strong>.",
-  "history_section5_p3": "El objetivo es transformar fuentes dispersas en <strong>conocimiento accesible, verificable y útil</strong> para investigadores, descendientes e instituciones, favoreciendo la conservación de este patrimonio para las generaciones futuras."
+  "history_section5_p3": "El objetivo es transformar fuentes dispersas en <strong>conocimiento accesible, verificable y útil</strong> para investigadores, descendientes e instituciones, favoreciendo la conservación de este patrimonio para las generaciones futuras.",
 
   "methods_hero_title": "Fuentes de datos, indicadores y metodología",
   "methods_hero_lead": "Resumen de los enfoques empleados en las investigaciones",
@@ -316,7 +316,7 @@
   "methods_results_title": "Productos y resultados",
   "methods_results_p1": "Los resultados generados incluyen <strong>bases de datos estructuradas, indicadores demográficos, cartografía temática, atlas digitales, series estadísticas, visualizaciones geográficas, análisis espaciales, estudios genealógicos, reconstrucciones históricas y herramientas de consulta pública</strong>.",
   "methods_results_p2": "En conjunto, estos productos permiten estudiar la evolución de comunidades migrantes desde una perspectiva cuantitativa y territorial, facilitando investigaciones comparativas tanto a escala local como nacional e internacional.",
-  "methods_results_p3": "El proyecto se concibe como una <strong>plataforma de investigación en permanente actualización</strong> orientada a ampliar progresivamente su alcance y precisión, a fin de producti contenido de valor."
+  "methods_results_p3": "El proyecto se concibe como una <strong>plataforma de investigación en permanente actualización</strong> orientada a ampliar progresivamente su alcance y precisión, a fin de producti contenido de valor.",
 
   "migration_hero_title": "Flujos migratorios",
   "migration_hero_lead": "Reconstruir los caminos de la migración para comprender la historia",
@@ -385,7 +385,7 @@
   "migration_section2_p1": "Es preciso <strong>reconstruir y representar espacialmente los movimientos migratorios</strong> mediante análisis demográfico, cartografía digital, estadística y ciencia de datos.",
   "migration_section2_p2": "La integración de <strong>documentos históricos, censos, registros migratorios, cartografía y bases de datos</strong> permite visualizar la evolución de los desplazamientos poblacionales con un nivel de detalle difícil de alcanzar mediante fuentes aisladas.",
   "migration_section2_p3": "Este proyecto podrá alcanzar progresivamente <strong>modelos espaciales e indicadores</strong> que permitan identificar las rutas migratorias, áreas de origen y destino, cambios territoriales y procesos de dispersión poblacional tanto en Argentina como en otros países.",
-  "migration_section2_img_caption": "Cartografía antigua de la región del Volga."
+  "migration_section2_img_caption": "Cartografía antigua de la región del Volga.",
 
   "resources_hero_title": "Recursos documentales",
   "resources_hero_lead": "Repositorio de fuentes para la investigación sobre Alemanes del Volga",
@@ -417,7 +417,7 @@
   "resources_drive_button": "Abrir repositorio en Drive",
   "resources_drive_note": "<i class=\"fa-solid fa-lock-open me-1\"></i> Acceso público · Materiales en constante actualización",
   "resources_contact_text": "¿Tenés material para compartir? <a href=\"https://pablokriger.github.io/GeoRoot/contact/\" style=\"font-weight: 600;\">Contactanos</a> para sumar tu aporte al repositorio.",
-  "resources_contact_link": "Contactanos"
+  "resources_contact_link": "Contactanos",
 
   "volga_hero_title": "Base de datos de apellidos",
   "volga_hero_subtitle": "¡Completa las siguientes tres actividades para conocer nuestra historia Volga!",
@@ -493,6 +493,4 @@
   "volga_contribute_success_title": "¡Aporte enviado con éxito!",
   "volga_contribute_success_text": "Gracias por contribuir. Tu información será revisada y, si corresponde, incorporada a la base de datos.",
   "volga_contribute_reset": "Reenviar un nuevo apellido"
-
-
 }
