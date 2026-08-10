@@ -505,7 +505,7 @@
   "volga_familiares_error_sexo": "Bitte wählen Sie eine Option.",
   "volga_familiares_label_pareja": "Nachname Ihres Partners (falls vorhanden)",
   "volga_familiares_placeholder_pareja": "z.B.: Müller",
-  "volga_familiares_label_hijos_tot": "Anzahl der Kinder ("0" wenn keine)",
+  "volga_familiares_label_hijos_tot": "Anzahl der Kinder ('0' wenn keine)",
   "volga_familiares_placeholder_hijos_tot": "z.B.: 2",
   "volga_familiares_error_hijos_tot": "Geben Sie eine gültige Zahl ein (0 oder mehr).",
   "volga_familiares_label_hijos_no_aleman": "Anzahl der Kinder, die KEINEN deutschen Nachnamen haben",
