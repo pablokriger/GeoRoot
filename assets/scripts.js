@@ -137,17 +137,42 @@ function initCookieBanner() {
     }
 
     function applyTranslations() {
-        document.querySelectorAll('[data-i18n]').forEach(function (el) {
-            const key = el.getAttribute('data-i18n');
-            if (translations[key]) {
-                if (translations[key].includes('<')) {
-                    el.innerHTML = translations[key];
-                } else {
-                    el.textContent = translations[key];
-                }
+    // Traducir contenido de texto/HTML
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n');
+        if (translations[key]) {
+            if (translations[key].includes('<')) {
+                el.innerHTML = translations[key];
+            } else {
+                el.textContent = translations[key];
             }
-        });
-    }
+        }
+    });
+
+    // Traducir placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[key]) {
+            el.placeholder = translations[key];
+        }
+    });
+
+    // Traducir títulos (tooltips)
+    document.querySelectorAll('[data-i18n-title]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n-title');
+        if (translations[key]) {
+            el.title = translations[key];
+        }
+    });
+
+    // Traducir aria-label (si se usa)
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (translations[key]) {
+            el.setAttribute('aria-label', translations[key]);
+        }
+    });
+}
 
     function updateLangButton(lang) {
         const langBtn = getLangBtn();
