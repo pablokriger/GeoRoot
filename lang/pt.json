@@ -494,6 +494,9 @@
   "volga_contribute_success_text": "Obrigado por contribuir. Sua informação será revisada e, se for o caso, incorporada à base de dados.",
   "volga_contribute_reset": "Enviar um novo sobrenome",
 
+  "privacy_banner_message": "Ao utilizar este site, você aceita os termos e condições da nossa política de privacidade.",
+  "privacy_banner_accept": "Aceitar",
+
   "volga_familiares_label_edad": "Sua idade",
   "volga_familiares_placeholder_edad": "Ex.: 35",
   "volga_familiares_error_edad": "Por favor, insira uma idade válida (1-120).",
