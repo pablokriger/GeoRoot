@@ -494,6 +494,9 @@
   "volga_contribute_success_text": "Vielen Dank für Ihren Beitrag. Ihre Informationen werden geprüft und gegebenenfalls in die Datenbank aufgenommen.",
   "volga_contribute_reset": "Einen neuen Nachnamen einreichen",
 
+  "privacy_banner_message": "Durch die Nutzung dieser Seite akzeptieren Sie die Allgemeinen Geschäftsbedingungen und die Datenschutzbestimmungen.",
+  "privacy_banner_accept": "Akzeptieren",
+
   "volga_familiares_label_edad": "Ihr Alter",
   "volga_familiares_placeholder_edad": "z.B.: 35",
   "volga_familiares_error_edad": "Bitte geben Sie ein gültiges Alter ein (1-120).",
