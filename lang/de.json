@@ -492,5 +492,23 @@
   "volga_contribute_submit": "Beitrag senden",
   "volga_contribute_success_title": "Beitrag erfolgreich gesendet!",
   "volga_contribute_success_text": "Vielen Dank für Ihren Beitrag. Ihre Informationen werden geprüft und gegebenenfalls in die Datenbank aufgenommen.",
-  "volga_contribute_reset": "Einen neuen Nachnamen einreichen"
+  "volga_contribute_reset": "Einen neuen Nachnamen einreichen",
+
+  "volga_familiares_label_edad": "Ihr Alter",
+  "volga_familiares_placeholder_edad": "z.B.: 35",
+  "volga_familiares_error_edad": "Bitte geben Sie ein gültiges Alter ein (1-120).",
+  "volga_familiares_label_sexo": "Geschlecht",
+  "volga_familiares_sexo_default": "Auswählen...",
+  "volga_familiares_sexo_masculino": "Männlich",
+  "volga_familiares_sexo_femenino": "Weiblich",
+  "volga_familiares_sexo_prefiero_no": "Möchte ich nicht sagen",
+  "volga_familiares_error_sexo": "Bitte wählen Sie eine Option.",
+  "volga_familiares_label_pareja": "Nachname Ihres Partners (falls vorhanden)",
+  "volga_familiares_placeholder_pareja": "z.B.: Müller",
+  "volga_familiares_label_hijos_tot": "Anzahl der Kinder (\"0\" wenn keine)",
+  "volga_familiares_placeholder_hijos_tot": "z.B.: 2",
+  "volga_familiares_error_hijos_tot": "Geben Sie eine gültige Zahl ein (0 oder mehr).",
+  "volga_familiares_label_hijos_no_aleman": "Anzahl der Kinder, die KEINEN deutschen Nachnamen haben",
+  "volga_familiares_placeholder_hijos_no_aleman": "z.B.: 1",
+  "volga_familiares_error_hijos_no_aleman": "Geben Sie eine gültige Zahl ein (0 oder mehr)."
 }
