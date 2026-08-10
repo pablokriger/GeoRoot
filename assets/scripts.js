@@ -26,61 +26,72 @@
         return document.getElementById('closeCookieBanner');
     }
 
-    // === COOKIE BANNER ===
-    let cookieBannerInitialized = false;
+// === COOKIE BANNER ===
+let cookieBannerInitialized = false;
+let cookieBannerRetryCount = 0;
+const COOKIE_BANNER_MAX_RETRIES = 3;
 
-    function hasConsent() {
-        try {
-            return localStorage.getItem('geoRoot_cookie_consent') === 'accepted';
-        } catch (e) {
-            return false;
+function initCookieBanner() {
+    const banner = getCookieBanner();
+    const acceptBtn = getAcceptBtn();
+    const closeBtn = getCloseBtn();
+
+    // Si no hay banner, no hacemos nada.
+    if (!banner) {
+        // Si el banner no existe, reintentar hasta 3 veces con retraso
+        if (cookieBannerRetryCount < COOKIE_BANNER_MAX_RETRIES) {
+            cookieBannerRetryCount++;
+            setTimeout(initCookieBanner, 200);
         }
+        return;
     }
 
-    function setCookieConsent() {
-        try {
-            localStorage.setItem('geoRoot_cookie_consent', 'accepted');
-            localStorage.setItem('geoRoot_cookie_consent_date', new Date().toISOString());
-        } catch (e) { }
+    // Si ya tiene consentimiento, ocultar y salir.
+    if (hasConsent()) {
+        banner.style.display = 'none';
+        return;
     }
 
-    function initCookieBanner() {
-        const banner = getCookieBanner();
-        const acceptBtn = getAcceptBtn();
-        const closeBtn = getCloseBtn();
+    // Si ya se inicializó (eventos asignados), no volver a asignar.
+    if (cookieBannerInitialized) return;
 
-        // Si no hay banner, no hacemos nada.
-        if (!banner) return;
+    // Función para ocultar y guardar consentimiento
+    function hideBanner() {
+        banner.classList.add('hidden-banner');
+        setTimeout(function () {
+            if (banner.parentNode) {
+                banner.parentNode.removeChild(banner);
+            }
+        }, 500);
+        setCookieConsent();
+    }
 
-        // Si ya tiene consentimiento, ocultar y salir.
-        if (hasConsent()) {
-            banner.style.display = 'none';
-            return;
-        }
+    // Asignar eventos solo si los botones existen
+    let eventsAssigned = false;
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', hideBanner);
+        eventsAssigned = true;
+    } else {
+        console.warn('Cookie banner: botón "Aceptar" no encontrado');
+    }
+    if (closeBtn) {
+        closeBtn.addEventListener('click', hideBanner);
+        eventsAssigned = true;
+    } else {
+        console.warn('Cookie banner: botón "Cerrar" no encontrado');
+    }
 
-        // Si ya se inicializó antes, no volver a asignar eventos.
-        if (cookieBannerInitialized) return;
-
-        // Función para ocultar y guardar consentimiento
-        function hideBanner() {
-            banner.classList.add('hidden-banner');
-            setTimeout(function () {
-                if (banner.parentNode) {
-                    banner.parentNode.removeChild(banner);
-                }
-            }, 500);
-            setCookieConsent();
-        }
-
-        if (acceptBtn) {
-            acceptBtn.addEventListener('click', hideBanner);
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', hideBanner);
-        }
-
+    // Si se asignaron al menos algunos eventos, marcar como inicializado
+    if (eventsAssigned) {
         cookieBannerInitialized = true;
+    } else {
+        // Si no se encontraron botones, reintentar
+        if (cookieBannerRetryCount < COOKIE_BANNER_MAX_RETRIES) {
+            cookieBannerRetryCount++;
+            setTimeout(initCookieBanner, 200);
+        }
     }
+}
 
     // === SUBMENÚS MÓVILES ===
     function initMobileSubmenus() {
