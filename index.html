@@ -1073,33 +1073,26 @@
     </section>
 
     <!-- ====== FOOTER (cargado dinámicamente) ====== -->
-    <div id="footer-placeholder"></div>
-    <script>
-        fetch('elements/footer.html')
-            .then(response => {
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-                return response.text();
-            })
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-                // Reaplicar traducciones y reinicializar eventos del footer (cookies, etc.)
-                if (typeof applyTranslations === 'function') {
-                    applyTranslations();
-                }
-                // Si hay elementos del footer que necesiten eventos (como el banner de cookies),
-                // se pueden volver a inicializar llamando a initApp o a una función específica.
-                // Como initApp ya se llamó al cargar el header, y el footer se carga después,
-                // es seguro volver a llamar a initApp para reassignar eventos del footer.
-                if (typeof initApp === 'function') {
-                    initApp();
-                }
-            })
-            .catch(error => {
-                console.error('Error al cargar el footer:', error);
-                document.getElementById('footer-placeholder').innerHTML =
-                    '<p style="color:red; padding:1rem;">Error al cargar el footer. Verifica la consola.</p>';
-            });
-    </script>
+<div id="footer-placeholder"></div>
+<script>
+    fetch('../elements/footer.html')
+        .then(response => {
+            if (!response.ok) throw new Error('Error al cargar footer');
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+            // Aplicar traducciones al footer
+            if (typeof applyTranslations === 'function') {
+                applyTranslations();
+            }
+            // Inicializar el cookie banner ahora que el footer está cargado
+            if (typeof initCookieBanner === 'function') {
+                initCookieBanner();
+            }
+        })
+        .catch(error => console.warn('Error al cargar el footer:', error));
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
