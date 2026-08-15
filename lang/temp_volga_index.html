@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Pablo Kriger" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish, English, German, Portuguese" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="icon" href="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/favicon.png" type="image/png" />
+
+    <title>Apellidos | GeoRoot | Volga</title>
+    <meta name="description"
+        content="Consultá nuestra base de datos de apellidos de Alemanes del Volga. Buscá tu apellido, explorá variantes y contribuí con nuevos datos genealógicos." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ====== ESTILOS (idénticos a los del HTML original) ====== */
+        :root {
+            --deep-blue: #1b3a5c;
+            --mid-blue: #2c5f8a;
+            --light-blue: #e8f0f8;
+            --accent-gold: #c49b3f;
+            --soft-gray: #f5f6f8;
+            --text-dark: #2d2d2d;
+            --text-medium: #4a4a4a;
+            --white: #ffffff;
+            --border-light: #e0e4e8;
+            --footer-bg: #0f2a40;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --collab-accent: #e8f0e8;
+            --collab-border: #8ab88a;
+            --error-red: #d9534f;
+            --success-green: #5cb85c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; width: 100%; }
+        body {
+            font-family: 'Open Sans', system-ui, sans-serif;
+            color: var(--text-dark); background: var(--white); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            overflow-x: hidden; width: 100%; max-width: 100vw;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700; color: var(--deep-blue); letter-spacing: -0.01em;
+        }
+        a { color: var(--mid-blue); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: #1a4a6e; text-decoration: underline; }
+        .skip-link {
+            position: absolute; top: -40px; left: 6px; background: var(--deep-blue);
+            color: #fff !important; padding: 8px 16px; border-radius: 0 0 6px 6px;
+            z-index: 1050; transition: top 0.2s; font-weight: 600;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* NAVBAR */
+        .navbar { background: var(--deep-blue); padding: 0.55rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 1020; width: 100%; }
+        .navbar .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .navbar-brand { font-family: 'Merriweather', serif; font-size: 1.7rem; font-weight: 700; color: var(--white) !important; letter-spacing: 0.03em; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+        .navbar-brand .brand-logo { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; background: rgba(255,255,255,0.1); padding: 3px; flex-shrink: 0; }
+        .navbar-nav .nav-link { color: rgba(255,255,255,0.88) !important; font-weight: 500; padding: 0.5rem 1.1rem !important; border-radius: 6px; transition: background var(--transition), color var(--transition); font-size: 0.95rem; letter-spacing: 0.02em; white-space: nowrap; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background: rgba(255,255,255,0.12); color: #fff !important; text-decoration: none; }
+        .navbar-toggler { border-color: rgba(255,255,255,0.4); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .nav-link.collab-highlight { border: 2px solid var(--collab-border) !important; border-radius: 22px !important; padding: 0.4rem 1.3rem !important; margin: 0 0.2rem; background: rgba(138,184,138,0.1); transition: all var(--transition); }
+        .nav-link.collab-highlight:hover { background: rgba(138,184,138,0.22) !important; border-color: #9cc99c !important; color: #fff !important; }
+
+        /* IDIOMA */
+        .lang-btn { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition); font-size: 1.2rem; padding: 0; flex-shrink: 0; line-height: 1; text-align: center; }
+        .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+        .dropdown-menu.lang-menu { min-width: 160px; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); padding: 6px 0; }
+        .dropdown-menu.lang-menu .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: background var(--transition); }
+        .dropdown-menu.lang-menu .dropdown-item:hover { background: var(--light-blue); }
+        .lang-flag { font-size: 1.3rem; }
+
+        /* HERO */
+        .surnames-hero { background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%); color: #fff; padding: 4rem 0; text-align: center; position: relative; overflow: hidden; }
+        .surnames-hero::before { content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px; background: rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none; }
+        .surnames-hero h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .surnames-hero .lead { font-size: 1.2rem; font-weight: 300; opacity: 0.9; position: relative; z-index: 1; }
+
+        /* SECCIONES */
+        .section-page { padding: 4rem 0; }
+        .section-page h2 { font-size: 1.9rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        .section-page h2::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-gold); margin-top: 8px; border-radius: 2px; }
+        .section-page p { color: var(--text-medium); font-size: 1.02rem; margin-bottom: 1.2rem; }
+
+        /* CARDS Y FORMULARIOS */
+        .tool-card { background: var(--white); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-md); margin-top: 2rem; }
+        .nav-tabs .nav-link { color: var(--text-medium); font-weight: 600; border: none; padding: 0.75rem 1.5rem; border-radius: 8px 8px 0 0; transition: all var(--transition); }
+        .nav-tabs .nav-link.active { color: var(--deep-blue); background: var(--light-blue); border-bottom: 3px solid var(--accent-gold); }
+        .form-label { font-weight: 600; color: var(--deep-blue); margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .form-control, .form-select { border: 2px solid var(--border-light); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.95rem; transition: all var(--transition); background: var(--soft-gray); }
+        .form-control:focus, .form-select:focus { border-color: var(--mid-blue); box-shadow: 0 0 0 0.2rem rgba(44,95,138,0.15); background: #fff; }
+        .btn-search { background: var(--accent-gold); color: #1b3a5c; font-weight: 700; border: none; padding: 0.8rem 2.5rem; border-radius: 30px; letter-spacing: 0.03em; transition: all var(--transition); font-size: 1rem; }
+        .btn-search:hover { background: #d4aa45; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-search:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .required-asterisk { color: var(--error-red); font-weight: 700; }
+        .result-box { background: var(--soft-gray); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem; border-left: 4px solid var(--mid-blue); }
+        .result-box.success { border-left-color: var(--success-green); background: #e8f5e9; }
+        .result-box.warning { border-left-color: var(--accent-gold); background: #fef9e7; }
+        .result-box.error { border-left-color: var(--error-red); background: #fdecea; }
+
+        /* Captcha */
+        .captcha-box { background: var(--soft-gray); border: 2px solid var(--border-light); border-radius: 8px; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .captcha-question { font-weight: 700; font-size: 1.1rem; color: var(--deep-blue); white-space: nowrap; }
+        .captcha-input { width: 100px; text-align: center; font-weight: 600; }
+        .form-error-msg { color: var(--error-red); font-size: 0.9rem; margin-top: 0.3rem; display: none; }
+        .form-error-msg.show { display: block; }
+
+        /* FOOTER (común) */
+        .site-footer { background: var(--footer-bg); color: rgba(255,255,255,0.8); padding: 3rem 0 2rem; font-size: 0.93rem; width: 100%; max-width: 100vw; overflow: hidden; }
+        .site-footer h5 { color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; }
+        .site-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+        .site-footer a:hover { color: #fff; text-decoration: underline; }
+        .site-footer .footer-links { list-style: none; padding: 0; }
+        .site-footer .footer-links li { margin-bottom: 0.4rem; }
+        .footer-divider { border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0 1.5rem; }
+        .footer-bottom { color: rgba(255,255,255,0.55); font-size: 0.85rem; word-wrap: break-word; }
+        .footer-bottom strong { color: rgba(255,255,255,0.8); }
+
+        /* COOKIE BANNER */
+        .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid var(--deep-blue); box-shadow: 0 -6px 28px rgba(0,0,0,0.12); z-index: 9999; padding: 1rem 0; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease, opacity 0.4s ease; transform: translateY(0); opacity: 1; width: 100%; max-width: 100vw; }
+        .cookie-banner.hidden-banner { transform: translateY(100%); opacity: 0; pointer-events: none; }
+        .cookie-banner .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .cookie-banner .cookie-text { flex: 1 1 60%; font-size: 0.9rem; color: var(--text-medium); min-width: 240px; word-wrap: break-word; }
+        .cookie-banner .cookie-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .cookie-banner .btn-accept { background: var(--deep-blue); color: #fff; border: none; border-radius: 20px; padding: 0.5rem 1.6rem; font-weight: 600; cursor: pointer; transition: all var(--transition); font-size: 0.9rem; white-space: nowrap; }
+        .cookie-banner .btn-accept:hover { background: #1e4668; }
+        .cookie-banner .btn-close-cookie { background: transparent; border: none; font-size: 1.3rem; color: #888; cursor: pointer; padding: 0 6px; transition: color var(--transition); }
+        .cookie-banner .btn-close-cookie:hover { color: #333; }
+
+        /* DROPDOWN SUBMENU */
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu>.dropdown-menu { top: 0; left: 100%; margin-top: -6px; margin-left: 0; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); display: none; position: absolute; }
+        .dropdown-submenu:hover>.dropdown-menu, .dropdown-submenu:focus-within>.dropdown-menu { display: block; }
+        .dropdown-submenu>a::after { display: inline-block; margin-left: 0.5em; font-family: "Font Awesome 6 Free"; font-weight: 900; content: "\f054"; font-size: 0.6rem; vertical-align: middle; }
+
+        @media (max-width: 992px) {
+            .dropdown-submenu>.dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 1.5rem; display: none; }
+            .dropdown-submenu.show>.dropdown-menu { display: block; }
+            .surnames-hero h1 { font-size: 2rem; }
+            .tool-card { padding: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .container, .navbar .container, .cookie-banner .container { padding-left: 15px; padding-right: 15px; max-width: 100%; }
+            .row { margin-left: 0; margin-right: 0; }
+            .navbar-brand { font-size: 1.1rem; }
+            .navbar-brand .brand-logo { width: 30px; height: 30px; }
+            .captcha-box { flex-direction: column; align-items: flex-start; }
+        }
+        img { max-width: 100%; height: auto; }
+        .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .row { margin-left: 0; margin-right: 0; }
+        .honeypot { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; }
+    </style>
+</head>
+
+<body>
+    <!-- ====== HEADER (cargado dinámicamente) ====== -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('../elements/header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar header');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                const script = document.createElement('script');
+                script.src = '../assets/scripts.js';
+                script.onload = () => { if (typeof initApp === 'function') initApp(); };
+                document.body.appendChild(script);
+            })
+            .catch(error => console.warn('Error al cargar el header:', error));
+    </script>
+
+    <!-- ====== CONTENIDO PROPIO (con data-i18n) ====== -->
+    <header class="surnames-hero" id="main-content">
+        <div class="container">
+            <h1 data-i18n="volga_hero_title">Base de datos de apellidos</h1>
+            <p class="lead" data-i18n="volga_hero_subtitle">¡Completa las siguientes tres actividades para conocer nuestra historia Volga!</p>
+        </div>
+    </header>
+
+    <section class="section-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+
+                    <!-- HERRAMIENTA DE CONSULTA -->
+                    <div class="tool-card">
+                        <ul class="nav nav-tabs" id="surnameTab" role="tablist">
+                            <!-- Pestaña 1: Apellidos familiares (ACTIVA) -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="familiares-tab" data-bs-toggle="tab" data-bs-target="#familiaresPanel" type="button" role="tab" aria-controls="familiaresPanel" aria-selected="true">
+                                    <i class="fa-solid fa-people-group me-1"></i> <span data-i18n="volga_tab_familiares">1) Apellidos familiares</span>
+                                </button>
+                            </li>
+                            <!-- Pestaña 2: Consultar -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="search-tab" data-bs-toggle="tab" data-bs-target="#searchPanel" type="button" role="tab" aria-controls="searchPanel" aria-selected="false">
+                                    <i class="fa-solid fa-magnifying-glass me-1"></i> <span data-i18n="volga_tab_search">2) Consultar apellido</span>
+                                </button>
+                            </li>
+                            <!-- Pestaña 3: Enviar apellido -->
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contribute-tab" data-bs-toggle="tab" data-bs-target="#contributePanel" type="button" role="tab" aria-controls="contributePanel" aria-selected="false">
+                                    <i class="fa-solid fa-pen-to-square me-1"></i> <span data-i18n="volga_tab_contribute">3) Enviar apellido</span>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content pt-4" id="surnameTabContent">
+                            <!-- ============================================ -->
+                            <!-- PANEL 1: APELLIDOS FAMILIARES (ACTIVO)      -->
+                            <!-- ============================================ -->
+                            <div class="tab-pane fade show active" id="familiaresPanel" role="tabpanel" aria-labelledby="familiares-tab">
+                                <div class="alert alert-info" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
+                                    <i class="fa-solid fa-circle-info me-2"></i>
+                                    <span data-i18n="volga_familiares_alert">Este cuestionario busca conocer porcentajes de apellidos alemanes y no alemanes en tu familia.</span>
+                                </div>
+                                <div class="mb-3">
+                                    <h5 style="font-weight: 700; color: var(--deep-blue);" data-i18n="volga_familiares_important_title">IMPORTANTE:</h5>
+                                    <ul>
+                                        <li data-i18n="volga_familiares_important_1">Solo podrán contestar aquellos/as que tengan al menos uno de sus padres con apellido alemán.</li>
+                                        <li data-i18n="volga_familiares_important_2">Una respuesta por miembro de la familia.</li>
+                                        <li data-i18n="volga_familiares_important_3">Destinado a personas de Sudamérica.</li>
+                                        <li data-i18n="volga_familiares_important_4">Por favor, ser exacto/a en las respuestas.</li>
+                                        <li data-i18n="volga_familiares_important_5">A la hora de contabilizar familiares, incluir tanto personas vivas como fallecidas.</li>
+                                    </ul>
+                                </div>
+                                <hr />
+                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbx3-eXw4Vt2I970UznN2_66Oyx1_kwuh2b_56jV87eHkXrXp0M2yrX0iSlFWvoZrHdH/exec" method="POST" novalidate>
+                                    <input type="hidden" name="tipo" value="familiares">
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldFam" value="" />
+                                    <div class="honeypot">
+                                        <label for="website3">Website</label>
+                                        <input type="text" id="website3" name="website" tabindex="-1" autocomplete="off" />
+                                    </div>
+                                    <div class="row g-3">
+                                        <!-- Apellidos de los padres -->
+                                        <div class="col-md-6">
+                                            <label for="apellido_mama" class="form-label"><span data-i18n="volga_familiares_label_mama">Apellido de tu mamá</span> <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="apellido_mama" name="apellido_mama" required
+                                                placeholder="Ej.: Müller" maxlength="100" data-i18n-placeholder="volga_familiares_placeholder_mama" />
+                                            <div class="form-error-msg" id="error-apellido_mama" data-i18n="volga_familiares_error_mama">Por favor, ingresá el apellido de tu mamá.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="apellido_papa" class="form-label"><span data-i18n="volga_familiares_label_papa">Apellido de tu papá</span> <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="apellido_papa" name="apellido_papa" required
+                                                placeholder="Ej.: Schmidt" maxlength="100" data-i18n-placeholder="volga_familiares_placeholder_papa" />
+                                            <div class="form-error-msg" id="error-apellido_papa" data-i18n="volga_familiares_error_papa">Por favor, ingresá el apellido de tu papá.</div>
+                                        </div>
+
+                                        <!-- Edad, Sexo y Hermanos -->
+                                        <div class="col-md-4">
+                                            <label for="edad" class="form-label"><span data-i18n="volga_familiares_label_edad">Tu edad</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="edad" name="edad" required
+                                                placeholder="Ej.: 35" min="1" max="120" step="1" data-i18n-placeholder="volga_familiares_placeholder_edad" />
+                                            <div class="form-error-msg" id="error-edad" data-i18n="volga_familiares_error_edad">Por favor, ingresá una edad válida (1-120).</div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="sexo" class="form-label"><span data-i18n="volga_familiares_label_sexo">Sexo</span> <span class="required-asterisk">*</span></label>
+                                            <select class="form-select" id="sexo" name="sexo" required>
+                                                <option value="" selected disabled data-i18n="volga_familiares_sexo_default">Seleccioná...</option>
+                                                <option value="Masculino" data-i18n="volga_familiares_sexo_masculino">Masculino</option>
+                                                <option value="Femenino" data-i18n="volga_familiares_sexo_femenino">Femenino</option>
+                                                <option value="Prefiero no decirlo" data-i18n="volga_familiares_sexo_prefiero_no">Prefiero no decirlo</option>
+                                            </select>
+                                            <div class="form-error-msg" id="error-sexo" data-i18n="volga_familiares_error_sexo">Por favor, seleccioná una opción.</div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="hermanos" class="form-label"><span data-i18n="volga_familiares_label_hermanos">Cantidad de hermanos</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hermanos" name="hermanos" required
+                                                placeholder="Ej.: 2" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hermanos" />
+                                            <div class="form-error-msg" id="error-hermanos" data-i18n="volga_familiares_error_hermanos">Ingresá un número válido (0 o más).</div>
+                                        </div>
+
+                                        <!-- Cantidad de hijos (fila separada con margen sutil) -->
+                                        <div class="col-md-6" style="margin-top: 0.5rem;">
+                                            <label for="hijos_tot" class="form-label"><span data-i18n="volga_familiares_label_hijos_tot">Cantidad de hijos ('0' si no tienes)</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hijos_tot" name="hijos_tot" required
+                                                placeholder="Ej.: 2" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hijos_tot" />
+                                            <div class="form-error-msg" id="error-hijos_tot" data-i18n="volga_familiares_error_hijos_tot">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top: 0.5rem;">
+                                            <label for="hijos_no_aleman" class="form-label"><span data-i18n="volga_familiares_label_hijos_no_aleman">Cantidad de hijos que <strong>NO</strong> tienen apellido alemán</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hijos_no_aleman" name="hijos_no_aleman" required
+                                                placeholder="Ej.: 1" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hijos_no_aleman" />
+                                            <div class="form-error-msg" id="error-hijos_no_aleman" data-i18n="volga_familiares_error_hijos_no_aleman">Ingresá un número válido (0 o más).</div>
+                                        </div>
+
+                                        <!-- Primos y sobrinos (sin cambios) -->
+                                        <div class="col-md-6">
+                                            <label for="primos_tot" class="form-label"><span data-i18n="volga_familiares_label_primos_tot">Cantidad de primos/as (solo por parte de tus padres con apellido alemán)</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="primos_tot" name="primos_tot" required
+                                                placeholder="Ej.: 10" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_primos_tot" />
+                                            <div class="form-error-msg" id="error-primos_tot" data-i18n="volga_familiares_error_primos_tot">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="primos_no_aleman" class="form-label"><span data-i18n="volga_familiares_label_primos_no_aleman">Cantidad de esos primos/as que <strong>NO</strong> tienen apellido alemán</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="primos_no_aleman" name="primos_no_aleman" required
+                                                placeholder="Ej.: 3" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_primos_no_aleman" />
+                                            <div class="form-error-msg" id="error-primos_no_aleman" data-i18n="volga_familiares_error_primos_no_aleman">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="sobrinos_tot" class="form-label"><span data-i18n="volga_familiares_label_sobrinos_tot">Cantidad de sobrinos/as (solo hijos/as de tus hermanos/as)</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="sobrinos_tot" name="sobrinos_tot" required
+                                                placeholder="Ej.: 5" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_sobrinos_tot" />
+                                            <div class="form-error-msg" id="error-sobrinos_tot" data-i18n="volga_familiares_error_sobrinos_tot">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="sobrinos_no_aleman" class="form-label"><span data-i18n="volga_familiares_label_sobrinos_no_aleman">Cantidad de esos sobrinos/as que <strong>NO</strong> tienen apellido alemán</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="sobrinos_no_aleman" name="sobrinos_no_aleman" required
+                                                placeholder="Ej.: 2" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_sobrinos_no_aleman" />
+                                            <div class="form-error-msg" id="error-sobrinos_no_aleman" data-i18n="volga_familiares_error_sobrinos_no_aleman">Ingresá un número válido (0 o más).</div>
+                                        </div>
+                                        <!-- Captcha -->
+                                        <div class="col-12">
+                                            <label class="form-label"><span data-i18n="volga_familiares_captcha_label">Verificación de seguridad</span> <span class="required-asterisk">*</span></label>
+                                            <div class="captcha-box">
+                                                <span class="captcha-question" id="captchaQuestionFam"></span>
+                                                <span>=</span>
+                                                <input type="number" class="form-control captcha-input" id="captchaAnswerFam"
+                                                    placeholder="?" required min="0" max="20" />
+                                                <input type="hidden" id="captchaExpectedFam" />
+                                            </div>
+                                            <div class="form-error-msg" id="error-captchaFam" data-i18n="volga_familiares_captcha_error">La respuesta no es correcta. Intentá de nuevo.</div>
+                                        </div>
+                                        <div class="col-12 text-center mt-3">
+                                            <button type="submit" class="btn-search" id="familiaresSubmitBtn" data-i18n="volga_familiares_submit">
+                                                <i class="fa-solid fa-paper-plane me-2"></i>Enviar cuestionario
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="familiaresSuccess" style="display: none;" class="mt-4 result-box success">
+                                    <i class="fa-solid fa-circle-check me-2"></i>
+                                    <strong data-i18n="volga_familiares_success_title">¡Cuestionario enviado con éxito!</strong>
+                                    <span data-i18n="volga_familiares_success_text">Gracias por tu participación.</span>
+                                    <br /><br />
+                                    <button class="btn-search" id="resetFamiliaresBtn" style="padding: 0.5rem 2rem; font-size: 0.9rem;" data-i18n="volga_familiares_reset">
+                                        <i class="fa-solid fa-rotate-right me-2"></i>Volver a enviar otro
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- ============================================ -->
+                            <!-- PANEL 2: CONSULTA                           -->
+                            <!-- ============================================ -->
+                            <div class="tab-pane fade" id="searchPanel" role="tabpanel" aria-labelledby="search-tab">
+                                <form id="searchForm" action="https://script.google.com/macros/s/AKfycbx3-eXw4Vt2I970UznN2_66Oyx1_kwuh2b_56jV87eHkXrXp0M2yrX0iSlFWvoZrHdH/exec" method="POST" novalidate>
+                                    <input type="hidden" name="tipo" value="buscar">
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldSearch" value="" />
+                                    <div class="row g-3 align-items-end">
+                                        <div class="alert alert-info" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
+                                            <i class="fa-solid fa-circle-info me-2"></i>
+                                            <span data-i18n="volga_search_alert">Consulta aquí si tu apellido se encuentra en algún registro de descendiente de Alemanes del Volga.</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="searchSurname" class="form-label"><span data-i18n="volga_search_label">Apellido a consultar</span> <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="searchSurname" name="searchSurname" required
+                                                placeholder="Ej.: Schmidt, Müller, Schneider..." maxlength="100" data-i18n-placeholder="volga_search_placeholder" />
+                                            <div class="form-error-msg" id="error-searchSurname" data-i18n="volga_search_error">Por favor, ingresá un apellido.</div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn-search w-100" id="searchBtn" data-i18n="volga_search_button">
+                                                <i class="fa-solid fa-search me-2"></i>Buscar
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-outline w-100" id="clearSearchBtn"
+                                                style="border: 2px solid var(--deep-blue); color: var(--deep-blue); font-weight: 600; padding: 0.8rem 1.5rem; border-radius: 30px;" data-i18n="volga_search_clear">
+                                                <i class="fa-solid fa-eraser me-2"></i>Limpiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="searchResult" class="mt-4" style="display: none;"></div>
+                            </div>
+
+                            <!-- ============================================ -->
+                            <!-- PANEL 3: ENVÍO DE APELLIDO                  -->
+                            <!-- ============================================ -->
+                            <div class="tab-pane fade" id="contributePanel" role="tabpanel" aria-labelledby="contribute-tab">
+                                <form id="contributeForm" action="https://script.google.com/macros/s/AKfycbx3-eXw4Vt2I970UznN2_66Oyx1_kwuh2b_56jV87eHkXrXp0M2yrX0iSlFWvoZrHdH/exec" method="POST" novalidate>
+                                    <!-- Campo oculto para la IP -->
+                                    <input type="hidden" name="ip" id="ipFieldContrib" value="" />
+                                    <div class="honeypot">
+                                        <label for="website2">Website</label>
+                                        <input type="text" id="website2" name="website" tabindex="-1" autocomplete="off" />
+                                    </div>
+                                    <div class="alert alert-info" style="background: var(--light-blue); border-color: var(--mid-blue); border-radius: 8px;">
+                                        <i class="fa-solid fa-circle-info me-2"></i>
+                                        <span data-i18n="volga_contribute_alert">Envíanos variantes y apellidos que no hayas encontrados en la consulta.</span>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="contribSurname" class="form-label"><span data-i18n="volga_contribute_label_surname">Apellido</span> <span class="required-asterisk">*</span></label>
+                                            <input type="text" class="form-control" id="contribSurname" name="contribSurname" required
+                                                placeholder="Apellido principal" maxlength="100" data-i18n-placeholder="volga_contribute_placeholder_surname" />
+                                            <div class="form-error-msg" id="error-contribSurname" data-i18n="volga_contribute_error_surname">Por favor, ingresá el apellido.</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribVariant" class="form-label"><span data-i18n="volga_contribute_label_variant">Variantes (si existen)</span></label>
+                                            <input type="text" class="form-control" id="contribVariant" name="contribVariant"
+                                                placeholder="Otras formas de escribirlos (oficialmente)" maxlength="100" data-i18n-placeholder="volga_contribute_placeholder_variant" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribOrigin" class="form-label"><span data-i18n="volga_contribute_label_origin">Ubicación</span></label>
+                                            <input type="text" class="form-control" id="contribOrigin" name="contribOrigin"
+                                                placeholder="Ej.: Colonia General Alvear, Entre Ríos" maxlength="150" data-i18n-placeholder="volga_contribute_placeholder_origin" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="contribName" class="form-label"><span data-i18n="volga_contribute_label_name">Tu nombre (opcional)</span></label>
+                                            <input type="text" class="form-control" id="contribName" name="contribName"
+                                                placeholder="Para acreditar tu aporte" maxlength="120" data-i18n-placeholder="volga_contribute_placeholder_name" />
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="contribComment" class="form-label"><span data-i18n="volga_contribute_label_comment">Comentario o información adicional</span></label>
+                                            <textarea class="form-control" id="contribComment" name="contribComment" rows="4"
+                                                placeholder="Contanos todo lo que sepas sobre este apellido, su historia familiar, migraciones, etc." maxlength="2000" data-i18n-placeholder="volga_contribute_placeholder_comment"></textarea>
+                                        </div>
+                                        <!-- Captcha -->
+                                        <div class="col-12">
+                                            <label class="form-label"><span data-i18n="volga_contribute_captcha_label">Verificación de seguridad</span> <span class="required-asterisk">*</span></label>
+                                            <div class="captcha-box">
+                                                <span class="captcha-question" id="captchaQuestionContrib"></span>
+                                                <span>=</span>
+                                                <input type="number" class="form-control captcha-input" id="captchaAnswerContrib"
+                                                    placeholder="?" required min="0" max="20" />
+                                                <input type="hidden" id="captchaExpectedContrib" />
+                                            </div>
+                                            <div class="form-error-msg" id="error-captchaContrib" data-i18n="volga_contribute_captcha_error">La respuesta no es correcta. Intentá de nuevo.</div>
+                                        </div>
+                                        <div class="col-12 text-center mt-3">
+                                            <button type="submit" class="btn-search" id="contribSubmitBtn" data-i18n="volga_contribute_submit">
+                                                <i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="contribSuccess" style="display: none;" class="mt-4 result-box success">
+                                    <i class="fa-solid fa-circle-check me-2"></i>
+                                    <strong data-i18n="volga_contribute_success_title">¡Aporte enviado con éxito!</strong>
+                                    <span data-i18n="volga_contribute_success_text">Gracias por contribuir. Tu información será revisada y, si corresponde, incorporada a la base de datos.</span>
+                                    <br /><br />
+                                    <button class="btn-search" id="resetContribBtn" style="padding: 0.5rem 2rem; font-size: 0.9rem;" data-i18n="volga_contribute_reset">
+                                        <i class="fa-solid fa-rotate-right me-2"></i>Reenviar un nuevo apellido
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER (cargado dinámicamente) ====== -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('../elements/footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar footer');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations();
+                }
+                if (typeof initCookieBanner === 'function') {
+                    setTimeout(initCookieBanner, 100);
+                }
+            })
+            .catch(error => console.warn('Error al cargar el footer:', error));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <!-- ====== SCRIPT PARA OBTENER LA IP ====== -->
+    <script>
+        (function () {
+            // Obtener la IP del usuario y asignarla a todos los campos ocultos con id que contengan "ipField"
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip || '';
+                    // Asignar a todos los campos ocultos que tengan id empezando por ipField
+                    document.querySelectorAll('[id^="ipField"]').forEach(el => el.value = ip);
+                })
+                .catch(error => {
+                    console.warn('No se pudo obtener la IP:', error);
+                    // Dejar los campos vacíos
+                });
+        })();
+    </script>
+
+    <!-- ====== SCRIPT DE LA LÓGICA DE FORMULARIOS (actualizado) ====== -->
+    <script>
+        (function () {
+            // ========================================
+            //  PANEL 1: APELLIDOS FAMILIARES
+            // ========================================
+            const familiaresForm = document.getElementById('familiaresForm');
+            const familiaresSuccess = document.getElementById('familiaresSuccess');
+            const familiaresSubmitBtn = document.getElementById('familiaresSubmitBtn');
+            const resetFamiliaresBtn = document.getElementById('resetFamiliaresBtn');
+
+            // Lista de campos numéricos (incluyendo el nuevo "hermanos")
+            const numberFieldsFam = ['edad', 'hermanos', 'hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+
+            function generateCaptchaFam() {
+                const num1 = Math.floor(Math.random() * 8) + 2;
+                const num2 = Math.floor(Math.random() * 8) + 1;
+                document.getElementById('captchaQuestionFam').textContent = num1 + ' + ' + num2;
+                document.getElementById('captchaExpectedFam').value = num1 + num2;
+                document.getElementById('captchaAnswerFam').value = '';
+                document.getElementById('error-captchaFam').classList.remove('show');
+            }
+            generateCaptchaFam();
+
+            // Validación de números
+            numberFieldsFam.forEach(id => {
+                const input = document.getElementById(id);
+                input.addEventListener('input', function () {
+                    if (id === 'edad') {
+                        if (this.value < 1) this.value = 1;
+                        if (this.value > 120) this.value = 120;
+                    } else {
+                        if (this.value < 0) this.value = 0;
+                    }
+                    if (this.value !== '' && !/^\d+$/.test(this.value)) {
+                        this.value = this.value.replace(/\D/g, '');
+                    }
+                    document.getElementById('error-' + id).classList.remove('show');
+                });
+            });
+
+            familiaresForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                document.querySelectorAll('#familiaresPanel .form-error-msg').forEach(el => el.classList.remove('show'));
+
+                let valid = true;
+
+                // Validar apellidos
+                const apellido_mama = document.getElementById('apellido_mama').value.trim();
+                const apellido_papa = document.getElementById('apellido_papa').value.trim();
+                if (!apellido_mama) {
+                    document.getElementById('error-apellido_mama').classList.add('show');
+                    valid = false;
+                }
+                if (!apellido_papa) {
+                    document.getElementById('error-apellido_papa').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar edad
+                const edad = parseInt(document.getElementById('edad').value, 10);
+                if (isNaN(edad) || edad < 1 || edad > 120) {
+                    document.getElementById('error-edad').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar sexo
+                const sexo = document.getElementById('sexo').value;
+                if (!sexo) {
+                    document.getElementById('error-sexo').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar hermanos
+                const hermanos = parseInt(document.getElementById('hermanos').value, 10);
+                if (isNaN(hermanos) || hermanos < 0) {
+                    document.getElementById('error-hermanos').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar campos numéricos (hijos, primos, sobrinos)
+                const numericIds = ['hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+                numericIds.forEach(id => {
+                    const val = parseInt(document.getElementById(id).value, 10);
+                    if (isNaN(val) || val < 0) {
+                        document.getElementById('error-' + id).classList.add('show');
+                        valid = false;
+                    }
+                });
+
+                // Validar captcha
+                const captchaAnswer = parseInt(document.getElementById('captchaAnswerFam').value, 10);
+                const captchaExpected = parseInt(document.getElementById('captchaExpectedFam').value, 10);
+                if (isNaN(captchaAnswer) || captchaAnswer !== captchaExpected) {
+                    document.getElementById('error-captchaFam').classList.add('show');
+                    generateCaptchaFam();
+                    valid = false;
+                }
+
+                if (!valid) return;
+
+                familiaresSubmitBtn.disabled = true;
+                familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
+
+                const formData = new FormData(familiaresForm);
+                fetch(familiaresForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        familiaresForm.style.display = 'none';
+                        familiaresSuccess.style.display = 'block';
+                    } else {
+                        alert('Hubo un error al enviar el cuestionario. Por favor, intentá nuevamente más tarde.');
+                        familiaresSubmitBtn.disabled = false;
+                        familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar cuestionario';
+                    }
+                })
+                .catch(() => {
+                    alert('Error de conexión. Verificá tu internet e intentá nuevamente.');
+                    familiaresSubmitBtn.disabled = false;
+                    familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar cuestionario';
+                });
+            });
+
+            resetFamiliaresBtn.addEventListener('click', function () {
+                familiaresForm.reset();
+                familiaresSuccess.style.display = 'none';
+                familiaresForm.style.display = 'block';
+                familiaresSubmitBtn.disabled = false;
+                familiaresSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar cuestionario';
+                generateCaptchaFam();
+                document.querySelectorAll('#familiaresPanel .form-error-msg').forEach(el => el.classList.remove('show'));
+                numberFieldsFam.forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+                document.getElementById('sexo').value = '';
+            });
+
+            document.getElementById('apellido_mama').addEventListener('input', () => document.getElementById('error-apellido_mama').classList.remove('show'));
+            document.getElementById('apellido_papa').addEventListener('input', () => document.getElementById('error-apellido_papa').classList.remove('show'));
+            document.getElementById('edad').addEventListener('input', () => document.getElementById('error-edad').classList.remove('show'));
+            document.getElementById('sexo').addEventListener('change', () => document.getElementById('error-sexo').classList.remove('show'));
+            document.getElementById('hermanos').addEventListener('input', () => document.getElementById('error-hermanos').classList.remove('show'));
+            document.getElementById('captchaAnswerFam').addEventListener('input', () => document.getElementById('error-captchaFam').classList.remove('show'));
+
+            // ========================================
+            //  PANEL 2: BÚSQUEDA (sin cambios)
+            // ========================================
+            const searchForm = document.getElementById('searchForm');
+            const searchInput = document.getElementById('searchSurname');
+            const searchResult = document.getElementById('searchResult');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const errorSearch = document.getElementById('error-searchSurname');
+
+            searchForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                errorSearch.classList.remove('show');
+                const surname = searchInput.value.trim();
+                if (!surname) {
+                    errorSearch.classList.add('show');
+                    return;
+                }
+
+                const searchBtn = document.getElementById('searchBtn');
+                searchBtn.disabled = true;
+                searchBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Buscando...';
+
+                const formData = new FormData(searchForm);
+                fetch(searchForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Error en el servidor');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        let html = '';
+                        if (data.existe) {
+                            html = `<div class="result-box success">
+                                <i class="fa-solid fa-circle-check me-2"></i>
+                                <strong data-i18n="volga_search_result_found_title">¡Apellido encontrado!</strong>
+                                <span data-i18n="volga_search_result_found_text">"${surname}" forma parte de nuestra base de datos de Alemanes del Volga.</span>
+                            </div>`;
+                        } else {
+                            html = `<div class="result-box warning">
+                                <i class="fa-solid fa-circle-exclamation me-2"></i>
+                                <strong data-i18n="volga_search_result_notfound_title">Apellido no encontrado</strong>
+                                <span data-i18n="volga_search_result_notfound_text">en nuestra base de datos. Puede deberse a que aún no fue incorporado o a que existe una variante ortográfica diferente.</span>
+                            </div>`;
+                        }
+                        html += `<p class="mt-3" style="font-size:0.9rem; color: var(--text-medium);">
+                            <i class="fa-solid fa-sync-alt me-1"></i>
+                            <span data-i18n="volga_search_result_footer">La base de datos se actualiza periódicamente. Si tu apellido no aparece, podés</span>
+                            <a href="#" onclick="document.getElementById('contribute-tab').click();" data-i18n="volga_search_result_footer_link">aportarlo aquí</a>.
+                        </p>`;
+                        searchResult.innerHTML = html;
+                        searchResult.style.display = 'block';
+                    } else {
+                        searchResult.innerHTML = `<div class="result-box error">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                            <strong data-i18n="volga_search_result_error">Error en la búsqueda.</strong>
+                            <span data-i18n="volga_search_result_error_text">Intentá nuevamente.</span>
+                        </div>`;
+                        searchResult.style.display = 'block';
+                    }
+                })
+                .catch(() => {
+                    searchResult.innerHTML = `<div class="result-box error">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                        <strong data-i18n="volga_search_result_connection_error">Error de conexión.</strong>
+                        <span data-i18n="volga_search_result_connection_text">Verificá tu internet e intentá nuevamente.</span>
+                    </div>`;
+                    searchResult.style.display = 'block';
+                })
+                .finally(() => {
+                    searchBtn.disabled = false;
+                    searchBtn.innerHTML = '<i class="fa-solid fa-search me-2"></i>Buscar';
+                });
+            });
+
+            clearBtn.addEventListener('click', function () {
+                searchInput.value = '';
+                searchResult.style.display = 'none';
+                searchResult.innerHTML = '';
+                errorSearch.classList.remove('show');
+            });
+
+            // ========================================
+            //  PANEL 3: ENVÍO DE APELLIDO (sin cambios)
+            // ========================================
+            const contribForm = document.getElementById('contributeForm');
+            const contribSuccess = document.getElementById('contribSuccess');
+            const contribSubmitBtn = document.getElementById('contribSubmitBtn');
+            const resetContribBtn = document.getElementById('resetContribBtn');
+
+            function generateCaptchaContrib() {
+                const num1 = Math.floor(Math.random() * 8) + 2;
+                const num2 = Math.floor(Math.random() * 8) + 1;
+                document.getElementById('captchaQuestionContrib').textContent = num1 + ' + ' + num2;
+                document.getElementById('captchaExpectedContrib').value = num1 + num2;
+                document.getElementById('captchaAnswerContrib').value = '';
+                document.getElementById('error-captchaContrib').classList.remove('show');
+            }
+            generateCaptchaContrib();
+
+            contribForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                document.getElementById('error-contribSurname').classList.remove('show');
+                document.getElementById('error-captchaContrib').classList.remove('show');
+
+                const surname = document.getElementById('contribSurname').value.trim();
+                const captchaAnswer = parseInt(document.getElementById('captchaAnswerContrib').value, 10);
+                const captchaExpected = parseInt(document.getElementById('captchaExpectedContrib').value, 10);
+
+                let valid = true;
+                if (!surname) {
+                    document.getElementById('error-contribSurname').classList.add('show');
+                    valid = false;
+                }
+                if (isNaN(captchaAnswer) || captchaAnswer !== captchaExpected) {
+                    document.getElementById('error-captchaContrib').classList.add('show');
+                    generateCaptchaContrib();
+                    valid = false;
+                }
+                if (!valid) return;
+
+                contribSubmitBtn.disabled = true;
+                contribSubmitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Enviando...';
+
+                const formData = new FormData(contribForm);
+                fetch(contribForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        contribForm.style.display = 'none';
+                        contribSuccess.style.display = 'block';
+                    } else {
+                        alert('Hubo un error al enviar el aporte. Por favor, intentá nuevamente más tarde.');
+                        contribSubmitBtn.disabled = false;
+                        contribSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte';
+                    }
+                })
+                .catch(() => {
+                    alert('Error de conexión. Verificá tu internet e intentá nuevamente.');
+                    contribSubmitBtn.disabled = false;
+                    contribSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte';
+                });
+            });
+
+            resetContribBtn.addEventListener('click', function () {
+                contribForm.reset();
+                contribSuccess.style.display = 'none';
+                contribForm.style.display = 'block';
+                contribSubmitBtn.disabled = false;
+                contribSubmitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i>Enviar aporte';
+                generateCaptchaContrib();
+                document.getElementById('error-contribSurname').classList.remove('show');
+                document.getElementById('error-captchaContrib').classList.remove('show');
+                document.getElementById('contribVariant').value = '';
+                document.getElementById('contribOrigin').value = '';
+                document.getElementById('contribName').value = '';
+                document.getElementById('contribComment').value = '';
+            });
+
+            document.getElementById('contribSurname').addEventListener('input', () => document.getElementById('error-contribSurname').classList.remove('show'));
+            document.getElementById('captchaAnswerContrib').addEventListener('input', () => document.getElementById('error-captchaContrib').classList.remove('show'));
+        })();
+    </script>
+</body>
+</html>
