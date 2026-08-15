@@ -433,7 +433,8 @@
   "volga_familiares_important_3": "Destinado a personas de Sudamérica.",
   "volga_familiares_important_4": "Por favor, ser exacto/a en las respuestas. Se insluyen en las cantidades a familiares fallecidos.",
   "volga_familiares_important_5": "A la hora de contabilizar familiares, incluir tanto personas vivas como fallecidas.",
-  
+
+
   "volga_familiares_label_mama": "1.1) Apellido de tu mamá",
   "volga_familiares_placeholder_mama": "Ej.: Müller",
   "volga_familiares_error_mama": "Por favor, ingresá el apellido de tu mamá.",
@@ -458,6 +459,9 @@
   "volga_familiares_success_title": "¡Cuestionario enviado con éxito!",
   "volga_familiares_success_text": "Gracias por tu participación.",
   "volga_familiares_reset": "Volver a enviar otro",
+  "volga_familiares_label_hermanos": "Cantidad de hermanos",
+  "volga_familiares_placeholder_hermanos": "Ej.: 2",
+  "volga_familiares_error_hermanos": "Ingresá un número válido (0 o más)."
 
   "volga_search_alert": "Consulta aquí si tu apellido se encuentra en algún registro de descendiente de Alemanes del Volga.",
   "volga_search_label": "Apellido a consultar",
