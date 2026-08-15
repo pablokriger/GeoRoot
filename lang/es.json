@@ -431,8 +431,9 @@
   "volga_familiares_important_1": "Solo podrán contestar aquellos/as que tengan al menos uno de sus padres con apellido alemán.",
   "volga_familiares_important_2": "Una respuesta por miembro de la familia.",
   "volga_familiares_important_3": "Destinado a personas de Sudamérica.",
-  "volga_familiares_important_4": "Por favor, ser exacto/a en las respuestas.",
-
+  "volga_familiares_important_4": "Por favor, ser exacto/a en las respuestas. Se insluyen en las cantidades a familiares fallecidos.",
+  "volga_familiares_important_5": "A la hora de contabilizar familiares, incluir tanto personas vivas como fallecidas.",
+  
   "volga_familiares_label_mama": "1.1) Apellido de tu mamá",
   "volga_familiares_placeholder_mama": "Ej.: Müller",
   "volga_familiares_error_mama": "Por favor, ingresá el apellido de tu mamá.",
