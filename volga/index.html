@@ -246,7 +246,7 @@
                                     </ul>
                                 </div>
                                 <hr />
-                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbx3-eXw4Vt2I970UznN2_66Oyx1_kwuh2b_56jV87eHkXrXp0M2yrX0iSlFWvoZrHdH/exec" method="POST" novalidate>
+                                <form id="familiaresForm" action="https://script.google.com/macros/s/AKfycbzdxjIdAMmYZXmvh0YlWemIG2Dn6V84AvVfddYtxz9qwlq7ecCLW_pushMDQ3MfZu_3/exec" method="POST" novalidate>
                                     <input type="hidden" name="tipo" value="familiares">
                                     <!-- Campo oculto para la IP -->
                                     <input type="hidden" name="ip" id="ipFieldFam" value="" />
@@ -269,7 +269,7 @@
                                             <div class="form-error-msg" id="error-apellido_papa" data-i18n="volga_familiares_error_papa">Por favor, ingresá el apellido de tu papá.</div>
                                         </div>
 
-                                        <!-- Edad y Sexo -->
+                                        <!-- Edad, Sexo y Hermanos -->
                                         <div class="col-md-4">
                                             <label for="edad" class="form-label"><span data-i18n="volga_familiares_label_edad">Tu edad</span> <span class="required-asterisk">*</span></label>
                                             <input type="number" class="form-control" id="edad" name="edad" required
@@ -286,8 +286,12 @@
                                             </select>
                                             <div class="form-error-msg" id="error-sexo" data-i18n="volga_familiares_error_sexo">Por favor, seleccioná una opción.</div>
                                         </div>
-                                        <!-- Espacio sutil (col-md-4 vacío para alinear) -->
-                                        <div class="col-md-4"></div>
+                                        <div class="col-md-4">
+                                            <label for="hermanos" class="form-label"><span data-i18n="volga_familiares_label_hermanos">Cantidad de hermanos</span> <span class="required-asterisk">*</span></label>
+                                            <input type="number" class="form-control" id="hermanos" name="hermanos" required
+                                                placeholder="Ej.: 2" min="0" step="1" data-i18n-placeholder="volga_familiares_placeholder_hermanos" />
+                                            <div class="form-error-msg" id="error-hermanos" data-i18n="volga_familiares_error_hermanos">Ingresá un número válido (0 o más).</div>
+                                        </div>
 
                                         <!-- Cantidad de hijos (fila separada con margen sutil) -->
                                         <div class="col-md-6" style="margin-top: 0.5rem;">
@@ -524,8 +528,8 @@
             const familiaresSubmitBtn = document.getElementById('familiaresSubmitBtn');
             const resetFamiliaresBtn = document.getElementById('resetFamiliaresBtn');
 
-            // Lista de campos numéricos (incluyendo los nuevos hijos)
-            const numberFieldsFam = ['edad', 'hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
+            // Lista de campos numéricos (incluyendo el nuevo "hermanos")
+            const numberFieldsFam = ['edad', 'hermanos', 'hijos_tot', 'hijos_no_aleman', 'primos_tot', 'primos_no_aleman', 'sobrinos_tot', 'sobrinos_no_aleman'];
 
             function generateCaptchaFam() {
                 const num1 = Math.floor(Math.random() * 8) + 2;
@@ -583,6 +587,13 @@
                 const sexo = document.getElementById('sexo').value;
                 if (!sexo) {
                     document.getElementById('error-sexo').classList.add('show');
+                    valid = false;
+                }
+
+                // Validar hermanos
+                const hermanos = parseInt(document.getElementById('hermanos').value, 10);
+                if (isNaN(hermanos) || hermanos < 0) {
+                    document.getElementById('error-hermanos').classList.add('show');
                     valid = false;
                 }
 
@@ -651,6 +662,7 @@
             document.getElementById('apellido_papa').addEventListener('input', () => document.getElementById('error-apellido_papa').classList.remove('show'));
             document.getElementById('edad').addEventListener('input', () => document.getElementById('error-edad').classList.remove('show'));
             document.getElementById('sexo').addEventListener('change', () => document.getElementById('error-sexo').classList.remove('show'));
+            document.getElementById('hermanos').addEventListener('input', () => document.getElementById('error-hermanos').classList.remove('show'));
             document.getElementById('captchaAnswerFam').addEventListener('input', () => document.getElementById('error-captchaFam').classList.remove('show'));
 
             // ========================================
