@@ -195,10 +195,10 @@
   "demograf_hero_lead": "Comprender una comunidad comienza por conocer su población",
 
   "demograf_img1_caption": "Mapa de la región de Saratov, Rusia.",
-  "demograf_intro": "La demografía estudia las <strong>poblaciones humanas, su tamaño, distribución, estructura y evolución</strong> a lo largo del tiempo. Más allá de los números, permite comprender cómo las migraciones, los nacimientos, las defunciones y los movimientos territoriales han moldeado la historia de las sociedades. Como señalaba el demógrafo <strong>John I. Clarke</strong>, la distribución de la población constituye una de las claves para interpretar el desarrollo de los territorios y las transformaciones sociales.",
+  "demograf_intro": "La demografía estudia las <strong>poblaciones humanas, su tamaño, distribución, estructura y evolución</strong> a lo largo del tiempo. Más allá de los números, al analizar, por ejemplo, los primeros contingente de migrantes germanos a la Argentina –fechada en 1825–, podremos llegar a comprender con más detalles cómo se fueron produciendo expandiendo las comunidades, a partir de analizar nacimientos, defunciones y los movimientos territoriales.",
 
   "demograf_section1_title": "La demografía de los Alemanes del Volga",
-  "demograf_section1_p1": "En el caso de los Alemanes del Volga, el análisis demográfico permite reconstruir los <strong>procesos migratorios iniciados en el siglo XVIII</strong>, su establecimiento en Rusia, la posterior emigración hacia América y la conformación de nuevas comunidades en países como <strong>Argentina, Brasil, Estados Unidos y Canadá</strong>.",
+  "demograf_section1_p1": "En el caso de los Alemanes del Volga –llegados en 1876 en adelante a la Argentina–, el análisis demográfico permite reconstruir los <strong>procesos migratorios iniciados en el siglo XVIII</strong>, su establecimiento en Rusia, la posterior emigración hacia América y la conformación de nuevas comunidades en países como <strong>Argentina, Brasil, Estados Unidos y Canadá</strong>.",
   "demograf_section1_p2": "La evolución de estas poblaciones puede estudiarse mediante <strong>censos, registros migratorios, padrones, documentos históricos, apellidos</strong> y otras fuentes que permiten seguir la huella de millones de personas a través del tiempo.",
   "demograf_section1_p3": "Sin embargo, para conocer un dato complejo se requiere analizar distintos datos particulares. Por ejemplo, para conocer la cantidad de descendientes de un grupo migratorio en una comunidad más amplia no basta solo analizar la cantidad de personas con los apellidos iniciales. También es necesario identificar las variaciones que fueron recibiendo los apellidos originales así como el grado de apertura exogámica.",
   "demograf_section1_img_caption": "Censos de fines del S. XVIII realizados en el Volga.",
@@ -215,19 +215,19 @@
   "demograf_chart_source": "Cifras estimativas basadas en proyecciones censales y estudios demográficos.",
 
   "demograf_section3_title": "Una herramienta para preservar la memoria",
-  "demograf_section3_img_caption": "Censos, padrones y documentos históricos: fuentes fundamentales para la investigación.",
+  "demograf_section3_img_caption": "Censo ruso del S. XIX, una de las fuentes más empleadas actualmente por los genealogistas.",
   "demograf_section3_p1": "Cada dato demográfico representa una parte de la historia de una comunidad. Un <strong>registro censal, un padrón, un apellido o una colonia agrícola</strong> permiten reconstruir procesos migratorios, redes familiares y transformaciones territoriales que, analizados en conjunto, conforman una valiosa fuente de conocimiento histórico.",
   "demograf_section3_p2": "Esta sección reúne <strong>indicadores, mapas, estadísticas y análisis</strong> desarrollados a partir de múltiples fuentes documentales con el propósito de aportar una visión rigurosa sobre la evolución de los Alemanes del Volga en Argentina y el mundo.",
   "demograf_section3_p3": "El objetivo es transformar los datos en <strong>conocimiento útil para investigadores, descendientes e instituciones</strong>, contribuyendo a preservar la memoria colectiva y a comprender el impacto demográfico de una de las migraciones más relevantes de la historia moderna.",
 
   "demograf_dashboard_title": "Indicadores demográficos destacados",
-  "demograf_stat1_number": "~2.000.000",
+  "demograf_stat1_number": "~1.500.000",
   "demograf_stat1_label": "Descendientes estimados en Argentina (dato en proceso de evaluación)",
   "demograf_stat2_number": "+10",
   "demograf_stat2_label": "Países con comunidades significativas de descendientes de Alemanes del Volga en el mundo",
   "demograf_stat3_number": "+100",
   "demograf_stat3_label": "Colonias fundadas en Argentina en al menos 5 provincias",
-  "demograf_stat4_number": "+11.000",
+  "demograf_stat4_number": "+13.000",
   "demograf_stat4_label": "Apellidos únicos registrados en nuestra base de datos (incluye variantes)",
   "demograf_dashboard_footer": "<i class=\"fa-solid fa-circle-info me-1\"></i> Indicadores en permanente actualización a partir de fuentes censales, registros migratorios y estudios demográficos.",
 
