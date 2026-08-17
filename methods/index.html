@@ -197,52 +197,39 @@
         </div>
     </header>
 
-    <!-- INTRODUCCIÓN -->
-    <section class="section-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <p data-i18n="methods_intro">El presente proyecto integra herramientas provenientes de las <strong>ciencias sociales, la demografía, la geografía, la estadística, la ciencia de datos y los sistemas de información geográfica (SIG)</strong>. Su objetivo es producir información confiable, reproducible y metodológicamente consistente.</p>
 
-                    <!-- Diagrama de flujo del proceso metodológico -->
-                    <div class="flow-diagram">
-                        <div class="flow-step" data-i18n="methods_flow_step1">🔍 Recopilación</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step" data-i18n="methods_flow_step2">🧹 Normalización</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step" data-i18n="methods_flow_step3">✅ Validación</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step" data-i18n="methods_flow_step4">🔗 Integración</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step" data-i18n="methods_flow_step5">📊 Análisis</div>
-                        <span class="flow-arrow">→</span>
-                        <div class="flow-step" data-i18n="methods_flow_step6">📈 Publicación</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- FUENTES DE DATOS -->
     <section class="section-page" style="background: var(--soft-gray);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <h2 data-i18n="methods_sources_title">Fuentes de información</h2>
+                    <h2 data-i18n="methods_sources_title">Fuentes de datos</h2>
+                    <p data-i18n="methods_sources_p1">Destacamos la participación de los siguientes <strong>actores que proveen o proveyeron información a las investigaciones en curso:</strong></p>
                     
+    <!-- Lista con viñetas (punteo) -->
+                    <ul class="mt-2">
+                    <li data-i18n="methods_sources_li1">Secretaría Electoral Nacional.</li>
+                    <li data-i18n="methods_sources_li2">Dirección General de Estadística y Censos - Prov. Entre Ríos.</li>
+                    <li data-i18n="methods_sources_li3">Centro DIHA - Centro de Documentación de la Inmigración de Habla Alemana.</li>
+                    <li data-i18n="methods_sources_li4">Investigaciones y observaciones realizadas por el sociólogo Walter Lauphan.</li>
+                    <li data-i18n="methods_sources_li5">Resultados de cuestionarios y consultas realizadas por el escritor y periodista José Luis Sack.</li>
+                    <li data-i18n="methods_sources_li6">Resultados de cuestionario realizado por Jorgelina Fischer.</li>
+                    </ul>
+                    <p data-i18n="methods_sources_p2">Estas y las demás fuentes pueden agruparse como sigue:</p>
                     <div class="row g-3 mt-2">
                         <div class="col-md-4">
                             <div class="method-card" style="border-left-color: var(--mid-blue);">
                                 <div class="card-icon" style="background: #e8f0f8; color: #2c5f8a;"><i class="fa-solid fa-file-csv"></i></div>
                                 <h4 data-i18n="methods_card1_title">Censos y registros oficiales</h4>
-                                <p style="font-size:0.9rem;" data-i18n="methods_card1_text">Censos nacionales, registros electorales, padrones, catastros y registros migratorios de distintos períodos. La información argentina se obtiene de instituciones como el RENAPER, INDEC, direcciones de estadística provincial, secretarías electorales, ANSES, entre otras.</p>
+                                <p style="font-size:0.9rem;" data-i18n="methods_card1_text">Censos nacionales (recientes e históricos), registros electorales y migratorios. La información argentina se obtiene de instituciones como el RENAPER, INDEC, direcciones de estadística provincial, secretarías electorales, ANSES, entre otras.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="method-card" style="border-left-color: var(--accent-gold);">
                                 <div class="card-icon" style="background: #fef3e0; color: #c49b3f;"><i class="fa-solid fa-book-open"></i></div>
-                                <h4 data-i18n="methods_card2_title">Otros documentos históricos</h4>
-                                <p style="font-size:0.9rem;" data-i18n="methods_card2_text">Registros parroquiales, eclesiásticos, guías telefónicas, publicaciones académicas, libros o registros antiguos de localización y demografía, anuarios y archivos institucionales.</p>
+                                <h4 data-i18n="methods_card2_title">Otros documentos científicos e históricos</h4>
+                                <p style="font-size:0.9rem;" data-i18n="methods_card2_text">Investigaciones científicas recientes, registros eclesiásticos, guías telefónicas, libros o registros antiguos de localización y demografía, anuarios y archivos institucionales.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -263,12 +250,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <h2 data-i18n="methods_norm_title">Normalización, estudio y automatización</h2>
+                    <h2 data-i18n="methods_norm_title">Metodología</h2>
                     <p data-i18n="methods_norm_p1">La construcción de las bases de datos implica un proceso continuo de <strong>recopilación, normalización, validación, integración y depuración</strong>. Se aplican procedimientos de estandarización de nombres propios, apellidos, localidades y referencias espaciales, permitiendo la interoperabilidad entre registros de diferentes períodos históricos, idiomas y formatos documentales.</p>
-                    <p data-i18n="methods_norm_p2">Al mismo tiempo, a través del lenguaje de programación y project management orientamos el esfuerzo a la automatización a fin de permitir replicar, escalar y ampliar nuestro trabajo, apoyados en la formación y mejora continua.</p>
                     <!-- Gráfico conceptual de variantes de apellidos -->
                     <div class="chart-placeholder">
-                        <h5 style="color: var(--deep-blue); margin-bottom: 1.5rem;" data-i18n="methods_chart_title">Ejemplo: Variantes ortográficas detectadas</h5>
+                        <h5 style="color: var(--deep-blue); margin-bottom: 1.5rem;" data-i18n="methods_chart_title">Ejemplo de variantes detectadas para el apellido Smith</h5>
                         <div class="bar-group">
                             <div>
                                 <div class="bar" style="height: 160px;"></div>
@@ -294,7 +280,7 @@
                         <p style="font-size:0.8rem; color: var(--text-medium); margin-top: 1rem;" data-i18n="methods_chart_caption">Frecuencia relativa de variantes del apellido "Schmidt" en la base de datos (simulación conceptual).</p>
                     </div>
 
-                    <p data-i18n="methods_norm_p3">Por ejemplo, uno de los ejes metodológicos consiste en el <strong>estudio estadístico de los apellidos como indicador demográfico e histórico</strong>. Se desarrollan procesos de identificación de variantes ortográficas y fonéticas, análisis de frecuencia, distribución espacial, concentración territorial, persistencia histórica y reconstrucción de patrones migratorios mediante técnicas de comparación textual, normalización lingüística y análisis probabilístico.</p>
+                    <p data-i18n="methods_norm_p3">Por ejemplo, uno de los ejes metodológicos consiste en el <strong>estudio de frecuencia de apellidos como indicador demográfico e histórico</strong>. La existencia de variantes de un mismo apellido se debieron a múltiples factores, como errores oficiales al anotar a los nuevos migrantes, la trasliteración de documentos en otros idiomas, pérdida de documentación y renovación, consulta oral de apellidos, etc. Esto hoy resulta un inconveniente para identificar la distribución geográfica, prevalencia y frecuencia de un mismo apellido más allá de las variaciones. Para afrontar esto, se desarrollan procesos de identificación de variantes ortográficas, con análisis de censos, padrones electorales, datos del RENAPER, registros de migración, encuestas a miembros de la comunidad y cotejo con otros registros oficiales.</p>
                 </div>
             </div>
         </div>
@@ -305,16 +291,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 mx-auto">
-                    <h2 data-i18n="methods_gis_title">Dimensión territorial y análisis demográfico</h2>
+                    <h2 data-i18n="methods_gis_title">Territorio y demografía</h2>
                     <div class="row align-items-center">
                         <div class="col-md-7">
-                            <p data-i18n="methods_gis_p1">La dimensión territorial se desarrolla mediante <strong>Sistemas de Información Geográfica (SIG)</strong>, incorporando cartografía vectorial, bases de datos espaciales, redes viales, límites administrativos, radios censales y modelos geográficos de distinta resolución.</p>
-                            <p data-i18n="methods_gis_p2">El procesamiento geoespacial incluye operaciones de <strong>georreferenciación, superposición espacial, análisis de proximidad, interpolación, agregación territorial, cálculo de densidades, análisis de redes</strong> y construcción de indicadores espaciales.</p>
-                            <p data-i18n="methods_gis_p3">El análisis demográfico incorpora indicadores de población, viviendas, distribución espacial, densidad, evolución temporal, movilidad y composición de comunidades migrantes.</p>
+                            <p data-i18n="methods_gis_p1">La dimensión territorial y geográfica son centrales en esta investigación, lugar desde donde se constituye los principales indicadores. Entre aquellos relacionados a la <strong>dimensión onomástica del fenómeno migratorio</strong> (fuente bastante fiable para comenzar a analizar la descendencia hoy), podemos sintetizar la proporción de apellidos descendientes de no descendientes, la tasa de exogamia por generación reciente, el índice de diversidad onomástica y de isonimia según años o generación. También puede analizarse la concentración o desaparición de apellidos.</p>
+                            <p data-i18n="methods_gis_p1_b">Entre los indicadores geográficos, nos encontramos con densidad de apellidos por unidad geográfica, índice de dispersión e índice de aislamiento por distancia, ratio de apellidos por localidad y porporción comparada. En los estudios, esto se logra <strong>incorporando SIG mediante cartografía vectorial, radios censales y administrativos</strong>.</p>
+                            <p data-i18n="methods_gis_p2">El procesamiento geoespacial incluye operaciones de <strong>georreferenciación a partir del dato más preciso (dirección, calle, portal, ciudad, región, provincia, etc.) obtenido de fuentes fiables, cálculo de proximidad y densidades</strong>, y construcción de indicadores espaciales.</p>
+                            <p data-i18n="methods_gis_p3">Particularmente el análisis demográfico para la Provincia de Entre Ríos, una de las principales líneas de estudio, incorpora indicadores de población, viviendas, distribución espacial, densidad, calidad de vida, entre otros indicadores provistos por fuentes como el INDEC o el EPH que permitan una comparación precisa del estado socioeconómico de las zonas donde se concentran los grupos bajo estudio.</p>
                             <p data-i18n="methods_gis_p4">Todos los procesos asumidos buscan cuidar el dato individual bajo las reglamentaciones vigentes en protección de datos personales.</p>
                         </div>
                         <div class="col-md-5 text-center">
-                            <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/1672_3.png"
+                            <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/8435.png"
                                 alt="Mapa con capas de información geográfica" class="method-img" loading="lazy"
                                 onerror="this.src='https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/1672_3.png';" />
                             <p style="font-size:0.8rem; color: var(--text-medium);" data-i18n="methods_gis_img_caption">Sistemas de Información Geográfica aplicados al análisis territorial.</p>
@@ -331,14 +318,14 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <h2 data-i18n="methods_ds_title">Ciencia de datos</h2>
-                    <p data-i18n="methods_ds_p1">La investigación integra <strong>técnicas avanzadas de estadística aplicada y ciencia de datos</strong> para el tratamiento de grandes volúmenes de información: limpieza y validación, deduplicación, vinculación entre bases heterogéneas (<em>record linkage</em>), análisis exploratorio, normalización estadística, modelización espacial, minería de datos y automatización de procesos.</p>
+                    <p data-i18n="methods_ds_p1">La investigación integra <strong>técnicas avanzadas de estadística aplicada y ciencia de datos</strong> para el tratamiento de grandes volúmenes de información: limpieza y validación, curación, vinculación entre bases heterogéneas (<em>record linkage</em>), análisis exploratorio, normalización estadística, modelización espacial, minería de datos y automatización de procesos.</p>
 
                     <div class="row g-3 mt-2">
                         <div class="col-md-4">
                             <div class="method-card" style="border-left-color: var(--accent-purple);">
                                 <div class="card-icon" style="background: #ede7f6; color: #5c4f8a;"><i class="fa-solid fa-robot"></i></div>
                                 <h4 data-i18n="methods_ds_card1_title">Automatización</h4>
-                                <p style="font-size:0.9rem;" data-i18n="methods_ds_card1_text">Python y otros para la clasificación, normalización semántica y procesamiento preciso de documentos históricos.</p>
+                                <p style="font-size:0.9rem;" data-i18n="methods_ds_card1_text">Python, R, y otros para la clasificación, normalización semántica y procesamiento preciso de documentos históricos.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -367,9 +354,9 @@
             <div class="row">
                 <div class="col-lg-10 mx-auto">
                     <h2 data-i18n="methods_results_title">Productos y resultados</h2>
-                    <p data-i18n="methods_results_p1">Los resultados generados incluyen <strong>bases de datos estructuradas, indicadores demográficos, cartografía temática, atlas digitales, series estadísticas, visualizaciones geográficas, análisis espaciales, estudios genealógicos, reconstrucciones históricas y herramientas de consulta pública</strong>.</p>
-                    <p data-i18n="methods_results_p2">En conjunto, estos productos permiten estudiar la evolución de comunidades migrantes desde una perspectiva cuantitativa y territorial, facilitando investigaciones comparativas tanto a escala local como nacional e internacional.</p>
-                    <p data-i18n="methods_results_p3">El proyecto se concibe como una <strong>plataforma de investigación en permanente actualización</strong> orientada a ampliar progresivamente su alcance y precisión, a fin de producti contenido de valor.</p>
+                    <p data-i18n="methods_results_p1">Los resultados a producir incluyen <strong>papers abiertos a la comunidad, artículos web y difusión en eventos vinculados a ciencia, cultura y migración, también comprende cartografía temática que se irán disponibilizando a medida que los resultados sean concluyentes y y dialogados con colegas académicos. También se preveen herramientas interactivas de consulta, algunas ya dispuesta al público</strong>.</p>
+                    <p data-i18n="methods_results_p2">El trabajo pretende replicarse con diferentes comunidades, en la medida en que se consiga apoyo y acompañamiento para su efectiva expansión, facilitando investigaciones comparativas tanto a escala local como nacional e internacional.</p>
+                    <p data-i18n="methods_results_p3">El proyecto se concibe como una <strong>plataforma de investigación en permanente actualización</strong> orientada a ampliar progresivamente su alcance y precisión, a fin de producir contenido de valor.</p>
                 </div>
             </div>
         </div>
