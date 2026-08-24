@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Pablo Kriger" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish, English, German, Portuguese" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="icon" href="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/favicon.png" type="image/png" />
+
+    <title>Historia | GeoRoot | Alemanes del Volga: demografía, deportación y migraciones</title>
+    <meta name="description"
+        content="Análisis sociodemográfico y migratorio de los Alemanes del Volga (1763-2012), basado en IIDFPG 2012, BKDR 2026 y DW 2007. Deportaciones, cifras, trabajo forzado y emigración." />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --deep-blue: #1b3a5c;
+            --mid-blue: #2c5f8a;
+            --light-blue: #e8f0f8;
+            --accent-gold: #c49b3f;
+            --soft-gray: #f5f6f8;
+            --text-dark: #2d2d2d;
+            --text-medium: #4a4a4a;
+            --white: #ffffff;
+            --border-light: #e0e4e8;
+            --footer-bg: #0f2a40;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --collab-accent: #e8f0e8;
+            --collab-border: #8ab88a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; width: 100%; }
+        body {
+            font-family: 'Open Sans', system-ui, sans-serif;
+            color: var(--text-dark); background: var(--white); line-height: 1.7;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            overflow-x: hidden; width: 100%; max-width: 100vw;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700; color: var(--deep-blue); letter-spacing: -0.01em;
+        }
+        a { color: var(--mid-blue); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: #1a4a6e; text-decoration: underline; }
+        .skip-link {
+            position: absolute; top: -40px; left: 6px; background: var(--deep-blue);
+            color: #fff !important; padding: 8px 16px; border-radius: 0 0 6px 6px;
+            z-index: 1050; transition: top 0.2s; font-weight: 600;
+        }
+        .skip-link:focus { top: 0; }
+
+        .navbar { background: var(--deep-blue); padding: 0.55rem 0; box-shadow: 0 2px 12px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 1020; width: 100%; }
+        .navbar .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .navbar-brand { font-family: 'Merriweather', serif; font-size: 1.7rem; font-weight: 700; color: var(--white) !important; letter-spacing: 0.03em; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+        .navbar-brand .brand-logo { width: 44px; height: 44px; border-radius: 50%; object-fit: contain; background: rgba(255,255,255,0.1); padding: 3px; flex-shrink: 0; }
+        .navbar-nav .nav-link { color: rgba(255,255,255,0.88) !important; font-weight: 500; padding: 0.5rem 1.1rem !important; border-radius: 6px; transition: background var(--transition), color var(--transition); font-size: 0.95rem; letter-spacing: 0.02em; white-space: nowrap; }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { background: rgba(255,255,255,0.12); color: #fff !important; text-decoration: none; }
+        .navbar-toggler { border-color: rgba(255,255,255,0.4); }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        .nav-link.collab-highlight { border: 2px solid var(--collab-border) !important; border-radius: 22px !important; padding: 0.4rem 1.3rem !important; margin: 0 0.2rem; background: rgba(138,184,138,0.1); transition: all var(--transition); }
+        .nav-link.collab-highlight:hover { background: rgba(138,184,138,0.22) !important; border-color: #9cc99c !important; color: #fff !important; }
+
+        .lang-btn { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition); font-size: 1.2rem; padding: 0; flex-shrink: 0; line-height: 1; text-align: center; }
+        .lang-btn:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+        .dropdown-menu.lang-menu { min-width: 160px; border-radius: 10px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); padding: 6px 0; }
+        .dropdown-menu.lang-menu .dropdown-item { padding: 0.6rem 1.2rem; font-weight: 500; display: flex; align-items: center; gap: 10px; transition: background var(--transition); }
+        .dropdown-menu.lang-menu .dropdown-item:hover { background: var(--light-blue); }
+        .lang-flag { font-size: 1.3rem; }
+
+        .history-hero { background: linear-gradient(135deg, #1b3a5c 0%, #2c5f8a 100%); color: #fff; padding: 4rem 0; text-align: center; position: relative; overflow: hidden; }
+        .history-hero::before { content: ''; position: absolute; top: -60px; right: -80px; width: 300px; height: 300px; background: rgba(255,255,255,0.03); border-radius: 50%; pointer-events: none; }
+        .history-hero h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+        .history-hero .lead { font-size: 1.2rem; font-weight: 300; opacity: 0.9; position: relative; z-index: 1; }
+
+        .section-page { padding: 4rem 0; }
+        .section-page h2 { font-size: 1.9rem; margin-bottom: 1.5rem; position: relative; display: inline-block; }
+        .section-page h2::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-gold); margin-top: 8px; border-radius: 2px; }
+        .section-page p { color: var(--text-medium); font-size: 1.02rem; margin-bottom: 1.2rem; }
+
+        .history-img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-md); margin: 2rem 0; object-fit: cover; max-height: 450px; border: 1px solid var(--border-light); }
+        .history-img-sm { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-sm); margin: 1.5rem 0; object-fit: cover; max-height: 300px; border: 1px solid var(--border-light); }
+        .img-caption { text-align: center; font-size: 0.85rem; color: var(--text-medium); font-style: italic; margin-top: -1.2rem; margin-bottom: 1.5rem; }
+
+        .section-divider { width: 60px; height: 4px; background: var(--accent-gold); margin: 2rem auto; border-radius: 2px; }
+
+        .quote-box { background: linear-gradient(135deg, #f5f6f8 0%, #e8f0f8 100%); border-left: 5px solid var(--accent-gold); border-radius: 0 var(--radius) var(--radius) 0; padding: 2rem 2.5rem; margin: 2.5rem 0; font-style: italic; font-size: 1.1rem; color: var(--deep-blue); }
+
+        .site-footer { background: var(--footer-bg); color: rgba(255,255,255,0.8); padding: 3rem 0 2rem; font-size: 0.93rem; width: 100%; max-width: 100vw; overflow: hidden; }
+        .site-footer h5 { color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; }
+        .site-footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+        .site-footer a:hover { color: #fff; text-decoration: underline; }
+        .site-footer .footer-links { list-style: none; padding: 0; }
+        .site-footer .footer-links li { margin-bottom: 0.4rem; }
+        .footer-divider { border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0 1.5rem; }
+        .footer-bottom { color: rgba(255,255,255,0.55); font-size: 0.85rem; word-wrap: break-word; }
+        .footer-bottom strong { color: rgba(255,255,255,0.8); }
+
+        .cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid var(--deep-blue); box-shadow: 0 -6px 28px rgba(0,0,0,0.12); z-index: 9999; padding: 1rem 0; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease, opacity 0.4s ease; transform: translateY(0); opacity: 1; width: 100%; max-width: 100vw; }
+        .cookie-banner.hidden-banner { transform: translateY(100%); opacity: 0; pointer-events: none; }
+        .cookie-banner .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .cookie-banner .cookie-text { flex: 1 1 60%; font-size: 0.9rem; color: var(--text-medium); min-width: 240px; word-wrap: break-word; }
+        .cookie-banner .cookie-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .cookie-banner .btn-accept { background: var(--deep-blue); color: #fff; border: none; border-radius: 20px; padding: 0.5rem 1.6rem; font-weight: 600; cursor: pointer; transition: all var(--transition); font-size: 0.9rem; white-space: nowrap; }
+        .cookie-banner .btn-accept:hover { background: #1e4668; }
+        .cookie-banner .btn-close-cookie { background: transparent; border: none; font-size: 1.3rem; color: #888; cursor: pointer; padding: 0 6px; transition: color var(--transition); }
+        .cookie-banner .btn-close-cookie:hover { color: #333; }
+
+        .dropdown-submenu { position: relative; }
+        .dropdown-submenu>.dropdown-menu { top: 0; left: 100%; margin-top: -6px; margin-left: 0; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: var(--shadow-md); display: none; position: absolute; }
+        .dropdown-submenu:hover>.dropdown-menu, .dropdown-submenu:focus-within>.dropdown-menu { display: block; }
+        .dropdown-submenu>a::after { display: inline-block; margin-left: 0.5em; font-family: "Font Awesome 6 Free"; font-weight: 900; content: "\f054"; font-size: 0.6rem; vertical-align: middle; }
+
+        .table { font-size: 0.92rem; }
+        .table th { background: var(--deep-blue); color: #fff; }
+        .table td, .table th { padding: 0.6rem 0.8rem; vertical-align: top; }
+
+        @media (max-width: 992px) {
+            .dropdown-submenu>.dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 1.5rem; display: none; }
+            .dropdown-submenu.show>.dropdown-menu { display: block; }
+            .history-hero h1 { font-size: 2rem; }
+            .quote-box { padding: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .container, .navbar .container, .cookie-banner .container { padding-left: 15px; padding-right: 15px; max-width: 100%; }
+            .row { margin-left: 0; margin-right: 0; }
+            .navbar-brand { font-size: 1.1rem; }
+            .navbar-brand .brand-logo { width: 30px; height: 30px; }
+            .section-page h2 { font-size: 1.5rem; }
+        }
+        img { max-width: 100%; height: auto; }
+        .container { max-width: 100%; padding-left: 15px; padding-right: 15px; }
+        .row { margin-left: 0; margin-right: 0; }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido</a>
+
+    <!-- ====== HEADER (cargado dinámicamente) ====== -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('../elements/header.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar header');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                const script = document.createElement('script');
+                script.src = '../assets/scripts.js';
+                script.onload = () => { if (typeof initApp === 'function') initApp(); };
+                document.body.appendChild(script);
+            })
+            .catch(error => console.warn('Error al cargar el header:', error));
+    </script>
+
+    <!-- ====== CONTENIDO PRINCIPAL ====== -->
+    <header class="history-hero" id="main-content">
+        <div class="container">
+            <h1>Los Alemanes del Volga: demografía, deportación y migraciones (1763-2012)</h1>
+            <p class="lead">Análisis sociodemográfico y migratorio basado en IIDFPG 2012, BKDR 2026 y DW 2007</p>
+        </div>
+    </header>
+
+    <!-- NOTA DE FUENTES -->
+    <section class="section-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/9338.jpg"
+                        alt="Documentos históricos, mapas y fotografías antiguas" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Documentos históricos, mapas y registros genealógicos para la investigación.</p>
+
+                    <div class="alert alert-info" role="alert">
+                        <strong>Nota de fuentes:</strong> Este artículo sintetiza tres fuentes:
+                        <ol class="mt-2 mb-0">
+                            <li><strong>Instituto para la Investigación del Desplazamiento Forzoso de Poblaciones Germanas (IIDFPG, 2012)</strong>, ensayo académico <em>“La asolada comunidad germana del Volga”</em>, versión en español de <em>expelledgermans.org</em>. La fuente cita a su vez bibliografía especializada: Koch (1974), Long (1992), Concordia University, Pohl (1999), Gellately (2000), Kershaw (2008), Burleigh (2001), Giesinger (1981), Naimark (2002), Weitz (2003), Brown (2003; 2005), Ahonen (2004), IRIN, Phalnikar (2007), Tagliabue (1992), CIA World Factbook, perepis2002.ru, Minorities at Risk, Szovjet Gulag, Germans from Russia Heritage Collection, The History Place, Hahn y Hahnova (2010), Haar (2009) y Overmans (1994).</li>
+                            <li><strong>BKDR (2026)</strong>, documental sobre la deportación de alemanes.</li>
+                            <li><strong>DW (2007)</strong>, artículo <em>“Russia hopes to lure back ethnic Germans”</em>.</li>
+                        </ol>
+                        <p class="mt-2 mb-0">Las cifras no siempre coinciden entre fuentes; en esos casos se consignan por separado y se indica su procedencia. No se cita textualmente; todo está parafraseado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 1. ASENTAMIENTO Y EVOLUCIÓN DEMOGRÁFICA -->
+    <section class="section-page" style="background: var(--soft-gray);" id="asentamiento">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>1. Asentamiento y evolución demográfica hasta 1941</h2>
+
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/7816.jpg"
+                        alt="Paisaje local en el río Volga con colonias agrícolas" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Colonia de descendientes en el valle del río Volga, S. XIX.</p>
+
+                    <p>Durante el siglo XVIII, la zarina Catalina la Grande —princesa alemana— invitó a inmigrantes alemanes a Rusia (DW 2007). Los alemanes del Volga se consolidaron como comunidad agrícola y culturalmente diferenciada, especialmente en torno a Sarátov y luego en la República Autónoma de los Alemanes del Volga.</p>
+
+                    <h3 class="h5 mt-4">Tabla 1. Población alemana del Volga y de la URSS en distintos cortes</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Indicador</th>
+                                    <th>Dato</th>
+                                    <th>Fuente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1834</td><td>Alemanes a lo largo del Volga</td><td>~108.000</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Década de 1860</td><td>Alemanes del Volga</td><td>216.000</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>1897</td><td>Alemanes del Volga</td><td>345.000</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>1914</td><td>Alrededores de Sarátov / cuenca del Volga en general</td><td>500.000 / ~650.000</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>1918/1920</td><td>Volga</td><td>Reducción de ~500.000 a ~330.000 por Primera Guerra Mundial, guerra civil, hambruna y conflictos interétnicos</td><td>IIDFPG 2012, citando a Koch (1974, 284)</td></tr>
+                                <tr><td>1921 y posterior</td><td>Hambruna posguerra</td><td>Hasta 20 % de la población germanovolguense perdida por inanición; posiblemente más de 48.000 muertos y 70.000 huidos</td><td>IIDFPG 2012, citando a Long (1992, 523)</td></tr>
+                                <tr><td>1926</td><td>Alemanes del Volga en asentamientos principales</td><td>379.630; 66,4 % de la república autónoma</td><td>IIDFPG 2012, citando a Concordia University</td></tr>
+                                <tr><td>1939</td><td>Alemanes del Volga en asentamientos principales</td><td>366.685; 60,5 % de la RASSGV; descenso por movilización obligatoria y colectivización</td><td>IIDFPG 2012, citando a Concordia University</td></tr>
+                                <tr><td>1939</td><td>Alemanes étnicos en toda la URSS</td><td>~1,5 millones según censo</td><td>BKDR 2026</td></tr>
+                                <tr><td>1941</td><td>Población total de la RASSGV al disolverse</td><td>~600.000 habitantes, incluyendo población no alemana</td><td>IIDFPG 2012, citando Flags of the World</td></tr>
+                                <tr><td>1941</td><td>Operación de deportación del Volga</td><td>438.600 personas: 365.700 “Wolgadeutsche”, 46.700 de Sarátov y 26.200 de Stalingrado</td><td>BKDR 2026</td></tr>
+                                <tr><td>1939-1945</td><td>Desplazamiento total</td><td>Toda la población alemana del Volga desplazada a la RSS de Kazajistán y Siberia; casi la totalidad de los alemanes de la URSS: 1.084.828 personas</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Final de 1942</td><td>Alemanes de origen alemán en asentamientos especiales</td><td>1.209.430</td><td>BKDR 2026</td></tr>
+                                <tr><td>1989</td><td>Alemanes en la RSS de Kazajistán</td><td>957.518; 5,8 % de la población</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Época del colapso soviético</td><td>Alemanes en Kazajistán</td><td>946.855; 5,8 %</td><td>IIDFPG 2012, citando IRIN</td></tr>
+                                <tr><td>Década de 1990</td><td>Emigración desde Kazajistán</td><td>~600.000 alemanes partieron hacia Alemania</td><td>IIDFPG 2012, citando Minorities at Risk</td></tr>
+                                <tr><td>1999</td><td>Alemanes en Kazajistán</td><td>Al menos 353.441; 2,4 %</td><td>IIDFPG 2012, citando IRIN / Brown (2005, 626)</td></tr>
+                                <tr><td>2005/2007</td><td>Alemanes étnicos llegados a Alemania desde la ex URSS</td><td>~2,3 millones</td><td>DW 2007; IIDFPG 2012, citando Phalnikar 2007</td></tr>
+                                <tr><td>2009</td><td>Alemanes étnicos en Rusia</td><td>~597.212</td><td>IIDFPG 2012, con dato de perepis2002.ru</td></tr>
+                                <tr><td>Década de 2000/2010</td><td>Alemanes étnicos en Kazajistán</td><td>2 % de la población, ~300.000</td><td>IIDFPG 2012, citando CIA World Factbook</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. DE LA REPÚBLICA AUTÓNOMA AL GRAN TERROR -->
+    <section class="section-page" id="republica-autonoma">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>2. De la República Autónoma al Gran Terror (1924-1941)</h2>
+
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/3190.jpg"
+                        alt="Iglesia histórica en una colonia alemana del Volga" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Iglesia de una colonia alemana del Volga, centro de la vida comunitaria.</p>
+
+                    <p>En 1924, poco antes de la muerte de Lenin, se creó la <strong>República Autónoma Socialista Soviética de los Germanos del Volga (RASSGV)</strong>. Según el IIDFPG, la república étnica vivió bajo estricta administración soviética:</p>
+
+                    <ul class="mb-4">
+                        <li>La religión, considerada fundamental para la identidad germana, fue abolida.</li>
+                        <li>El ruso se volvió obligatorio en enseñanza, comercio y relaciones laborales.</li>
+                        <li>El uso del alemán fue desalentado, aunque mantuvo un estatus formal superficial.</li>
+                        <li>Se trajeron a la región personas no alemanas: judíos, rusos, coreanos, finlandeses, chuvasios, turcos, caucásicos y circasianos.</li>
+                        <li>El centro urbano de Kossakenstadt fue rebautizado como <strong>Engels</strong>, en homenaje al ideólogo comunista.</li>
+                    </ul>
+
+                    <p>La autoridad máxima de la RASSGV era <strong>Gustav Klinger</strong>, comunista germanovolguense.</p>
+
+                    <p>El IIDFPG indica que pocos germanos del Volga desarrollaron una adhesión ideológica sincera a la revolución proletaria. Muchos se unieron al Ejército Blanco durante la guerra civil rusa. Hubo muy pocos matrimonios interétnicos, pese a las demandas soviéticas de asimilación (Pohl 1999, 35). Esta baja integración habría alimentado las sospechas posteriores de Stalin.</p>
+
+                    <p>Entre 1926 y 1939 la población germanovolguense de los asentamientos principales declinó de 379.630 a 366.685, principalmente por movilización obligatoria y muertes vinculadas a la colectivización (Concordia University).</p>
+
+                    <p>Durante el <strong>Gran Terror</strong>, según el IIDFPG:</p>
+                    <ul class="mb-4">
+                        <li>38.000 germanovolguenses fueron arrestados por el Decreto 00439.</li>
+                        <li>Los no ejecutados de inmediato fueron enviados a Siberia o a campos de trabajo.</li>
+                        <li>Más de 72.000 alemanes de la URSS fueron considerados elementos “pérfidos y antisociales” (Gellately 2000, 237).</li>
+                    </ul>
+
+                    <p>Aun así, el IIDFPG matiza que, tras la hambruna, otros grupos —rusos, ucranianos, caucásicos, circasianos y cosacos— sufrieron más que los germanovolguenses en ese período, y que la RASSGV mantuvo un grado de autonomía geográfica y política.</p>
+
+                    <p>En 1939, con el Pacto Molotov-Ribbentrop, Stalin distribuyó banderas alemanas con la esvástica en la RASSGV (Pohl 1999, 32). Según el IIDFPG, Stalin ya proyectaba expulsar a la población alemana y comenzó a desplazar germanovolguenses y a reducir su autonomía desde 1940. Hitler, enfurecido por la persecución soviética de personas de etnia alemana, intensificó la expulsión y el asesinato de judíos y eslavos, y citó la supuesta persecución de alemanes como justificación de la invasión (Kershaw 2008, 683). En contraste, BKDR sostiene que al comienzo de la guerra no existía un plan de deportación total elaborado de antemano.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 3. LA DEPORTACIÓN DE 1941-1942 -->
+    <section class="section-page" style="background: var(--soft-gray);" id="deportacion">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>3. La deportación de 1941-1942</h2>
+
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/3424.jpg"
+                        alt="Fotografía histórica de familias migrantes alemanas del Volga" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Familias de Alemanes del Volga expulsadas del Volga.</p>
+
+                    <p>Las mayores zonas de asentamiento alemán en la URSS eran el Volga, Ucrania, Crimea y el Cáucaso Norte (BKDR 2026). Entre las décadas de 1920 y 1950 se llevaron a cabo unas <strong>130 operaciones de deportación</strong> en la URSS, que asentaron hasta <strong>14,5 millones de personas</strong>; tres cuartas partes de ellas tuvieron motivos étnicos (BKDR 2026).</p>
+
+                    <h3 class="h5 mt-4">Cronología de decisiones y operaciones</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Decisión u operación</th>
+                                    <th>Datos relevantes</th>
+                                    <th>Fuente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>3 de agosto de 1941</td><td>Telegrama del mando del Frente Sur a Stalin</td><td>Sostenía que los alemanes del Mar Negro recibirían con agrado a los militares alemanes. Stalin ordenó expulsarlos “con estrépito”.</td><td>BKDR 2026</td></tr>
+                                <tr><td>15 de agosto de 1941</td><td>Resolución del Consejo de Evacuación sobre alemanes de Crimea</td><td>Formalmente “evacuación”, de hecho deportación étnica. ~60.000 personas trasladadas al Cáucaso Norte; un mes después, segunda deportación a Kazajistán y Siberia.</td><td>BKDR 2026</td></tr>
+                                <tr><td>25 de agosto de 1941</td><td>Instrucción al comisario del pueblo Beria</td><td>La orden derivada del veredicto de Stalin del 3 de agosto no se comunicó hasta ese día.</td><td>BKDR 2026</td></tr>
+                                <tr><td>26-27 de agosto de 1941</td><td>Primeras instrucciones para la operación del Volga</td><td>Antes del decreto formal.</td><td>BKDR 2026</td></tr>
+                                <tr><td>28 de agosto de 1941</td><td>Decreto formal de deportación de los alemanes del Volga</td><td>El decreto afirmaba que había “decenas de miles de saboteadores” incitados por la Alemania nazi.</td><td>BKDR 2026</td></tr>
+                                <tr><td>30 de agosto de 1941</td><td>Orden del NKVD para trasladar alemanes de suburbios de Leningrado</td><td>Destino: Kazajistán.</td><td>BKDR 2026</td></tr>
+                                <tr><td>3-20 de septiembre de 1941</td><td>Deportación masiva de los alemanes del Volga</td><td>438.600 personas desalojadas según el NKVD: 365.700 del Volga, 46.700 de Sarátov y 26.200 de Stalingrado. Participaron más de 12.000 miembros del NKVD y de la milicia. Bienes inventariados y prácticamente confiscados. La república del Volga fue disuelta.</td><td>BKDR 2026</td></tr>
+                                <tr><td>6 de septiembre de 1941</td><td>Deportación de alemanes de Moscú</td><td>De 11.500 alemanes en Moscú, 1.142 fueron detenidos.</td><td>BKDR 2026</td></tr>
+                                <tr><td>21 de septiembre de 1941</td><td>Deportación de alemanes del Cáucaso Norte y la región de Tula</td><td>—</td><td>BKDR 2026</td></tr>
+                                <tr><td>22 de septiembre de 1941</td><td>Deportación de alemanes del este de Ucrania</td><td>Regiones de Zaporiyia, Voroshilovgrado y Stálino. En las partes no ocupadas de Odesa y Dnipropetrovsk la expulsión hacia Altái se realizó recién a fines de septiembre.</td><td>BKDR 2026</td></tr>
+                                <tr><td>8 de octubre de 1941</td><td>Deportación de alemanes de Transcaucasia y otras zonas</td><td>Georgia, Azerbaiyán, región de Vorónezh y Armenia.</td><td>BKDR 2026</td></tr>
+                                <tr><td>22 de octubre de 1941</td><td>Deportación de alemanes de Daguestán y Chechenia-Ingusetia</td><td>—</td><td>BKDR 2026</td></tr>
+                                <tr><td>2 de noviembre de 1941</td><td>Deportación de alemanes de Kalmukia</td><td>—</td><td>BKDR 2026</td></tr>
+                                <tr><td>21 de noviembre de 1941</td><td>Deportación de alemanes de la región de Kúibyshev</td><td>—</td><td>BKDR 2026</td></tr>
+                                <tr><td>Hasta finales de 1941</td><td>Total de trasladados desde la parte europea de la URSS</td><td>856.200 personas</td><td>BKDR 2026</td></tr>
+                                <tr><td>Hasta mediados de 1942</td><td>Total de alemanes deportados</td><td>~905.000; sumando traslados secundarios, al menos 1 millón</td><td>BKDR 2026</td></tr>
+                                <tr><td>Finales de 1942</td><td>Alemanes en asentamientos especiales</td><td>1.209.430 personas de origen alemán</td><td>BKDR 2026</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="h5 mt-4">Justificación soviética y carácter preventivo</h3>
+                    <p>El gobierno soviético publicó un informe según el cual en la provincia del Volga habría “miles y decenas de miles de saboteadores y espías” entre la población alemana, y que ningún alemán del distrito del Volga había informado a las autoridades sobre esa supuesta presencia. En consecuencia, el Presídium del Sóviet Supremo consideró necesario reubicar a toda la población alemana (Koch 1974, 284, citado por IIDFPG 2012).</p>
+
+                    <p>El IIDFPG sostiene que la deportación no se basó en una verificación de colaboración con los nazis. La define como una medida precautoria, planificada para desplazar a los alemanes antes de que el Tercer Reich pudiera invadir sus regiones y reclutarlos. La población fue forzada a abandonar sus hogares sin oportunidad de demostrar lealtad o traición.</p>
+
+                    <p>Según el IIDFPG:</p>
+                    <ul class="mb-4">
+                        <li>El ejército invasor alemán afirmó haber incorporado a más de 300.000 alemanes de la URSS; la mayoría no eran de la comunidad del Volga, puesto que la expulsión soviética avanzó antes de que la Wehrmacht llegara a esas zonas.</li>
+                        <li>Supuestamente 200.000 alemanes del Volga y de otros lugares bajo mando nazi fueron repatriados por los soviéticos en 1945 para su ejecución o expulsión (Giesinger 1981, citado por IIDFPG 2012).</li>
+                        <li>Hacia 1945, más de 400.000 germanovolguenses y casi la totalidad de las restantes 700.000 personas de etnia alemana de la URSS habían sido desplazadas, excluidas y encarceladas.</li>
+                        <li>Una fuente estima que hasta 1.200.000 civiles alemanes fueron obligados a dejar sus hogares (IRIN, citado por IIDFPG 2012).</li>
+                        <li>Casi la totalidad de por lo menos 366.000 germanovolguenses de la RASS del Volga también fue desplazada (Szovjet Gulag, citado por IIDFPG 2012).</li>
+                    </ul>
+
+                    <p>Los registros de la NKVD citados por el IIDFPG contabilizan la reubicación forzada de <strong>1.084.828 personas de ascendencia alemana</strong> de la URSS, casi la totalidad de los ciudadanos germanoparlantes (Weitz 2003, 80).</p>
+
+                    <h3 class="h5 mt-4">Condiciones del traslado</h3>
+                    <p>Según BKDR 2026, las deportaciones se hicieron sin anuncio, sin opción y con apuro. Las personas recibían aviso y a menudo menos de quince minutos para juntar sus pertenencias. Eran transportadas en trenes de carga con 40 a 60 personas por vagón, sin calefacción ni literas, con comida caliente y agua irregulares. Los viajes podían durar días o semanas. Se registraron infecciones, falta de atención médica, muertes de ancianos y niños, y duras penas para quienes intentaban huir en las estaciones.</p>
+
+                    <p>El IIDFPG añade que:</p>
+                    <ul class="mb-4">
+                        <li>Se informó de <strong>400 lactantes germanovolguenses hallados muertos en un solo tren</strong> (Burleigh 2001, 496).</li>
+                        <li>Los prisioneros moribundos eran arrojados al descampado.</li>
+                        <li>Niños eran obligados a permanecer en campos de concentración hasta la adultez tras una reeducación ideológica.</li>
+                        <li>Se prohibió la lengua alemana; toda manifestación cultural germana fue oficialmente desdeñada o prohibida.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 4. ASENTAMIENTO ESPECIAL, TRABAJO FORZADO Y MORTALIDAD -->
+    <section class="section-page" id="trabajo-forzado">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>4. Asentamiento especial, trabajo forzado y mortalidad</h2>
+
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/4004.png"
+                        alt="Mapa antiguo mostrando rutas migratorias desde Europa hacia América" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Rutas migratorias: desde Alemania hacia Rusia y luego hacia América.</p>
+
+                    <p>A partir de enero de 1942, miles de alemanes fueron enviados a campos de trabajo. El BKDR 2026 describe barracones húmedos y casas de tierra, con a veces menos de un metro cuadrado por persona. Casi una cuarta parte de los alemanes murió en los “ejércitos de trabajo” por trabajo inhumano, hambre y enfermedades.</p>
+
+                    <p>El IIDFPG aporta otros elementos:</p>
+                    <ul class="mb-4">
+                        <li>Los deportados fueron sometidos a prisión y trabajo forzado en el “ejército trut” —ejército laboral— bajo control de la <strong>Spezkomendatura</strong>.</li>
+                        <li>La mano de obra esclava fue movilizada mediante unos <strong>151 convoyes ferroviarios</strong> que partieron de <strong>19 estaciones</strong>.</li>
+                        <li>Unos <strong>20.000 agentes y guardias del NKVD</strong> fueron relevados del esfuerzo bélico para vigilar a hombres, mujeres y niños.</li>
+                        <li>Algunos fueron enviados a Kolymá, en el extremo oriental de Siberia.</li>
+                        <li>Tropas soviéticas se lanzaron en paracaídas sobre la antigua RASSGV disfrazadas de soldados alemanes para detectar quiénes les daban protección; la mayoría de los señalados fueron ejecutados.</li>
+                        <li>Tener una bandera con esvástica era motivo de fusilamiento o deportación; muchas habían sido enviadas por Stalin en 1939 (Pohl 1999, 32).</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4">Estimaciones de mortalidad</h3>
+                    <p>El IIDFPG indica que calcular el número total de muertos y desplazados es difícil por la imprecisión o parcialidad de las estadísticas soviéticas, la inaccesibilidad de archivos y sesgos historiográficos. Entre las estimaciones que recoge:</p>
+                    <ul class="mb-4">
+                        <li>Hasta <strong>300.000 muertos</strong> durante el desplazamiento de todos los alemanes de la URSS, es decir, alrededor del <strong>30 % del total</strong> (Germans from Russia Heritage Collection, citado por IIDFPG 2012).</li>
+                        <li>Hasta <strong>52 %</strong> de los germanovolguenses podría haber muerto en el trayecto a Kazajistán y, una vez llegados, el <strong>40 %</strong> de los sobrevivientes habría muerto después bajo trabajo forzado (IRIN, citado por IIDFPG 2012).</li>
+                        <li>Al menos <strong>300.000 civiles</strong> de la población alemana total murieron de hambre durante los desplazamientos, un <strong>30 %</strong> del total.</li>
+                        <li>Como contraste, al menos <strong>17,7 %</strong> de los tártaros deportados a Uzbekistán murió en el camino y <strong>23,7 %</strong> de chechenos, ingusetios, balkarios y karacháis hacia 1948 (Weitz 2003, 81, citado por IIDFPG 2012).</li>
+                        <li>Otras fuentes calculan que solo el <strong>82 %</strong> de los alemanes pertenecientes a la órbita soviética fue desplazado; esta cifra menor considera únicamente el programa inicial de deportación.</li>
+                    </ul>
+
+                    <h3 class="h5 mt-4">Comparación con otras minorías deportadas</h3>
+                    <p>El IIDFPG contextualiza el caso alemán señalando que no fue el grupo más victimizado. Tártaros, ingusetios, chechenos musulmanes, coreanos, calmucos budistas, mesjetios y polacos de Galitzia sufrieron más. Casi todos estos grupos, salvo coreanos y polacos, fueron expulsados a Kazajistán junto con los alemanes del Volga. Hasta el último ingusetio fue sacado de su casa por unos pocos casos de colaboracionismo intermitente en tiempos de guerra (Naimark 2002, 13). Además, cerca de 20.000 agentes polacos fueron ejecutados en Katyn y más de 2.000.000 de polacos fueron expulsados del este de Polonia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 5. POSGUERRA, REHABILITACIÓN Y EMIGRACIÓN -->
+    <section class="section-page" style="background: var(--soft-gray);" id="posguerra">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>5. Posguerra, rehabilitación y emigración</h2>
+
+                    <img src="https://raw.githubusercontent.com/pablokriger/GeoRoot/main/data/5716.jpg"
+                        alt="Celebración tradicional de descendientes de Alemanes del Volga" class="history-img-sm" loading="lazy" />
+                    <p class="img-caption">Fiesta tradicional de descendientes de Alemanes del Volga en la actualidad.</p>
+
+                    <h3 class="h5">Deshielo posestalinista</h3>
+                    <p>La muerte de Stalin en 1953 cambió la política étnica soviética. Nikita Jrushchov impulsó la desestalinización y levantó el interdicto étnico contra tártaros y alemanes. Los germanovolguenses fueron rehabilitados <em>de jure</em>. Se les permitió abandonar sus lugares de reclusión en la RSS de Kazajistán y dirigirse a cualquier territorio dentro de la órbita comunista, incluida Alemania Oriental, Rusia o el Volga. Muchos se instalaron como obreros en Alma Atá y Karagandá, donde la población alemana fue mayoritaria antes de la emigración masiva y su reemplazo por población kazaja (IIDFPG 2012).</p>
+
+                    <p>Sin embargo, el IIDFPG registra que persistió la discriminación:</p>
+                    <ul class="mb-4">
+                        <li>Hasta 1970, los alemanes no podían estudiar en la Universidad de Moscú (IRIN).</li>
+                        <li>Se exigía aprender ruso y kazajo.</li>
+                        <li>La asimilación soviética erosionó el uso del alemán; pocos germanovolguenses lo hablaban fluidamente después de algunas generaciones.</li>
+                    </ul>
+
+                    <h3 class="h5">Emigración a Alemania</h3>
+                    <p>Alemania Occidental alentó activamente la inmigración de alemanes mediante la <strong>Ley de Retorno</strong> (<em>Rückkehrgesetz</em>), que ofrecía ciudadanía a personas de sangre alemana desplazadas, con subsidio de viaje. Esta política disminuyó con el tiempo debido al alto grado de inmigración (Ahonen 2004, 109, citado por IIDFPG 2012).</p>
+
+                    <p>Según el IIDFPG:</p>
+                    <ul class="mb-4">
+                        <li>Cerca de <strong>un millón</strong> de personas de sangre alemana fueron recibidas como refugiadas en Alemania desde 1991, y una parte como ciudadanas, incluso sin hablar alemán hasta 1998 (Brown 2003, 233).</li>
+                        <li>Unas <strong>2.300.000 personas</strong> partieron de Rusia y Kazajistán hacia Alemania y otros países (Phalnikar 2007).</li>
+                        <li>Hasta 1998, Alemania concedió la ciudadanía a personas de sangre alemana aunque no hablaran alemán. Después de esa fecha se exigió estudiar alemán, lo que generó dificultades económicas y desilusión identitaria.</li>
+                    </ul>
+
+                    <p>La DW 2007 indica que los emigrantes de origen alemán procedentes de Rusia constituyen el grupo más numeroso dentro de los <strong>4,5 millones</strong> de personas con ascendencia alemana que emigraron a Alemania.</p>
+
+                    <h3 class="h5">Comunidad alemana en Kazajistán y Asia Central</h3>
+                    <ul class="mb-4">
+                        <li>En la década de 1970 hubo emigración masiva desde la RSS de Kazajistán a Alemania Federal y Alemania Oriental.</li>
+                        <li>En 1989 había <strong>957.518 alemanes</strong> en la RSS de Kazajistán (5,8 %).</li>
+                        <li>Hacia el colapso de la URSS, el IIDFPG cita <strong>946.855</strong> alemanes en Kazajistán (5,8 %, IRIN).</li>
+                        <li>En la década de 1990, más de <strong>600.000</strong> alemanes salieron de Kazajistán hacia Alemania (Minorities at Risk).</li>
+                        <li>Para 1999 quedaban al menos <strong>353.441</strong> alemanes en Kazajistán (2,4 %).</li>
+                        <li>Muchas ciudades anteriormente alemanas en Kazajistán quedaron con casas vacías, carteles de “En Venta” y nuevos habitantes kazajos (Brown 2003, 233).</li>
+                        <li>En 2002, <strong>33.000 alemanes de Kazajistán</strong> presentaron petición para emigrar (IRIN).</li>
+                        <li>Pequeñas comunidades alemanas se establecieron también en Kirguistán y Uzbekistán.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 6. POLÍTICAS RECIENTES DE RETORNO Y SITUACIÓN ACTUAL -->
+    <section class="section-page" id="politicas-recientes">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>6. Políticas recientes de retorno y situación actual</h2>
+
+                    <p>A partir de los años 2000, Rusia intentó atraer de vuelta a los alemanes étnicos emigrados. Según DW 2007:</p>
+                    <ul class="mb-4">
+                        <li>La agencia rusa Interfax informó que Moscú invertiría <strong>más de 80 millones de euros (110 millones de dólares)</strong> hacia 2012 para atraer de vuelta a antiguos ciudadanos de ascendencia alemana y frenar la migración hacia Occidente.</li>
+                        <li>El dinero se destinaría principalmente a centros industriales de <strong>Siberia Occidental</strong> y la <strong>región del Volga</strong>.</li>
+                        <li>Berlín acogió con satisfacción los esfuerzos rusos.</li>
+                        <li>La comunidad alemana de Rusia ascendía oficialmente a unas <strong>600.000 personas</strong>.</li>
+                        <li>Los programas contaron con apoyo financiero del gobierno alemán.</li>
+                    </ul>
+
+                    <p>El IIDFPG, por su parte, añade que la Rusia de Putin reaccionaba ante la baja natalidad eslava invirtiendo hasta <strong>80.000.000 de euros</strong> hacia 2012 para subsidiar el regreso de descendientes de alemanes del Volga, generar mano de obra y crear empleo. También se invirtió en centros educativos en lengua alemana en Siberia y el Volga.</p>
+
+                    <p>La DW 2007 explica que algunos alemanes étnicos aceptan regresar a Kazajistán o Siberia porque se sienten aislados en Alemania, extrañan la cultura rusa o tienen dificultades con el idioma alemán. Además, muchos títulos profesionales no son reconocidos en Alemania, de modo que profesores e ingenieros terminan trabajando en limpieza. Solo en Kazajistán, en los dos años anteriores al artículo, se expidieron nuevos pasaportes a más de <strong>2.000 alemanes étnicos</strong> que regresaban de Alemania.</p>
+
+                    <p>El IIDFPG, citando a Phalnikar (2007), señala que más de <strong>2.000 personas</strong> regresaron de Alemania a Kazajistán en pocos años, en un contexto de incertidumbre política bajo el régimen de Nursultán Nazarbáyev.</p>
+
+                    <div class="quote-box">
+                        “Solo una pequeña parte de los alemanes étnicos en Alemania se marcha. Más del 95 % se queda, porque tienen raíces aquí y son tratados como iguales. Uno se pregunta por qué tan pocos regresan.”
+                        <br /><small>— Viktor Krieger, Universidad de Heidelberg (DW 2007)</small>
+                    </div>
+
+                    <p>La DW 2007 cita además a Krieger señalando que el problema de los planes rusos era que no mencionaban la revitalización de la comunidad étnica alemana en Rusia; se centraban en agricultura y desarrollo rural, sin prever museo, universidad o instituto de investigación sobre cultura alemana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 7. CIFRAS COMPARADAS -->
+    <section class="section-page" style="background: var(--soft-gray);" id="cifras-comparadas">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>7. Cifras comparadas de población civil alemana expulsada o desplazada</h2>
+
+                    <p>El IIDFPG ofrece un cuadro comparativo de población civil alemana expulsada o desplazada, no limitado a la URSS:</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Grupo / territorio</th>
+                                    <th>Cifra</th>
+                                    <th>Fuente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Alemanes bálticos (1939-1945)</td><td>150.000 desplazados por negociaciones Hitler-Stalin y expulsiones soviéticas</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes de la Unión Soviética (Cáucaso, Mar Negro, Besarabia, etc.)</td><td>Casi la totalidad de 1.084.828; hasta 300.000 muertos (30 %)</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes del Volga (incluidos en URSS)</td><td>Más de 400.000; casi el 100 %</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes holandeses</td><td>3.691; 15 % de la población alemana total</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes prusianos, silesios y pomeranos</td><td>Entre 5 y 8.000.000; casi el 100 %</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes de Alsacia-Lorena</td><td>Más de 100.000 expulsados</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes de los Sudetes y de los Cárpatos</td><td>Sin cifra separada en este apartado</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Checoslovaquia</td><td>Más de 3.000.000 desplazados y expulsados; 95 % del total</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Alemanes de Hungría</td><td>Más de 100.000 expulsados; 300.000 desplazados; 88 % del total</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Sajones de Transilvania y suabos del Banato (Rumania)</td><td>700.000 desplazados por Hitler, la URSS y emigración; 91,5 %</td><td>IIDFPG 2012</td></tr>
+                                <tr><td>Suabos del Danubio en Yugoslavia</td><td>Más de 200.000 encarcelados, ejecutados, expulsados, desplazados o huidos; 98,5 %</td><td>IIDFPG 2012</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p>En cuanto al total de muertos por expulsión de alemanes, el IIDFPG indica que Alemania Occidental y la Cruz Roja mantuvieron durante décadas una cifra no verificada de más de 2 millones, y que grupos de expulsados llegaron a hablar de 3 a 4 millones. Las estimaciones académicas actuales citan un mínimo de <strong>400.000 muertes</strong>. Hahn y Hahnova citan <strong>473.013</strong>; Ingo Haar habla de <strong>no más de 0,5 a 0,6 millones</strong>; Overmans, de <strong>aproximadamente 600.000</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- 8. ORGANIZACIONES, MEMORIA Y PATRIMONIO -->
+    <section class="section-page" id="organizaciones">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h2>8. Organizaciones, memoria y patrimonio</h2>
+
+                    <p>El IIDFPG registra que la herencia cultural germanovolguense se perdió casi por completo tras la dislocación, y que está siendo reconstruida por descendientes de familias volguenses del siglo XIX emigradas a Canadá, Brasil, Argentina y Alemania.</p>
+
+                    <p>Entre las organizaciones dedicadas al tema:</p>
+                    <ul class="mb-4">
+                        <li><strong>American Historical Society of Germans from Russia</strong>.</li>
+                        <li><strong>Center for Volga German Studies at Concordia University</strong>.</li>
+                        <li><strong>Asociación Germano-Kazaja de Empresarios</strong>, dirigida por Alexander Dederer, también llamada <strong>“Wiedergeburt”</strong> (renacimiento), centrada principalmente en comercio y desarrollo.</li>
+                    </ul>
+
+                    <p>En febrero de 2010 se realizó en St. Louis, Misuri, una asamblea internacional bajo el lema <strong>“Genocidio Olvidado”</strong>. James Mayfield, director del IIDFPG, presentó una exposición sobre la comunidad germanovolguense ante sobrevivientes, investigadores y diplomáticos.</p>
+
+                    <h3 class="h5 mt-4">Fuentes principales</h3>
+                    <ul>
+                        <li>IIDFPG, Instituto para la Investigación del Desplazamiento Forzoso de Poblaciones Germanas. <em>“La asolada comunidad germana del Volga”</em>, ca. 2012.</li>
+                        <li>BKDR. Documental sobre la deportación de alemanes, 2026.</li>
+                        <li>DW. <em>“Russia hopes to lure back ethnic Germans”</em>, 2007.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER (cargado dinámicamente) ====== -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('../elements/footer.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar footer');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+                if (typeof applyTranslations === 'function') {
+                    applyTranslations();
+                }
+                if (typeof initCookieBanner === 'function') {
+                    initCookieBanner();
+                }
+            })
+            .catch(error => console.warn('Error al cargar el footer:', error));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+</body>
+</html>
