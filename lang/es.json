@@ -470,7 +470,7 @@
   "volga_familiares_reset": "Volver a enviar otro",
   "volga_familiares_label_hermanos": "Cantidad de hermanos",
   "volga_familiares_placeholder_hermanos": "Ej.: 2",
-  "volga_familiares_error_hermanos": "Ingresá un número válido (0 o más)."
+  "volga_familiares_error_hermanos": "Ingresá un número válido (0 o más).",
 
   "volga_search_alert": "Consulta aquí si tu apellido se encuentra en algún registro de descendiente de Alemanes del Volga.",
   "volga_search_label": "Apellido a consultar",
